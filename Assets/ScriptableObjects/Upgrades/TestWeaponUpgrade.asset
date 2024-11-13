@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a522784e3c0d4458d879caf162c809, type: 3}
   m_Name: TestWeaponUpgrade
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Upgrade Name
   description: Upgrade Description
-  artwork: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   statsToUpgrade:
   - stat: 0
     value: 3

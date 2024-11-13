@@ -10,8 +10,6 @@ namespace Inventory
     {
         public int InventorySize => inventorySize;
 
-        public List<Item> Items => _items;
-
         [SerializeField]
         private Canvas inventoryCanvas;
         [SerializeField] 
@@ -34,6 +32,16 @@ namespace Inventory
             {
                 ToggleInventory();
             }
+        }
+
+        public Item GetItem(int id)
+        {
+            if (_items.Count > id && id >= 0)
+            {
+                return _items[id];
+            }
+
+            return null;
         }
 
         // TODO: This should be called from player controller or something

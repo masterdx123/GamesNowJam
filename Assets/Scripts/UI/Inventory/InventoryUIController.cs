@@ -8,18 +8,20 @@ namespace UI.Inventory
     {
         public Inventory Inventory
         {
-            get => _inventory;
             set => _inventory = value;
         }
 
         [SerializeField]
         private GameObject inventorySlotPrefab;
+        [SerializeField]
+        private GameObject inventorySlotContainer;
+        
         private Inventory _inventory;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            Debug.Log("Inventory size is " + Inventory.InventorySize);
+            UpdateInventory();
         }
 
         // Update is called once per frame
@@ -28,9 +30,20 @@ namespace UI.Inventory
         
         }
 
-        public void SetInventory(Inventory inventory)
+        void UpdateInventory()
         {
-            _inventory = inventory;
+            if (_inventory && inventorySlotPrefab)
+            {
+                for (int i = 0; i < _inventory.InventorySize; i++)
+                {
+                    GameObject newElement = Instantiate(inventorySlotPrefab, inventorySlotContainer.transform);
+                    InventorySlotController slotController = newElement.GetComponent<InventorySlotController>();
+                    if (slotController)
+                    {
+                        slotController.Item = _inventory.GetItem(i);
+                    }
+                }
+            }
         }
     }
 }
