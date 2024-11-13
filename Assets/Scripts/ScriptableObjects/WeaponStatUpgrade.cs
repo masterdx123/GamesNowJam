@@ -12,7 +12,7 @@ namespace ScriptableObjects
         public float value;
     }
     
-    [CreateAssetMenu(fileName = "WeaponStatUpgrade", menuName = "Scriptable Objects/Upgrades/Weapon Stat Upgrade")]
+    [CreateAssetMenu(fileName = "WeaponStatUpgrade", menuName = "Scriptable Objects/Item/Upgrades/Weapon Stat Upgrade")]
     public class WeaponStatUpgrade : Upgrade
     {
         [SerializeField]
