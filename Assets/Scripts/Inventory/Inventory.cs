@@ -1,15 +1,17 @@
 using System.Collections.Generic;
 using ScriptableObjects;
 using UI;
+using UI.Inventory;
 using UnityEngine;
 
 namespace Inventory
 {
     public class Inventory : MonoBehaviour
     {
-        public int InventorySize{ get; private set; }
-        public List<Item> Items{ get; private set; }
-        
+        public int InventorySize => inventorySize;
+
+        public List<Item> Items => _items;
+
         [SerializeField]
         private Canvas inventoryCanvas;
         [SerializeField] 
@@ -22,8 +24,6 @@ namespace Inventory
         void Start()
         {
             _items = new List<Item>();
-            Items = _items;
-            InventorySize = inventorySize;
         }
 
         // Update is called once per frame

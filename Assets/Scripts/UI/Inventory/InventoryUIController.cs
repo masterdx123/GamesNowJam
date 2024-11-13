@@ -1,15 +1,21 @@
 using UnityEngine;
 
-namespace UI
+namespace UI.Inventory
 {
+    using global::Inventory;
+    
     public class InventoryUIController : MonoBehaviour
     {
-        public Inventory.Inventory Inventory { get; set; }
+        public Inventory Inventory
+        {
+            get => _inventory;
+            set => _inventory = value;
+        }
 
         [SerializeField]
         private GameObject inventorySlotPrefab;
-        private Inventory.Inventory _inventory;
-            
+        private Inventory _inventory;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -22,7 +28,7 @@ namespace UI
         
         }
 
-        public void SetInventory(Inventory.Inventory inventory)
+        public void SetInventory(Inventory inventory)
         {
             _inventory = inventory;
         }
