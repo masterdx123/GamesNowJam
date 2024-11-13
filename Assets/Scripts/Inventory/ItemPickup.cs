@@ -5,20 +5,20 @@ using UnityEngine;
 
 namespace Inventory
 {
-    [RequireComponent(typeof(SphereCollider), typeof(SpriteRenderer))]
+    [RequireComponent(typeof(CircleCollider2D), typeof(SpriteRenderer))]
     public class ItemPickup : MonoBehaviour
     {
         [SerializeField]
         private ItemData itemData;
         
         private SpriteRenderer _spriteRenderer;
-        private SphereCollider _sphereCollider;
+        private CircleCollider2D _circleCollider;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            _sphereCollider = GetComponent<SphereCollider>();
-            _sphereCollider.isTrigger = true;
+            _circleCollider = GetComponent<CircleCollider2D>();
+            _circleCollider.isTrigger = true;
             _spriteRenderer = GetComponent<SpriteRenderer>();
             if (_spriteRenderer && itemData)
             {
@@ -32,10 +32,10 @@ namespace Inventory
         
         }
 
-        void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             Debug.Log(other.gameObject.name);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
