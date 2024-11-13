@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UI.Inventory
@@ -17,10 +19,12 @@ namespace UI.Inventory
         private GameObject inventorySlotContainer;
         
         private Inventory _inventory;
+        private List<InventorySlotController> _inventorySlotControllers;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            _inventorySlotControllers = new List<InventorySlotController>();
             UpdateInventory();
         }
 
@@ -28,6 +32,17 @@ namespace UI.Inventory
         void Update()
         {
         
+        }
+
+        private void OnDestroy()
+        {
+            for (int i = 0; i < _inventorySlotControllers.Count; i++)
+            {
+                if (_inventorySlotControllers[i])
+                {
+                    _inventory.AddedItem -= _inventorySlotControllers[i].UpdateItem;
+                }
+            }
         }
 
         void UpdateInventory()
@@ -40,7 +55,10 @@ namespace UI.Inventory
                     InventorySlotController slotController = newElement.GetComponent<InventorySlotController>();
                     if (slotController)
                     {
-                        slotController.Item = _inventory.GetItem(i);
+                        _inventorySlotControllers.Add(slotController);
+                        slotController.Slot = i;
+                        slotController.UpdateItem(i, _inventory.GetItem(i));
+                        _inventory.AddedItem += slotController.UpdateItem;
                     }
                 }
             }

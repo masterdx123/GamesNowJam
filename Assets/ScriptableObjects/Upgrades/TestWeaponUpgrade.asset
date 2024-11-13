@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Upgrade Name
   description: Upgrade Description
-  icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: -7351497889628635928, guid: 08a149e69f7a06a45b25d1505a5d38a4, type: 3}
+  canStack: 0
+  maxStackSize: 1
   statsToUpgrade:
   - stat: 0
     value: 3
