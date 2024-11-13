@@ -40,7 +40,7 @@ namespace UI.Inventory
                     InventorySlotController slotController = newElement.GetComponent<InventorySlotController>();
                     if (slotController)
                     {
-                        slotController.Item = _inventory.GetItem(i);
+                        slotController.UpdateItem(_inventory.GetItem(i));
                     }
                 }
             }

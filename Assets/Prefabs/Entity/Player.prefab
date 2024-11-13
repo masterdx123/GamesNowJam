@@ -228,9 +228,10 @@ GameObject:
   - component: {fileID: 3255912021903259158}
   - component: {fileID: 1518413562621471978}
   - component: {fileID: 4069138799199273539}
+  - component: {fileID: 8429774714761237374}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -437,3 +438,17 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   differenceMouseToPlayerNormalized: {x: 0, y: 0}
+--- !u!114 &8429774714761237374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599291580118467567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a8f94f94c5e9641ab58c2a622444e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryCanvas: {fileID: 7383625982272758398, guid: da3747f307308fc4884eaa907e5ad4c0, type: 3}
+  inventorySize: 10
