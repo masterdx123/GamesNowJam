@@ -47,12 +47,17 @@ namespace Inventory
 
         private Canvas _instantiatedInventory;
         private List<Item> _items;
+        private GameObject _player;
+        private Weapon _weapon;
     
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             _items = new List<Item>();
             inventoryAction.Enable();
+            _player = GameObject.FindGameObjectWithTag("Player");
+            _weapon = _player.GetComponent<Weapon>();
+            if (!_weapon) Debug.Log("Weapon not found for inventory!");
         }
 
         // Update is called once per frame
