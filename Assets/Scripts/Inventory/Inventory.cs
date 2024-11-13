@@ -47,6 +47,9 @@ namespace Inventory
 
         private Canvas _instantiatedInventory;
         private List<Item> _items;
+        
+        private List<WeaponStatUpgradeData> _weaponUpgrades;
+        private List<CharacterUpgradeData> _characterUpgrades;
         private GameObject _player;
         private Weapon _weapon;
     
@@ -54,9 +57,8 @@ namespace Inventory
         void Start()
         {
             _items = new List<Item>();
-            inventoryAction.Enable();
             _player = GameObject.FindGameObjectWithTag("Player");
-            _weapon = _player.GetComponent<Weapon>();
+            _weapon = _player.GetComponentInChildren<Weapon>();
             if (!_weapon) Debug.Log("Weapon not found for inventory!");
         }
 
@@ -67,6 +69,16 @@ namespace Inventory
             {
                 ToggleInventory();
             }
+        }
+
+        private void OnEnable()
+        {
+            inventoryAction.Enable();
+        }
+
+        private void OnDisable()
+        {
+            inventoryAction.Disable();
         }
 
         public bool AddItem(ItemData inItemData)
@@ -121,18 +133,16 @@ namespace Inventory
 
             return new Item();
         }
-
-        // TODO: This should be called from player controller or something
+        
         public void ToggleInventory()
         {
             if (!_instantiatedInventory)
             {
                 _instantiatedInventory = Instantiate(inventoryCanvas);
                 InventoryUIController uiController = _instantiatedInventory.GetComponent<InventoryUIController>();
-                if (uiController)
-                {
-                    uiController.Inventory = this;
-                }
+                if (!uiController) return;
+                uiController.Inventory = this;
+                uiController.UpdateWeapon(_weapon);
                 return;
             }
             

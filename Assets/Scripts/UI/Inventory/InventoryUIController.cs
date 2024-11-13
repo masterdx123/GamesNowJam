@@ -17,6 +17,8 @@ namespace UI.Inventory
         private GameObject inventorySlotPrefab;
         [SerializeField]
         private GameObject inventorySlotContainer;
+        [SerializeField] 
+        private WeaponUpgradesUIController weaponUpgradesController;
         
         private Inventory _inventory;
         private List<InventorySlotController> _inventorySlotControllers;
@@ -43,6 +45,11 @@ namespace UI.Inventory
                     _inventory.AddedItem -= _inventorySlotControllers[i].UpdateItem;
                 }
             }
+        }
+
+        public void UpdateWeapon(Weapon weapon)
+        {
+            weaponUpgradesController.UpdateWeapon(weapon);
         }
 
         void UpdateInventory()

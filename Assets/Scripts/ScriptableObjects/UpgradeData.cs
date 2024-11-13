@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace ScriptableObjects
 {
+    [Serializable]
     public abstract class UpgradeData : ItemData
     {
         public abstract void AddUpgrade(); // Should receive Character as parameter
