@@ -857,30 +857,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8429774714761237374, guid: 18382943e44daea47be7f03738aeb728, type: 3}
-      propertyPath: inventoryAction.m_Name
-      value: Inventory
-      objectReference: {fileID: 0}
-    - target: {fileID: 8429774714761237374, guid: 18382943e44daea47be7f03738aeb728, type: 3}
-      propertyPath: inventoryAction.m_SingletonActionBindings.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8429774714761237374, guid: 18382943e44daea47be7f03738aeb728, type: 3}
-      propertyPath: inventoryAction.m_SingletonActionBindings.Array.data[0].m_Id
-      value: 51ebc1b5-ba28-4913-a294-3f6bb61de9c5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8429774714761237374, guid: 18382943e44daea47be7f03738aeb728, type: 3}
-      propertyPath: inventoryAction.m_SingletonActionBindings.Array.data[0].m_Path
-      value: <Keyboard>/i
-      objectReference: {fileID: 0}
-    - target: {fileID: 8429774714761237374, guid: 18382943e44daea47be7f03738aeb728, type: 3}
-      propertyPath: inventoryAction.m_SingletonActionBindings.Array.data[0].m_Action
-      value: Inventory
-      objectReference: {fileID: 0}
-    - target: {fileID: 8429774714761237374, guid: 18382943e44daea47be7f03738aeb728, type: 3}
-      propertyPath: inventoryAction.m_SingletonActionBindings.Array.data[0].m_Interactions
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
