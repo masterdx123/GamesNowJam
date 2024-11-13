@@ -34,8 +34,16 @@ namespace Inventory
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log(other.gameObject.name);
-            Destroy(gameObject);
+            if (!other.CompareTag("Player")) return;
+            
+            // Add to inventory and if successfull destroy
+            Inventory inventory = other.gameObject.GetComponent<Inventory>();
+            if (!inventory) return;
+
+            if (inventory.AddItem(itemData))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

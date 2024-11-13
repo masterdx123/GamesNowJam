@@ -4,6 +4,7 @@ using ScriptableObjects;
 using UI;
 using UI.Inventory;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Inventory
 {
@@ -31,12 +32,18 @@ namespace Inventory
     
     public class Inventory : MonoBehaviour
     {
+        public delegate void ItemChangedDelegate(int index, Item? item);
+        
         public int InventorySize => inventorySize;
+        public ItemChangedDelegate AddedItem;
+        public ItemChangedDelegate RemovedItem;
 
         [SerializeField]
         private Canvas inventoryCanvas;
         [SerializeField] 
         private int inventorySize = 10;
+        [SerializeField]
+        public InputAction inventoryAction;
 
         private Canvas _instantiatedInventory;
         private List<Item> _items;
@@ -45,13 +52,13 @@ namespace Inventory
         void Start()
         {
             _items = new List<Item>();
+            inventoryAction.Enable();
         }
 
         // Update is called once per frame
         void Update()
         {
-            // TEST INPUT TODO: Remove it
-            if (Input.GetKeyDown(KeyCode.I))
+            if (inventoryAction.triggered)
             {
                 ToggleInventory();
             }
@@ -67,8 +74,11 @@ namespace Inventory
                 // if we can, increase the stack size
                 if (item.ItemData.CanStack && item.Amount < item.ItemData.MaxStackSize)
                 {
+                    int index = _items.IndexOf(item);
                     item.Amount += 1;
-                    _items[_items.IndexOf(item)] = item;
+                    _items[index] = item;
+                    AddedItem?.Invoke(index, item);
+                    return true;
                 }
                 else
                 {
@@ -80,6 +90,7 @@ namespace Inventory
             {
                 item.ItemData = inItemData;
                 item.Amount = 1;
+                AddedItem?.Invoke(_items.Count, item);
                 _items.Add(item);
                 return true;
             }
@@ -90,12 +101,10 @@ namespace Inventory
         public void RemoveItem(ItemData inItemData)
         {
             Item item = _items.Find(i => i.ItemData == inItemData);
-            RemoveItem(_items.IndexOf(item));
-        }
-
-        public void RemoveItem(int index)
-        {
+            if (!item.ItemData) return;
+            int index = _items.IndexOf(item);
             _items.RemoveAt(index);
+            RemovedItem?.Invoke(index, null);
         }
 
         public Item GetItem(int id)
