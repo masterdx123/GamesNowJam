@@ -17,8 +17,9 @@ public class PlayerController : MonoBehaviour
 
     public InputAction moveAction;
     public InputAction aimAction;
-    public InputAction dashAction; // Dash action input
-    public InputAction teleportAction; // Teleport action input
+    public InputAction dashAction;
+    public InputAction teleportAction;
+    public InputAction cloneAction;
     [HideInInspector] public Vector2 differenceMouseToPlayerNormalized;
     [HideInInspector] public PlayerStates currentPlayerGameState;
 
@@ -28,17 +29,23 @@ public class PlayerController : MonoBehaviour
     private bool isInOxygenArea;
 
     // Dash variables
-    [SerializeField] private float dashSpeed = 20f;
-    [SerializeField] private float dashDuration = 0.2f;
-    [SerializeField] private float dashCooldown = 5f;
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashDuration;
+    [SerializeField] private float dashCooldown;
     private float dashCooldownTimer;
     private bool isDashing;
 
     // Teleport variables
-    [SerializeField] private Transform teleportTarget; // Set this in the Inspector to the target teleport location
-    [SerializeField] private float teleportCooldown = 60f;
+    [SerializeField] private Transform teleportTarget;
+    [SerializeField] private float teleportCooldown;
     private float teleportCooldownTimer;
     private bool canTeleport;
+
+    // Clone variables
+    [SerializeField] private GameObject clonePrefab;
+    [SerializeField] private float cloneCooldown; 
+    private float cloneCooldownTimer;
+    private bool canClone;
 
     private void Start()
     {
@@ -46,6 +53,7 @@ public class PlayerController : MonoBehaviour
         aimAction.Enable();
         dashAction.Enable();
         teleportAction.Enable();
+        cloneAction.Enable();
 
         currentPlayerGameState = PlayerStates.InGame;
         isInOxygenArea = false;
@@ -53,15 +61,25 @@ public class PlayerController : MonoBehaviour
         oxygenTankLevel = 10;
         health = 100;
 
+        dashSpeed = 20f;
+        dashDuration = 0.2f;
+        dashCooldown = 5f;
+
+        teleportCooldown = 60f;
+        cloneCooldown = 120f;
+
         dashCooldownTimer = dashCooldown;
         teleportCooldownTimer = teleportCooldown;
+        cloneCooldownTimer = cloneCooldown;
         canTeleport = true;
+        canClone = true;
     }
 
     private void Update()
     {
         HandleDash();
         HandleTeleport();
+        HandleClone();
 
         Movement();
         SpriteFlip();
@@ -72,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
         if (health <= 0)
         {
-            // Handle player death logic here (e.g., Game Over, respawn, etc.)
+            // Handle player death logic here
         }
     }
 
@@ -100,7 +118,14 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         dashCooldownTimer = 0f;
 
-        Vector2 dashDirection = rb.linearVelocity.normalized;
+        Vector2 dashDirection = moveAction.ReadValue<Vector2>().normalized;
+
+        if (dashDirection == Vector2.zero)
+        {
+            differenceMouseToPlayerNormalized = (Camera.main.ScreenToWorldPoint(aimAction.ReadValue<Vector2>()) - transform.position).normalized;
+            dashDirection = differenceMouseToPlayerNormalized;
+        }
+
         rb.linearVelocity = dashDirection * dashSpeed;
 
         yield return new WaitForSeconds(dashDuration);
@@ -110,7 +135,6 @@ public class PlayerController : MonoBehaviour
 
     private void HandleTeleport()
     {
-        // Update teleport cooldown timer
         if (!canTeleport)
         {
             teleportCooldownTimer += Time.deltaTime;
@@ -121,7 +145,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Check for teleport action and cooldown
         if (teleportAction.triggered && canTeleport && teleportTarget != null)
         {
             Teleport();
@@ -133,6 +156,31 @@ public class PlayerController : MonoBehaviour
         transform.position = teleportTarget.position;
         canTeleport = false;
         teleportCooldownTimer = 0f;
+    }
+
+    private void HandleClone()
+    {
+        if (!canClone)
+        {
+            cloneCooldownTimer += Time.deltaTime;
+            if (cloneCooldownTimer >= cloneCooldown)
+            {
+                canClone = true;
+                cloneCooldownTimer = cloneCooldown;
+            }
+        }
+
+        if (cloneAction.triggered && canClone && clonePrefab != null)
+        {
+            SpawnClone();
+        }
+    }
+
+    private void SpawnClone()
+    {
+        Instantiate(clonePrefab, transform.position, transform.rotation);
+        canClone = false;
+        cloneCooldownTimer = 0f;
     }
 
     private void SpriteFlip()
