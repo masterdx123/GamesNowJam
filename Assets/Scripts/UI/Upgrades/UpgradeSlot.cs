@@ -29,6 +29,7 @@ namespace UI.Upgrades
                 _playerController = player.GetComponent<PlayerController>();
                 _weapon = player.GetComponentInChildren<Weapon>();
             }
+            iconRenderer.enabled = false;
         }
 
         // Update is called once per frame
@@ -71,6 +72,7 @@ namespace UI.Upgrades
             // TODO: need to have feedback that upgrade is equipped
             _weapon.AddUpgrade(upgradeSlotConsoleSlot.UpgradeData);
             iconRenderer.sprite = upgradeSlotConsoleSlot.UpgradeData.Icon;
+            iconRenderer.enabled = true;
             Debug.Log(obj.name);
         }
 
