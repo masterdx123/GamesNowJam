@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951987535ff0cd74eaaad9252da8324a, type: 3}
   m_Name: OxygenSystemStats
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 15
   energy: 100
+  depletionRate: 1
