@@ -349,3 +349,4 @@ MonoBehaviour:
   itemNameText: {fileID: 2268688863532994569}
   iconRenderer: {fileID: 3213166047584266968}
   emptySprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  draggableObjectPrefab: {fileID: 7842876632382077310, guid: 48914fcd6bce428409573a231fa0f9a1, type: 3}

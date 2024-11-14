@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Inventory
+namespace UI.Upgrades
 {
     public class WeaponUpgradesUIController : MonoBehaviour
     {
@@ -13,11 +13,13 @@ namespace UI.Inventory
         [SerializeField]
         private List<Image> upgradeIcons;
         
+        private GameObject _player;
         private WeaponData _weaponData;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            _player = GameObject.FindGameObjectWithTag("Player");
             if (!weaponIcon.sprite)
             {
                 weaponIcon.sprite = emptySprite;

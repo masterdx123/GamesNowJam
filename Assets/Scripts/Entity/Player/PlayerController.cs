@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public const float BASE_SPEED = 7;
@@ -20,11 +21,13 @@ public class PlayerMovement : MonoBehaviour
     public InputAction moveAction;
     public InputAction aimAction;
     [HideInInspector] public Vector2 differenceMouseToPlayerNormalized;
+    [HideInInspector] public PlayerStates currentPlayerGameState;
 
     void Start()
     {
         moveAction.Enable();
         aimAction.Enable();
+        currentPlayerGameState = PlayerStates.InGame;
     }
 
     void Update()

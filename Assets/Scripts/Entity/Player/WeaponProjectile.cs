@@ -7,17 +7,23 @@ public class WeaponProjectile : MonoBehaviour
 {
 
     public Weapon senderWeapon;
-    private int finalDamage;
-    private float projectileLifeRemain;
-    private float weaponAngle;
+    
+    [Header("If there is a senderWeapon the values will be replace with those of the senderWeapon!")]
+    [SerializeField] private int finalDamage;
+    [SerializeField] private float projectileLifeRemain;
+    [SerializeField] private float bulletSpeed;
+    public float angle;
 
     public Rigidbody2D rb;
     public BoxCollider2D boxCollider;
 
     private void Start()
     {
-        projectileLifeRemain = senderWeapon.weaponData.projectileDuration;
-        weaponAngle = senderWeapon.transform.rotation.eulerAngles.z;
+        if (senderWeapon)
+        {
+            projectileLifeRemain = senderWeapon.weaponData.projectileDuration * (1 + senderWeapon.RangeModifier);
+            angle = senderWeapon.transform.rotation.eulerAngles.z;
+        }
     }
 
     public void DealDamage()
@@ -27,9 +33,11 @@ public class WeaponProjectile : MonoBehaviour
 
     void Update()
     {
-
-        Vector2 velocity = new Vector2(Mathf.Cos(weaponAngle * Mathf.Deg2Rad), Mathf.Sin(weaponAngle * Mathf.Deg2Rad)) * senderWeapon.weaponData.projectileVelocity;
+        //Temp for test
+        var projectileVelocity = senderWeapon ? senderWeapon.weaponData.projectileVelocity * (1 + senderWeapon.BulletVelocityModifier) : bulletSpeed;
+        Vector2 velocity = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)) * projectileVelocity;
         rb.linearVelocity = velocity;
+
         if (projectileLifeRemain > 0) projectileLifeRemain -= Time.deltaTime;
         if (projectileLifeRemain <= 0) Destroy(this.gameObject);
     }

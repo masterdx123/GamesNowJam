@@ -155,7 +155,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -213,8 +213,22 @@ MonoBehaviour:
     m_Id: e048251e-6504-415c-882c-f8aa7f38e1f5
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: fa7b4d76-44cd-4e4b-881b-6b8d4d1f4916
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Attack
+      m_Flags: 0
     m_Flags: 0
+  upgrades: []
+  damageFlatModifier: 0
+  damageModifier: 0
+  bulletVelocityModifier: 0
+  rangeModifier: 0
+  attackIntervalModifier: 0
 --- !u!1 &3599291580118467567
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +244,7 @@ GameObject:
   - component: {fileID: 4069138799199273539}
   - component: {fileID: 8429774714761237374}
   - component: {fileID: 8509165807595982059}
+  - component: {fileID: 1970559136018141811}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -296,7 +311,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1681871678, guid: 2fad7432fa6f32744922aa490402eef8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -334,7 +349,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &1518413562621471978
 Animator:
   serializedVersion: 7
@@ -366,7 +381,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3599291580118467567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3da901463e2faa54092888d91bd47f5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9be2968888a25bc4ea9596e81d8ac4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3255912021903259158}
@@ -376,12 +391,12 @@ MonoBehaviour:
     m_Name: Move
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 0978d1af-7432-4a67-8fbd-5464a33d6d2a
+    m_Id: 1433d2af-5edf-4459-824c-50515f1af1dd
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 2D Vector
-      m_Id: d95b7530-6057-4053-816c-b9ec1a8a4811
+      m_Id: 531ba4f1-2257-4141-b23a-2451bd651bbc
       m_Path: 2DVector
       m_Interactions: 
       m_Processors: 
@@ -389,7 +404,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 4
     - m_Name: up
-      m_Id: 4bdc5b57-6ce8-456b-9508-aaaf8793c6f2
+      m_Id: b4bd0d85-ab9a-4ccb-addb-4afee9023ed7
       m_Path: <Keyboard>/w
       m_Interactions: 
       m_Processors: 
@@ -397,7 +412,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     - m_Name: down
-      m_Id: 3d3ac96f-238a-4b1e-acf2-c38f5be50986
+      m_Id: 96224a4a-f746-4b8a-8f27-9b7aec3fc9e5
       m_Path: <Keyboard>/s
       m_Interactions: 
       m_Processors: 
@@ -405,7 +420,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     - m_Name: left
-      m_Id: f59cc6e0-d55c-4e49-8b73-4f9f6e4aae92
+      m_Id: 2c855415-4da2-4746-8c02-9d74423cba9f
       m_Path: <Keyboard>/a
       m_Interactions: 
       m_Processors: 
@@ -413,7 +428,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     - m_Name: right
-      m_Id: cc4cbc40-69ca-4aef-a93c-b4ca9d8a2231
+      m_Id: b9b752d7-4061-435c-9135-5cf5d71d3422
       m_Path: <Keyboard>/d
       m_Interactions: 
       m_Processors: 
@@ -425,12 +440,12 @@ MonoBehaviour:
     m_Name: Aim
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 03c02947-f5c7-45c1-806a-6b0c382dcf95
+    m_Id: 32e19599-e7b3-49ad-9274-16beb4d94a14
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: e0f997e9-15b4-48d8-a4cd-f79301119987
+      m_Id: ae23543a-158c-46ca-a014-7ee5522f6aca
       m_Path: <Mouse>/position
       m_Interactions: 
       m_Processors: 
@@ -439,6 +454,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   differenceMouseToPlayerNormalized: {x: 0, y: 0}
+  currentPlayerGameState: 0
 --- !u!114 &8429774714761237374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,3 +522,39 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.41803205}
   m_Radius: 0.41803205
+--- !u!58 &1970559136018141811
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599291580118467567}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.37}
+  m_Radius: 0.33

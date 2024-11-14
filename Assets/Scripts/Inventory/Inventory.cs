@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Enums;
 using ScriptableObjects;
 using UI;
 using UI.Inventory;
@@ -47,19 +48,13 @@ namespace Inventory
 
         private Canvas _instantiatedInventory;
         private List<Item> _items;
-        
-        private List<WeaponStatUpgradeData> _weaponUpgrades;
-        private List<CharacterUpgradeData> _characterUpgrades;
-        private GameObject _player;
-        private Weapon _weapon;
+        private PlayerController _playerController;
     
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             _items = new List<Item>();
-            _player = GameObject.FindGameObjectWithTag("Player");
-            _weapon = _player.GetComponentInChildren<Weapon>();
-            if (!_weapon) Debug.Log("Weapon not found for inventory!");
+            _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         }
 
         // Update is called once per frame
@@ -142,11 +137,29 @@ namespace Inventory
                 InventoryUIController uiController = _instantiatedInventory.GetComponent<InventoryUIController>();
                 if (!uiController) return;
                 uiController.Inventory = this;
-                uiController.UpdateWeapon(_weapon);
+                UpdatePlayerStatus(true);
                 return;
             }
             
-            _instantiatedInventory.gameObject.SetActive(!_instantiatedInventory.gameObject.activeInHierarchy);
+            bool newActiveState = !_instantiatedInventory.gameObject.activeInHierarchy;
+            if (!UpdatePlayerStatus(newActiveState)) return;
+            _instantiatedInventory.gameObject.SetActive(newActiveState);
+        }
+
+        private bool UpdatePlayerStatus(bool visible)
+        {
+            if (_playerController)
+            {
+                if (visible && _playerController.currentPlayerGameState != PlayerStates.InGame)
+                {
+                    _instantiatedInventory.gameObject.SetActive(false);
+                    return false;
+                }
+                
+                _playerController.currentPlayerGameState = visible ? PlayerStates.InInventory : PlayerStates.InGame;
+            }
+
+            return true;
         }
     }
 }

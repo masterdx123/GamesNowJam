@@ -2,6 +2,7 @@ using Inventory;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI.Inventory
@@ -12,13 +13,15 @@ namespace UI.Inventory
         {
             set => _slot = value;
         }
+
+        public ItemData ItemData => _item;
         
         [SerializeField]
         private TextMeshProUGUI itemNameText;
         [SerializeField]
         private Image iconRenderer;
         [SerializeField]
-        private Sprite emptySprite;
+        private GameObject draggableObjectPrefab;
         
         private ItemData _item;
         private int _slot;
@@ -40,11 +43,12 @@ namespace UI.Inventory
             if (!item.HasValue || !item.Value.ItemData)
             {
                 _item = null;
-                iconRenderer.sprite = emptySprite;
+                iconRenderer.enabled = false;
                 itemNameText.text = "";
                 return;
             }
             
+            iconRenderer.enabled = true;
             _item = item.Value.ItemData;
             iconRenderer.sprite = _item.Icon;
             itemNameText.text = _item.CanStack ? item.Value.Amount.ToString() : "";

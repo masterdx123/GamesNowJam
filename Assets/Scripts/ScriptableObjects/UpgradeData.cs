@@ -4,13 +4,23 @@ using UnityEngine;
 namespace ScriptableObjects
 {
     [Serializable]
-    public abstract class UpgradeData : ItemData
+    public abstract class UpgradeData : ScriptableObject
     {
-        public abstract void AddUpgrade(); // Should receive Character as parameter
-        public abstract void AddUpgrade(Weapon weapon); // Should receive Character as parameter
-        public abstract void RemoveUpgrade();
-        public abstract void RemoveUpgrade(Weapon weapon); // Should receive Character as parameter
+        public int id;
+        public string UpgradeName => upgradeName;
+        public string Description => description;
+        public Sprite Icon => icon;
+
+        [SerializeField]
+        private string upgradeName;
+        [SerializeField]
+        private string description;
         
-        public abstract void ExecuteUpgrade();
+        [SerializeField]
+        private Sprite icon;
+        
+        public abstract void ExecuteUpgrade(WeaponProjectile target);
+        public abstract void ExecuteUpgrade(Weapon target);
+        public abstract void ExecuteUpgrade(PlayerController target);
     }
 }
