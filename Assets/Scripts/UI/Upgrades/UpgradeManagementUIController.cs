@@ -58,11 +58,19 @@ namespace UI.Upgrades
             {
                 for (int i = 0; i < _upgradeConsole.WeaponUpgrades.Length; i++)
                 {
-                    GameObject newElement = Instantiate(upgradeConsoleSlotPrefab, upgradeConsoleSlotContainer.transform);
-                    UpgradeSlotConsoleController slotController = newElement.GetComponent<UpgradeSlotConsoleController>();
+                    UpgradeSlotConsoleController slotController;
+                    if (i < _upgradeSlotControllers.Count && _upgradeSlotControllers[i])
+                    {
+                        slotController = _upgradeSlotControllers[i];
+                    }
+                    else
+                    {
+                        GameObject newElement = Instantiate(upgradeConsoleSlotPrefab, upgradeConsoleSlotContainer.transform);
+                        slotController = newElement.GetComponent<UpgradeSlotConsoleController>();
+                        _upgradeSlotControllers.Add(slotController);
+                    }
                     if (slotController)
                     {
-                        _upgradeSlotControllers.Add(slotController);
                         slotController.Slot = i;
                         slotController.UpdateUpgrade(i, _upgradeConsole.GetUpgrade(i, UpgradeTypes.Weapon));
                         // TODO: Add delegate call
