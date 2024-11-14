@@ -89,7 +89,7 @@ public class Weapon : MonoBehaviour
     }
     private void Attack()
     {
-        //ResetModifiers();
+        ResetModifiers();
         var attackGo = Instantiate(weaponData.attackObject, projectilePivot.position, Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z));
         WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
         attackProjectileComponent.senderWeapon = this;
