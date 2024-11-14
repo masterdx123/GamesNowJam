@@ -10,6 +10,8 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private List<string> movementList;
     [SerializeField] private List<string> attackList;
 
+    [SerializeField] EnemyData enemyData;
+
     private UnityEvent<float> Move;
     private UnityEvent<GameObject> Attack;
     

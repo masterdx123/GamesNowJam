@@ -5,29 +5,19 @@ namespace ScriptableObjects
     [CreateAssetMenu(fileName = "CharacterUpgrade", menuName = "Scriptable Objects/CharacterUpgrade")]
     public class CharacterUpgradeData : UpgradeData
     {
-        public override void AddUpgrade()
-        {
-            Debug.Log("Character upgrade");
-        }
-
-        public override void AddUpgrade(Weapon weapon)
+        public override void ExecuteUpgrade(WeaponProjectile target)
         {
             throw new System.NotImplementedException();
         }
 
-        public override void RemoveUpgrade()
-        {
-            Debug.Log("Character upgrade Removed");
-        }
-
-        public override void RemoveUpgrade(Weapon weapon)
+        public override void ExecuteUpgrade(Weapon target)
         {
             throw new System.NotImplementedException();
         }
 
-        public override void ExecuteUpgrade()
+        public override void ExecuteUpgrade(PlayerController target)
         {
-            Debug.Log("Character upgrade Executed");
+            throw new System.NotImplementedException();
         }
     }
 }

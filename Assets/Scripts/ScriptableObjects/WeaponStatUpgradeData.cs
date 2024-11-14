@@ -11,35 +11,21 @@ namespace ScriptableObjects
         public Stat stat;
         public float value;
     }
-    
+
     [CreateAssetMenu(fileName = "WeaponStatUpgrade", menuName = "Scriptable Objects/Upgrades/Weapon Stat Upgrade")]
     public class WeaponStatUpgradeData : UpgradeData
     {
-        [SerializeField]
-        public StatValue[] statsToUpgrade;
-        
-        public override void AddUpgrade()
-        {
-            // TODO: Implement functionality
-            throw new NotImplementedException();
-        }
-
-        public override void RemoveUpgrade()
+        public override void ExecuteUpgrade(WeaponProjectile target)
         {
             throw new NotImplementedException();
         }
 
-        public override void AddUpgrade(Weapon weapon)
+        public override void ExecuteUpgrade(Weapon target)
         {
-            Debug.Log("Upgrade Weapon");
+            throw new NotImplementedException();
         }
 
-        public override void RemoveUpgrade(Weapon weapon)
-        {
-            Debug.Log("Remove Upgrade");
-        }
-
-        public override void ExecuteUpgrade()
+        public override void ExecuteUpgrade(PlayerController target)
         {
             throw new NotImplementedException();
         }
