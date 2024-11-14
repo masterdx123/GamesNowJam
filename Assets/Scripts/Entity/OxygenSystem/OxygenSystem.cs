@@ -1,12 +1,14 @@
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(LineRenderer), typeof(CircleCollider2D))]
 public class OxygenSystem : MonoBehaviour
 {
     [SerializeField] private OxygenSystemStats oxygenSystemStats;
 
     private LineRenderer lineRenderer;
+    private CircleCollider2D oxygenBubbleCollider;
     private int segments = 50; // Defines the smoothness of the circle
+    private float currentEnergy;
 
     private void Awake()
     {
@@ -17,8 +19,18 @@ public class OxygenSystem : MonoBehaviour
         lineRenderer.loop = true;
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
+
+        // Set the material to avoid pink color
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.startColor = Color.green;
         lineRenderer.endColor = Color.green;
+
+        // Initialize and configure the CircleCollider2D for the oxygen bubble
+        oxygenBubbleCollider = GetComponent<CircleCollider2D>();
+        oxygenBubbleCollider.isTrigger = true; // Set to trigger to avoid physical collisions
+
+        // Initialize energy to maximum
+        currentEnergy = oxygenSystemStats.Energy;
     }
 
     private void Start()
@@ -35,14 +47,23 @@ public class OxygenSystem : MonoBehaviour
     private void DepleteEnergy()
     {
         // Deplete energy at the configured rate from the ScriptableObject
+        if (currentEnergy > 0)
+        {
+            currentEnergy -= oxygenSystemStats.DepletionRate * Time.deltaTime;
+            currentEnergy = Mathf.Max(currentEnergy, 0); // Ensure energy does not go below 0
+        }
     }
 
     private void UpdateRadius()
     {
         if (oxygenSystemStats != null)
         {
-            float radius = oxygenSystemStats.Radius;
+            // Calculate radius based on current energy as a percentage of max energy
+            float radius = (oxygenSystemStats.Radius * currentEnergy) / oxygenSystemStats.Energy;
+
+            // Update the visual circle and collider radius
             DrawCircle(radius);
+            oxygenBubbleCollider.radius = radius;
         }
     }
 
