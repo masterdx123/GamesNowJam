@@ -20,7 +20,7 @@ MonoBehaviour:
   projectileVelocity: 20
   projectileDuration: 2
   numberUniqueAttacks: 1
-  offsetInHand: {x: 7, y: 0}
-  offsetProjectile: {x: 8, y: 2}
+  offsetInHand: {x: 9, y: 2}
+  offsetProjectile: {x: 8, y: 0}
   angleInHand: 0
   animations: {fileID: 9100000, guid: f2f8363b8e446164d86b32e547cff1b1, type: 2}

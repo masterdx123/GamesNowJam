@@ -105,7 +105,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -176,5 +176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   senderWeapon: {fileID: 0}
+  finalDamage: 10
+  projectileLifeRemain: 2
+  bulletSpeed: 10
+  angle: 0
   rb: {fileID: 6721735098913636635}
   boxCollider: {fileID: 5719081759093962486}

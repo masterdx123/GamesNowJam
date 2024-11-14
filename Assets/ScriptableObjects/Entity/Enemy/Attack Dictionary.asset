@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201df6ad35535244db6e5905d9122479, type: 3}
   m_Name: Attack Dictionary
   m_EditorClassIdentifier: 
-  movesDictionary: []
-  attacksDictionary: []
+  AttacksProjectiles:
+  - {fileID: 8306978968838758409, guid: 67b0b336bf1d141419994a7f0bb3db5c, type: 3}

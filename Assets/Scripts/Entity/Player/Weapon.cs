@@ -90,7 +90,7 @@ public class Weapon : MonoBehaviour
         //Resets cooldown of the weapon based on the weapon attack speed.
         internalCooldown = weaponData.fireRateInterval * (1 + attackIntervalModifier);
 
-        animator.Play($"attack{attackCounter}", 0, 0f);
+        animator.Play($"Attack{attackCounter}", 0, 0f);
         Attack();
         attackCounter++;
         if (attackCounter > weaponData.numberUniqueAttacks) attackCounter = 1;
@@ -104,5 +104,10 @@ public class Weapon : MonoBehaviour
         {
             if(upgrade.GetType() == typeof(WeaponStatUpgradeData)) upgrade.ExecuteUpgrade(attackProjectileComponent);
         }
+    }
+
+    public void PlayIdleAnimation()
+    {
+        animator.Play($"Idle", 0, 0f);
     }
 }

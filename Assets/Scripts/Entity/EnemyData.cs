@@ -7,7 +7,9 @@ using UnityEngine.Events;
 public class EnemyData : ScriptableObject
 {
     public Dictionary<string, UnityAction<EnemyBehaviour>> MovesDictionary = new Dictionary<string, UnityAction<EnemyBehaviour>>();
-    public Dictionary<string, UnityAction<GameObject>> AttacksDictionary = new Dictionary<string, UnityAction<GameObject>>();
+    public Dictionary<string, UnityAction<GameObject, GameObject>> AttacksDictionary = new Dictionary<string, UnityAction<GameObject, GameObject>>();
+
+    public GameObject[] AttacksProjectiles;
 
     public void Start()
     {
@@ -38,14 +40,22 @@ public class EnemyData : ScriptableObject
     #region Movements
     public void MoveToTarget(EnemyBehaviour enemy)
     {
-        Debug.Log("Tried to Move to Target");
+        Rigidbody2D rigidbody = enemy.GetComponent<Rigidbody2D>();
+
+        float angle = enemy.GetAngleToTarget();
+        Vector2 velocity = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)) * enemy.Speed;
+
+        rigidbody.linearVelocity = velocity;
     }
     #endregion
 
     #region Attacks
-    public void SingleShot(GameObject target)
+    public void SingleShot(GameObject self, GameObject target)
     {
-        Debug.Log("Tried to Shoot Once");
+        var selfBehaviour = self.GetComponent<EnemyBehaviour>();
+        var attackGo = Instantiate(AttacksProjectiles[0], self.transform.position, Quaternion.Euler(0, 0, selfBehaviour.GetAngleToTarget()));
+        WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
+        attackProjectileComponent.angle = selfBehaviour.GetAngleToTarget();
     }
     #endregion
 }
@@ -65,9 +75,9 @@ struct StringActionEB
 struct StringActionGO
 {
     public string name;
-    [SerializeField] public UnityAction<GameObject> func;
+    [SerializeField] public UnityAction<GameObject, GameObject> func;
 
-    public StringActionGO(string name, UnityAction<GameObject> func)
+    public StringActionGO(string name, UnityAction<GameObject, GameObject> func)
     {
         this.name = name;
         this.func = func;
