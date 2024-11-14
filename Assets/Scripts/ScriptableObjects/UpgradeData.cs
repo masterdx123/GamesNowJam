@@ -6,11 +6,10 @@ namespace ScriptableObjects
     [Serializable]
     public abstract class UpgradeData : ItemData
     {
-        public abstract void AddUpgrade(); // Should receive Character as parameter
-        public abstract void AddUpgrade(Weapon weapon); // Should receive Character as parameter
-        public abstract void RemoveUpgrade();
-        public abstract void RemoveUpgrade(Weapon weapon); // Should receive Character as parameter
+        public int id;
         
-        public abstract void ExecuteUpgrade();
+        public abstract void ExecuteUpgrade(WeaponProjectile target);
+
+        public abstract void ExecuteUpgrade(PlayerController target);
     }
 }

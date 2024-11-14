@@ -16,7 +16,7 @@ public class WeaponProjectile : MonoBehaviour
 
     private void Start()
     {
-        projectileLifeRemain = senderWeapon.weaponData.projectileDuration;
+        projectileLifeRemain = senderWeapon.weaponData.projectileDuration * (1 + senderWeapon.RangeModifier);
         weaponAngle = senderWeapon.transform.rotation.eulerAngles.z;
     }
 
@@ -28,8 +28,9 @@ public class WeaponProjectile : MonoBehaviour
     void Update()
     {
 
-        Vector2 velocity = new Vector2(Mathf.Cos(weaponAngle * Mathf.Deg2Rad), Mathf.Sin(weaponAngle * Mathf.Deg2Rad)) * senderWeapon.weaponData.projectileVelocity;
+        Vector2 velocity = new Vector2(Mathf.Cos(weaponAngle * Mathf.Deg2Rad), Mathf.Sin(weaponAngle * Mathf.Deg2Rad)) * (senderWeapon.weaponData.projectileVelocity * (1 + senderWeapon.BulletVelocityModifier));
         rb.linearVelocity = velocity;
+
         if (projectileLifeRemain > 0) projectileLifeRemain -= Time.deltaTime;
         if (projectileLifeRemain <= 0) Destroy(this.gameObject);
     }

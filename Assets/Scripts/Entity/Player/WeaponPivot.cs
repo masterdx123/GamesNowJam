@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WeaponPivot : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement player;
+    [SerializeField] private PlayerController player;
     public static float angle { get; private set; }
 
     void Update()
@@ -13,7 +13,7 @@ public class WeaponPivot : MonoBehaviour
         WeaponRotate(player);
     }
 
-    void WeaponRotate(PlayerMovement player)
+    void WeaponRotate(PlayerController player)
     {
         angle = Mathf.Atan2(player.differenceMouseToPlayerNormalized.y, player.differenceMouseToPlayerNormalized.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);

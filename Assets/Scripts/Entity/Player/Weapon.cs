@@ -1,6 +1,8 @@
+using ScriptableObjects;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +10,7 @@ using UnityEngine.InputSystem;
 public class Weapon : MonoBehaviour
 {
     public Transform weaponPivot { get; private set; }
+    private PlayerController playerController { get => GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>(); }
     [SerializeField] private Transform WeaponPivot;
     [SerializeField] private Transform projectilePivot;
 
@@ -18,6 +21,24 @@ public class Weapon : MonoBehaviour
 
     private int attackCounter;
     private float internalCooldown;
+
+    [Space(15), Header("Upgrades")]
+    [SerializeField] private List<UpgradeData> upgrades;
+    private List<UpgradeData> lastUpgradeDisposition;
+
+    [Space(15),Header("Modifiers")]
+    [SerializeField] private int damageFlatModifier = 0;
+    [SerializeField] private float damageModifier=0;
+    [SerializeField] private float bulletVelocityModifier = 0;
+    [SerializeField] private float rangeModifier=0;
+    [SerializeField] private float attackIntervalModifier=0;
+
+    public int DamageFlatModifier { get => damageFlatModifier; private set => damageFlatModifier = value; }
+    public float DamageModifier { get => damageModifier; private set => damageModifier = value; }
+    public float BulletVelocityModifier { get => bulletVelocityModifier; private set => bulletVelocityModifier = value; }
+    public float RangeModifier { get => damageModifier; private set => damageModifier = value; }
+
+
 
     void Start()
     {
@@ -39,6 +60,15 @@ public class Weapon : MonoBehaviour
             internalCooldown -= Time.deltaTime;
         }
 
+        //OnUpgrade
+        if (upgrades != lastUpgradeDisposition)
+        {
+            lastUpgradeDisposition = upgrades;
+            foreach (var upgrade in upgrades)
+            {
+                if (upgrade.GetType() == typeof(CharacterUpgradeData)) upgrade.ExecuteUpgrade(playerController);
+            }
+        }
     }
 
     public void UpdateWeapon()
@@ -58,7 +88,7 @@ public class Weapon : MonoBehaviour
     private void OnWeaponAttack()
     {
         //Resets cooldown of the weapon based on the weapon attack speed.
-        internalCooldown = weaponData.fireRateInterval;
+        internalCooldown = weaponData.fireRateInterval * (1 + attackIntervalModifier);
 
         animator.Play($"attack{attackCounter}", 0, 0f);
         Attack();
@@ -68,6 +98,11 @@ public class Weapon : MonoBehaviour
     private void Attack()
     {
         var attackGo = Instantiate(weaponData.attackObject, projectilePivot.position, Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z));
-        attackGo.GetComponent<WeaponProjectile>().senderWeapon = this;
+        WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
+        attackProjectileComponent.senderWeapon = this;
+        foreach (var upgrade in upgrades)
+        {
+            if(upgrade.GetType() == typeof(WeaponStatUpgradeData)) upgrade.ExecuteUpgrade(attackProjectileComponent);
+        }
     }
 }
