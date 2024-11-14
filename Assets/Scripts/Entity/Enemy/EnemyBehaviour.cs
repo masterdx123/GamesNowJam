@@ -12,17 +12,27 @@ public class EnemyBehaviour : MonoBehaviour
 
     [SerializeField] EnemyData enemyData;
 
-    private UnityEvent<float> Move;
-    private UnityEvent<GameObject> Attack;
+    private UnityEvent<EnemyBehaviour> Move = new UnityEvent<EnemyBehaviour>();
+    private UnityEvent<GameObject> Attack = new UnityEvent<GameObject>();
     
     void Start()
     {
-        
+        enemyData.Start();
+
+        foreach (var move in movementList)
+        {
+            Move.AddListener(enemyData.MovesDictionary[move]);
+        }
+        foreach (var attack in attackList)
+        {
+            Attack.AddListener(enemyData.AttacksDictionary[attack]);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Move?.Invoke(this);
+        Attack?.Invoke(GameObject.FindGameObjectWithTag("Player"));
     }
 }
