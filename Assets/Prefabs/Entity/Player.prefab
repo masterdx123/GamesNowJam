@@ -460,7 +460,15 @@ MonoBehaviour:
     m_Id: 88f85367-4e34-420f-8eed-390b35e91d67
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 9cdfd9cf-fb33-4297-9320-25776ca99bdb
+      m_Path: <Keyboard>/shift
+      m_Interactions: Press
+      m_Processors: 
+      m_Groups: 
+      m_Action: Dash
+      m_Flags: 0
     m_Flags: 0
   teleportAction:
     m_Name: Teleport
@@ -469,7 +477,15 @@ MonoBehaviour:
     m_Id: 5cf723e7-838d-41c9-bae5-79bb68e0525d
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a69c6df8-6c9c-4584-a1d5-fa428091385a
+      m_Path: <Keyboard>/space
+      m_Interactions: Press
+      m_Processors: 
+      m_Groups: 
+      m_Action: Teleport
+      m_Flags: 0
     m_Flags: 0
   cloneAction:
     m_Name: Clone
@@ -478,7 +494,15 @@ MonoBehaviour:
     m_Id: fd486269-645d-4bc3-b5f0-9af8d08b58a8
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b983a409-4909-4f6e-8788-79afcf2f3b2a
+      m_Path: <Keyboard>/c
+      m_Interactions: Press
+      m_Processors: 
+      m_Groups: 
+      m_Action: Clone
+      m_Flags: 0
     m_Flags: 0
   differenceMouseToPlayerNormalized: {x: 0, y: 0}
   currentPlayerGameState: 0
