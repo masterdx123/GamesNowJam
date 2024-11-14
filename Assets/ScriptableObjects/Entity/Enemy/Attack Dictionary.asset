@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Attack Dictionary
   m_EditorClassIdentifier: 
   AttacksProjectiles:
-  - {fileID: 8306978968838758409, guid: 67b0b336bf1d141419994a7f0bb3db5c, type: 3}
+  - {fileID: 8306978968838758409, guid: c8d59479c4c45a641a479f3073f4bd4a, type: 3}

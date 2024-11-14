@@ -4,9 +4,13 @@ using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(SpriteRenderer),typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer),typeof(Rigidbody2D),typeof(Animator))]
 public class EnemyBehaviour : MonoBehaviour
 {
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Animator animator;
+
     [Header("Actions")]
     [SerializeField] private List<string> movementList;
     [SerializeField] private List<string> attackList;
@@ -39,6 +43,8 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SpriteFlip();
+
         Move?.Invoke(this);
 
         if (internalCooldown <= 0)
@@ -63,5 +69,14 @@ public class EnemyBehaviour : MonoBehaviour
     {
         var differenceFromEnemyToTarget = target.transform.position - this.gameObject.transform.position;
         return Mathf.Atan2(differenceFromEnemyToTarget.y, differenceFromEnemyToTarget.x) * Mathf.Rad2Deg;
+    }
+
+    void SpriteFlip()
+    {
+        var normalizedDifferenceX = 0f;
+
+        if (rb.linearVelocity.normalized.x != 0) normalizedDifferenceX = Mathf.Abs(rb.linearVelocity.normalized.x) / rb.linearVelocity.normalized.x;
+
+        spriteRenderer.flipX = -normalizedDifferenceX != 1;
     }
 }
