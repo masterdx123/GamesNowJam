@@ -3176,6 +3176,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8264373882623115955, guid: 18382943e44daea47be7f03738aeb728, type: 3}
+      propertyPath: attackIntervalModifier
+      value: -0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 9189470516596634735, guid: 18382943e44daea47be7f03738aeb728, type: 3}
       propertyPath: m_Controller
       value: 

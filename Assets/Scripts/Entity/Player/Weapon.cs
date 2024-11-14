@@ -28,11 +28,11 @@ public class Weapon : MonoBehaviour
     private List<UpgradeData> lastUpgradeDisposition;
 
     [Space(15),Header("Modifiers")]
-    [SerializeField] private int damageFlatModifier = 0;
-    [SerializeField] private float damageModifier=0;
-    [SerializeField] private float bulletVelocityModifier = 0;
-    [SerializeField] private float rangeModifier=0;
-    [SerializeField] private float attackIntervalModifier=0;
+    [SerializeField] private int damageFlatModifier;
+    [SerializeField] private float damageModifier;    
+    [SerializeField] private float bulletVelocityModifier;
+    [SerializeField] private float rangeModifier;
+    [SerializeField] private float attackIntervalModifier;
 
     public int DamageFlatModifier { get => damageFlatModifier; set => damageFlatModifier = value; }
     public float DamageModifier { get => damageModifier; set => damageModifier = value; }
@@ -80,7 +80,7 @@ public class Weapon : MonoBehaviour
     private void OnWeaponAttack()
     {
         //Resets cooldown of the weapon based on the weapon attack speed.
-        internalCooldown = weaponData.fireRateInterval * (1 + attackIntervalModifier);
+        internalCooldown = weaponData.fireRateInterval * (1 + AttackIntervalModifier);
 
         animator.Play($"Attack{attackCounter}", 0, 0f);
         Attack();
@@ -89,7 +89,7 @@ public class Weapon : MonoBehaviour
     }
     private void Attack()
     {
-        ResetModifiers();
+        //ResetModifiers();
         var attackGo = Instantiate(weaponData.attackObject, projectilePivot.position, Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z));
         WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
         attackProjectileComponent.senderWeapon = this;
