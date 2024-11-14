@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using UI.Inventory;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace UI.Inventory
+namespace UI.Upgrades
 {
     public class UpgradeSlot : MonoBehaviour, IDropHandler
     {
@@ -24,12 +25,12 @@ namespace UI.Inventory
         public void OnDrop(PointerEventData eventData)
         {
             GameObject obj = eventData.pointerDrag;
-            InventorySlotController inventorySlotController = obj.GetComponent<InventorySlotController>();
-            if (!inventorySlotController || !inventorySlotController.ItemData)
+            UpgradeSlotConsoleController upgradeSlotConsoleSlot = obj.GetComponent<UpgradeSlotConsoleController>();
+            if (!upgradeSlotConsoleSlot || !upgradeSlotConsoleSlot.UpgradeData)
             {
                 return;
             }
-            iconRenderer.sprite = inventorySlotController.ItemData.Icon;
+            iconRenderer.sprite = upgradeSlotConsoleSlot.UpgradeData.Icon;
             Debug.Log(obj.name);
         }
     }

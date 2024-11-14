@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace UI.Inventory
 {
-    public class InventorySlotController : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+    public class InventorySlotController : MonoBehaviour
     {
         public int Slot
         {
@@ -25,8 +25,6 @@ namespace UI.Inventory
         
         private ItemData _item;
         private int _slot;
-        
-        private GameObject _draggedObject;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -54,32 +52,6 @@ namespace UI.Inventory
             _item = item.Value.ItemData;
             iconRenderer.sprite = _item.Icon;
             itemNameText.text = _item.CanStack ? item.Value.Amount.ToString() : "";
-        }
-
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            if (!_item) return;
-            iconRenderer.enabled = false;
-            _draggedObject = Instantiate(draggableObjectPrefab, transform.root);
-            DraggableItem draggableItem = _draggedObject.GetComponent<DraggableItem>();
-            if (draggableItem)
-            {
-                draggableItem.SetDraggableData(_item);
-            }
-            _draggedObject.transform.SetAsLastSibling();
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            if (!_item || !_draggedObject) return;
-            _draggedObject.transform.position = Input.mousePosition;
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            if (!_item || !_draggedObject) return;
-            iconRenderer.enabled = true;
-            Destroy(_draggedObject);
         }
     }
 }

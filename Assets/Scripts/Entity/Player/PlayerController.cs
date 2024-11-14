@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -20,11 +21,13 @@ public class PlayerController : MonoBehaviour
     public InputAction moveAction;
     public InputAction aimAction;
     [HideInInspector] public Vector2 differenceMouseToPlayerNormalized;
+    [HideInInspector] public PlayerStates currentPlayerGameState;
 
     void Start()
     {
         moveAction.Enable();
         aimAction.Enable();
+        currentPlayerGameState = PlayerStates.InGame;
     }
 
     void Update()

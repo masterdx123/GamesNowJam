@@ -202,3 +202,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   upgradeManagementCanvas: {fileID: 5588560862504849677, guid: a33abafed54bde740ba8a835829ada11, type: 3}
+  weaponUpgrades:
+  - upgradeData: {fileID: 11400000, guid: a52c686c1ed16aa48af174cbf98511e1, type: 2}
+    isUnlocked: 1
+  characterUpgrades: []

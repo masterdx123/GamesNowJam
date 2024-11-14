@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Inventory
+namespace UI.Upgrades
 {
     public class WeaponUpgradesUIController : MonoBehaviour
     {

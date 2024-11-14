@@ -1,6 +1,7 @@
 using ScriptableObjects;
 using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -49,7 +50,7 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        if (attackAction.IsPressed() && internalCooldown <= 0)
+        if (attackAction.IsPressed() && internalCooldown <= 0 && playerController.currentPlayerGameState == PlayerStates.InGame)
         {
             OnWeaponAttack();
         }
