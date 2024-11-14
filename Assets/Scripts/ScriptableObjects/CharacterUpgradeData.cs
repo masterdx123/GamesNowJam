@@ -10,12 +10,12 @@ namespace ScriptableObjects
             throw new System.NotImplementedException();
         }
 
-        public override void ExecuteUpgrade(Weapon target)
+        public override void ExecuteUpgrade(PlayerController target)
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Executing Upgrade");
         }
 
-        public override void ExecuteUpgrade(PlayerController target)
+        public override void ExecuteUpgrade(Weapon target)
         {
             throw new System.NotImplementedException();
         }

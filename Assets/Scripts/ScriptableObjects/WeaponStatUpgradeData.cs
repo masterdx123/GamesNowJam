@@ -15,11 +15,14 @@ namespace ScriptableObjects
     [CreateAssetMenu(fileName = "WeaponStatUpgrade", menuName = "Scriptable Objects/Upgrades/Weapon Stat Upgrade")]
     public class WeaponStatUpgradeData : UpgradeData
     {
+        [SerializeField]
+        public StatValue[] statsToUpgrade;
+
         public override void ExecuteUpgrade(WeaponProjectile target)
         {
-            throw new NotImplementedException();
+            Debug.Log("Executing Weapon Upgrade!");
         }
-
+        
         public override void ExecuteUpgrade(Weapon target)
         {
             throw new NotImplementedException();

@@ -142,7 +142,6 @@ namespace Inventory
                 InventoryUIController uiController = _instantiatedInventory.GetComponent<InventoryUIController>();
                 if (!uiController) return;
                 uiController.Inventory = this;
-                uiController.UpdateWeapon(_weapon);
                 return;
             }
             

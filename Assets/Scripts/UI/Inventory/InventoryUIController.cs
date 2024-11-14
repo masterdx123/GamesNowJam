@@ -17,8 +17,6 @@ namespace UI.Inventory
         private GameObject inventorySlotPrefab;
         [SerializeField]
         private GameObject inventorySlotContainer;
-        [SerializeField] 
-        private WeaponUpgradesUIController weaponUpgradesController;
         
         private Inventory _inventory;
         private List<InventorySlotController> _inventorySlotControllers;
@@ -38,18 +36,13 @@ namespace UI.Inventory
 
         private void OnDestroy()
         {
-            for (int i = 0; i < _inventorySlotControllers.Count; i++)
+            foreach (var inventorySlot in _inventorySlotControllers)
             {
-                if (_inventorySlotControllers[i])
+                if (inventorySlot)
                 {
-                    _inventory.AddedItem -= _inventorySlotControllers[i].UpdateItem;
+                    _inventory.AddedItem -= inventorySlot.UpdateItem;
                 }
             }
-        }
-
-        public void UpdateWeapon(Weapon weapon)
-        {
-            weaponUpgradesController.UpdateWeapon(weapon);
         }
 
         void UpdateInventory()
