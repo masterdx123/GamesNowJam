@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a522784e3c0d4458d879caf162c809, type: 3}
   m_Name: TestWeaponUpgrade
   m_EditorClassIdentifier: 
-  itemName: Upgrade Name
+  id: 0
+  upgradeName: Upgrade Name
   description: Upgrade Description
-  icon: {fileID: -7351497889628635928, guid: 08a149e69f7a06a45b25d1505a5d38a4, type: 3}
-  canStack: 0
-  maxStackSize: 1
+  icon: {fileID: 3255255, guid: 08a149e69f7a06a45b25d1505a5d38a4, type: 3}
   statsToUpgrade:
   - stat: 0
     value: 3
   - stat: 1
     value: 1
+  - stat: 2
+    value: 2
+  - stat: 3
+    value: -0.3
+  - stat: 4
+    value: 1000

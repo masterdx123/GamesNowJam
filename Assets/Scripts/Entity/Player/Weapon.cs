@@ -34,10 +34,11 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float rangeModifier=0;
     [SerializeField] private float attackIntervalModifier=0;
 
-    public int DamageFlatModifier { get => damageFlatModifier; private set => damageFlatModifier = value; }
-    public float DamageModifier { get => damageModifier; private set => damageModifier = value; }
-    public float BulletVelocityModifier { get => bulletVelocityModifier; private set => bulletVelocityModifier = value; }
-    public float RangeModifier { get => damageModifier; private set => damageModifier = value; }
+    public int DamageFlatModifier { get => damageFlatModifier; set => damageFlatModifier = value; }
+    public float DamageModifier { get => damageModifier; set => damageModifier = value; }
+    public float BulletVelocityModifier { get => bulletVelocityModifier; set => bulletVelocityModifier = value; }
+    public float RangeModifier { get => rangeModifier; set => rangeModifier = value; }
+    public float AttackIntervalModifier { get => attackIntervalModifier; set => attackIntervalModifier = value; }
 
 
 
@@ -59,16 +60,6 @@ public class Weapon : MonoBehaviour
         if (internalCooldown > 0)
         {
             internalCooldown -= Time.deltaTime;
-        }
-
-        //OnUpgrade
-        if (upgrades != lastUpgradeDisposition)
-        {
-            lastUpgradeDisposition = upgrades;
-            foreach (var upgrade in upgrades)
-            {
-                if (upgrade.GetType() == typeof(CharacterUpgradeData)) upgrade.ExecuteUpgrade(playerController);
-            }
         }
     }
 
@@ -98,17 +89,49 @@ public class Weapon : MonoBehaviour
     }
     private void Attack()
     {
+        ResetModifiers();
         var attackGo = Instantiate(weaponData.attackObject, projectilePivot.position, Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z));
         WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
         attackProjectileComponent.senderWeapon = this;
         foreach (var upgrade in upgrades)
         {
-            if(upgrade.GetType() == typeof(WeaponStatUpgradeData)) upgrade.ExecuteUpgrade(attackProjectileComponent);
+            if(upgrade.GetType() == typeof(WeaponUpgradeData))
+            {
+                upgrade.ExecuteUpgrade(this);
+                upgrade.ExecuteUpgrade(attackProjectileComponent);
+            }
         }
     }
 
     public void PlayIdleAnimation()
     {
         animator.Play($"Idle", 0, 0f);
+    }
+
+    public bool HasUpgrade(UpgradeData upgrade)
+    {
+        return upgrades.Contains(upgrade);
+    }
+
+    public void RemoveUpgrade(UpgradeData upgrade)
+    {
+        upgrades.Remove(upgrade);
+    }
+
+    public void AddUpgrade(UpgradeData upgrade)
+    {
+        if (!upgrades.Contains(upgrade))
+        {
+            upgrades.Add(upgrade);
+        }
+    }
+
+    public void ResetModifiers()
+    {
+        damageFlatModifier = 0;
+        damageModifier=0;
+        bulletVelocityModifier = 0;
+        rangeModifier=0;
+        attackIntervalModifier=0;
     }
 }
