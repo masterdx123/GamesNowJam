@@ -11,13 +11,25 @@ namespace Managers
         [SerializeField]
         private GameObject[] enemiesToSpawn;
         [SerializeField, Tooltip("Time between waves in seconds")]
-        private double TimeBetweenWaves = 90.0f;
+        private double timeBetweenWaves = 90.0f;
+        [SerializeField, Tooltip("How close the time needs to be to show the warning about the next wave in seconds")]
+        private double showWarningTime = 8.0f;
+        [SerializeField] 
+        private string firstWaveWarningText = "First wave is about to start!";
+        [SerializeField] 
+        private string nextWaveWarningText = "Next wave is about to start!";
+        [SerializeField]
+        private int startingNumberOfEnemies = 2;
+        [SerializeField]
+        private int enemyIncrementMultiplier = 1;
         
         [Header("Text References")]
         [SerializeField]
         private TextMeshProUGUI _timerText;
         [SerializeField]
         private TextMeshProUGUI _waveInfoText;
+        [SerializeField]
+        private TextMeshProUGUI _waveCounterText;
         
         private int _currentWaveCounter = 1;
         private double _currentTimeBetweenWaves = 10.0f;
@@ -26,10 +38,11 @@ namespace Managers
         void Start()
         {
             _waveInfoText.text = "";
-            _currentWaveCounter = 1;
-            _currentTimeBetweenWaves = 10.0f;
+            _currentWaveCounter = 0;
+            _currentTimeBetweenWaves = 11.0f;
 
             UpdateTimerText();
+            UpdateWaveText();
         }
 
         // Update is called once per frame
@@ -39,6 +52,7 @@ namespace Managers
             {
                 _currentTimeBetweenWaves -= Time.deltaTime;
                 UpdateTimerText();
+                UpdateWaveInfoText();
             }
 
             if (_currentTimeBetweenWaves <= 0.0f)
@@ -52,25 +66,47 @@ namespace Managers
             _timerText.text = TimeSpan.FromSeconds(_currentTimeBetweenWaves).ToString(@"mm\:ss");
         }
 
+        private void UpdateWaveText()
+        {
+            _waveCounterText.text = _currentWaveCounter == 0 ? "" : "Wave " + _currentWaveCounter;
+        }
+
+        private void UpdateWaveInfoText()
+        {
+            _waveInfoText.enabled = _currentTimeBetweenWaves <= showWarningTime;
+            _waveInfoText.text = _currentWaveCounter == 0 ? firstWaveWarningText : nextWaveWarningText;
+        }
+
         private void SpawnEnemies()
         {
-            _currentTimeBetweenWaves = TimeBetweenWaves;
+            _currentTimeBetweenWaves = timeBetweenWaves;
+            int numEnemiesToSpawn = CalculateNumberOfEnemiesToSpawn();
             _currentWaveCounter += 1;
-            Debug.Log("Spawning enemies");
+            UpdateWaveText();
             
-            GameObject spawnedEnemy = Instantiate(enemiesToSpawn[Random.Range(0, enemiesToSpawn.Length)]);
-            spawnedEnemy.transform.position = GetRandomPosOffScreen();
+            Debug.Log("Spawning enemies");
+
+            for (int i = 0; i < numEnemiesToSpawn; i++)
+            {
+                GameObject spawnedEnemy = Instantiate(enemiesToSpawn[Random.Range(0, enemiesToSpawn.Length)]);
+                spawnedEnemy.transform.position = GetRandomPosOffScreen();
+            }
+        }
+
+        private int CalculateNumberOfEnemiesToSpawn()
+        {
+            return startingNumberOfEnemies + (_currentWaveCounter - 1) * enemyIncrementMultiplier;
         }
         
         private Vector3 GetRandomPosOffScreen() {
 
-            float x = Random.Range(-0.2f, 0.2f);
-            float y = Random.Range(-0.2f, 0.2f);
+            float x = Random.Range(-0.1f, 0.1f);
+            float y = Random.Range(-0.1f, 0.1f);
             x += Mathf.Sign(x);
             y += Mathf.Sign(y);
             Vector3 randomPoint = new(x, y);
 
-            randomPoint.z = 10f; // set this to whatever you want the distance of the point from the camera to be. Default for a 2D game would be 10.
+            randomPoint.z = 10f;
             Camera mainCamera = Camera.main;
             if (!mainCamera) return new Vector3(0f, 0f, 0f);
             
