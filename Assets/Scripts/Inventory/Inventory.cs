@@ -4,6 +4,7 @@ using Enums;
 using ScriptableObjects;
 using UI;
 using UI.Inventory;
+using UI.Tooltip;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -150,6 +151,8 @@ namespace Inventory
             
             bool newActiveState = !_instantiatedInventory.gameObject.activeInHierarchy;
             if (!UpdatePlayerStatus(newActiveState)) return;
+            if (!newActiveState) TooltipSystem.Hide();
+            
             _instantiatedInventory.gameObject.SetActive(newActiveState);
         }
 
@@ -160,6 +163,7 @@ namespace Inventory
                 if (visible && _playerController.currentPlayerGameState != PlayerStates.InGame)
                 {
                     _instantiatedInventory.gameObject.SetActive(false);
+                    TooltipSystem.Hide();
                     return false;
                 }
                 

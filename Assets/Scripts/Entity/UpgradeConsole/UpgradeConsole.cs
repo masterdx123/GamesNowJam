@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Enums;
 using ScriptableObjects;
+using UI.Tooltip;
 using UI.Upgrades;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -148,6 +149,7 @@ namespace Entity.UpgradeConsole
         private void SetUpgradeUIVisible(bool visible)
         {
             if (!UpdatePlayerStatus(visible)) return;
+            if (!visible) TooltipSystem.Hide();
             
             _instantiatedUpgradeUI.gameObject.SetActive(visible);
             if (visible && _uiController)
@@ -163,6 +165,7 @@ namespace Entity.UpgradeConsole
                 if (visible && _playerController.currentPlayerGameState != PlayerStates.InGame)
                 {
                     _instantiatedUpgradeUI.gameObject.SetActive(false);
+                    TooltipSystem.Hide();
                     return false;
                 }
                 
