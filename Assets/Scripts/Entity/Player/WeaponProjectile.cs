@@ -48,7 +48,7 @@ public class WeaponProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject && !_owner.CompareTag(collider.gameObject.tag))
+        if (collider && collider.gameObject && _owner && !_owner.CompareTag(collider.gameObject.tag))
         {
             IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
             float damage = senderWeapon
