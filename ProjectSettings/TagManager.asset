@@ -6,6 +6,7 @@ TagManager:
   tags:
   - OxygenArea
   - OxygenMachine
+  - Enemy
   layers:
   - Default
   - TransparentFX

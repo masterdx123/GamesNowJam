@@ -24,12 +24,16 @@ public class EnemyData : ScriptableObject
 
         foreach (var move in movesDictionary)
         {
+            // TODO: Check if this is a valid fix. This "fixes" an error that happens if multiple enemies are spawned.
+            if (MovesDictionary.ContainsKey(move.name)) continue;
             MovesDictionary.Add(move.name, move.func);
             Debug.Log($"{move.name} loaded into dictionary!");
         }
 
         foreach (var attack in attacksDictionary)
         {
+            // TODO: Check if this is a valid fix. This "fixes" an error that happens if multiple enemies are spawned.
+            if (AttacksDictionary.ContainsKey(attack.name)) continue;
             AttacksDictionary.Add(attack.name, attack.func);
             Debug.Log($"{attack.name} loaded into dictionary!");
         }
