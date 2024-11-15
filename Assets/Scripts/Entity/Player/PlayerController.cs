@@ -41,23 +41,24 @@ public class PlayerController : MonoBehaviour
     private bool _isDead;
 
     // Dash variables
-    [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashDuration;
-    [SerializeField] private float dashCooldown;
+    [SerializeField] private float dashSpeed = 20f;
+    [SerializeField] private float dashDuration = 0.2f;
+    [SerializeField] private float dashCooldown = 5f;
     private float dashCooldownTimer;
     private bool isDashing;
 
     // Teleport variables
     [SerializeField] private Transform teleportTarget;
-    [SerializeField] private float teleportCooldown;
+    [SerializeField] private float teleportCooldown = 60f;
     private float teleportCooldownTimer;
     private bool canTeleport;
 
     // Clone variables
     [SerializeField] private GameObject clonePrefab;
-    [SerializeField] private float cloneCooldown; 
+    [SerializeField] private float cloneCooldown = 120f; 
     private float cloneCooldownTimer;
     private bool canClone;
+    [SerializeField] private float cloneTimer = 30f;
 
     private void Start()
     {
@@ -71,13 +72,6 @@ public class PlayerController : MonoBehaviour
         isInOxygenArea = false;
         oxygenTankLevel = maxOxygenTankLevel;
         health = maxHealth;
-
-        dashSpeed = 20f;
-        dashDuration = 0.2f;
-        dashCooldown = 5f;
-
-        teleportCooldown = 60f;
-        cloneCooldown = 120f;
 
         dashCooldownTimer = dashCooldown;
         teleportCooldownTimer = teleportCooldown;
@@ -191,7 +185,8 @@ public class PlayerController : MonoBehaviour
 
     private void SpawnClone()
     {
-        Instantiate(clonePrefab, transform.position, transform.rotation);
+        GameObject clone = Instantiate(clonePrefab, transform.position, transform.rotation);
+        Destroy(clone, cloneTimer); // Destroy the clone after 30 seconds
         canClone = false;
         cloneCooldownTimer = 0f;
     }

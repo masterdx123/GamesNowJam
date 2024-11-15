@@ -87,7 +87,11 @@ public class OxygenSystem : MonoBehaviour
 
     public void RefillEnergy(float amount)
     {
-        // TODO: Maybe add a limit?
         currentEnergy += amount;
+
+        if(currentEnergy > oxygenSystemStats.Energy) 
+        {
+            currentEnergy = oxygenSystemStats.Energy;
+        }
     }
 }
