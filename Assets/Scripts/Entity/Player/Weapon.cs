@@ -92,6 +92,7 @@ public class Weapon : MonoBehaviour
         var attackGo = Instantiate(weaponData.attackObject, projectilePivot.position, Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z));
         WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
         attackProjectileComponent.senderWeapon = this;
+        attackProjectileComponent.Owner = playerController.gameObject;
         foreach (var upgrade in upgrades)
         {
             if(upgrade.GetType() == typeof(WeaponUpgradeData))

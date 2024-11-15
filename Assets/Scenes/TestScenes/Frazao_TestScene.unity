@@ -3841,7 +3841,7 @@ PrefabInstance:
     - target: {fileID: 4069138799199273539, guid: 18382943e44daea47be7f03738aeb728, type: 3}
       propertyPath: clonePrefab
       value: 
-      objectReference: {fileID: 3599291580118467567, guid: c34fc8d210491c04aadf10d56bd7a31c, type: 3}
+      objectReference: {fileID: 3599291580118467567, guid: 7a71dda7380c9cb4ca49468c7b59130e, type: 3}
     - target: {fileID: 4069138799199273539, guid: 18382943e44daea47be7f03738aeb728, type: 3}
       propertyPath: teleportTarget
       value: 
@@ -5013,6 +5013,22 @@ PrefabInstance:
     - target: {fileID: 1729073818652285823, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506810250291117923, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: borderColor.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506810250291117923, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: borderColor.b
+      value: 3.9215684
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506810250291117923, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: borderColor.g
+      value: 3.560784
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506810250291117923, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: borderColor.r
+      value: 0.7686274
       objectReference: {fileID: 0}
     - target: {fileID: 6133184652295914294, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: m_IsTrigger

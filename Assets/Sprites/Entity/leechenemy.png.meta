@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: addcd554c55b53f4abd1bed3511bb970
+guid: 74105b87146557446a9d3a54485a89b4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1595653969511378232
-    second: BogFlowerStage3_0
+      213: -7656689703206719450
+    second: leechenemy_0
+  - first:
+      213: -2425686314456285768
+    second: leechenemy_1
+  - first:
+      213: 7280993844111393950
+    second: leechenemy_2
+  - first:
+      213: -5588896788086148204
+    second: leechenemy_3
+  - first:
+      213: -4387770993587827505
+    second: leechenemy_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BogFlowerStage3_0
+      name: leechenemy_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 15
         y: 0
-        width: 346
-        height: 222
+        width: 18
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +140,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 83dea25c4d6e42610800000000000000
-      internalID: 1595653969511378232
+      spriteID: 620f8f42849fdb590800000000000000
+      internalID: -7656689703206719450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leechenemy_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 0
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bd7e4a162b365ed0800000000000000
+      internalID: -2425686314456285768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leechenemy_2
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 0
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e94c01a23594b0560800000000000000
+      internalID: 7280993844111393950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leechenemy_3
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 0
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 493bdc38bff3072b0800000000000000
+      internalID: -5588896788086148204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leechenemy_4
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 0
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcc4f6b57818b13c0800000000000000
+      internalID: -4387770993587827505
       vertices: []
       indices: 
       edges: []
@@ -147,8 +247,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      BogFlowerStage3_0: 1595653969511378232
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3889654655812459123}
   - component: {fileID: 4070875629530914657}
   - component: {fileID: 7874537694397813590}
+  - component: {fileID: 6188177658613778489}
   m_Layer: 8
   m_Name: testEnemy
   m_TagString: Enemy
@@ -162,3 +163,40 @@ MonoBehaviour:
   speed: 3
   maxHealth: 50
   attackInterval: 1
+--- !u!70 &6188177658613778489
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122771650095066289}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.0000000050121898, y: -0.0420453}
+  m_Size: {x: 1.6875005, y: 0.7499319}
+  m_Direction: 1

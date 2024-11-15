@@ -7,6 +7,7 @@ using UnityEngine;
 public class WeaponProjectile : MonoBehaviour
 {
     public Weapon senderWeapon;
+    public GameObject Owner{ set => _owner = value; }
 
     [Header("If there is a senderWeapon the values will be replaced with those of the senderWeapon!")]
     [SerializeField] private int finalDamage;
@@ -16,6 +17,8 @@ public class WeaponProjectile : MonoBehaviour
 
     public Rigidbody2D rb;
     public BoxCollider2D boxCollider;
+    
+    private GameObject _owner;
 
     private void Start()
     {
@@ -45,7 +48,7 @@ public class WeaponProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject)
+        if (collider.gameObject && !_owner.CompareTag(collider.gameObject.tag))
         {
             IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
             float damage = senderWeapon
