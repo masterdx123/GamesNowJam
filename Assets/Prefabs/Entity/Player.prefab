@@ -506,9 +506,12 @@ MonoBehaviour:
     m_Flags: 0
   differenceMouseToPlayerNormalized: {x: 0, y: 0}
   currentPlayerGameState: 0
-  oxygenTankLevel: 0
-  maxOxygenTankLevel: 0
-  health: 0
+  oxygenTankLevel: 10
+  maxOxygenTankLevel: 10
+  oxygenTankDecaySpeed: 0.5
+  oxygenTankGainSpeed: 2
+  health: 100
+  maxHealth: 100
   dashSpeed: 20
   dashDuration: 0.2
   dashCooldown: 5

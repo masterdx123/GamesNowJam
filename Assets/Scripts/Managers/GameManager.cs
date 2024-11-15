@@ -1,19 +1,49 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Managers
 {
     public class GameManager : MonoBehaviour
     {
+        [Header("UI References")]
+        [SerializeField]
+        private Slider playerHealthBarSlider;
+        [SerializeField]
+        private Slider playerOxygenBarSlider;
+
+        private PlayerController _playerController;
+        
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-        
+            _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            if (!_playerController) return;
+            _playerController.OnHealthChanged += OnHealthChanged;
+            _playerController.OnOxygenChanged += OnOxygenChanged;
         }
 
         // Update is called once per frame
         void Update()
         {
         
+        }
+
+        private void OnDestroy()
+        {
+            if (!_playerController) return;
+            _playerController.OnHealthChanged -= OnHealthChanged;
+            _playerController.OnOxygenChanged -= OnOxygenChanged;
+        }
+
+        private void OnHealthChanged(float health, float maxHealth)
+        {
+            playerHealthBarSlider.value = health / maxHealth;
+        }
+
+        private void OnOxygenChanged(float oxygen, float maxOxygen)
+        {
+            playerOxygenBarSlider.value = oxygen / maxOxygen;
         }
     }
 }

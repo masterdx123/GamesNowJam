@@ -1,10 +1,16 @@
 using System.Collections;
 using Enums;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public delegate void StatChanged(float currValue, float maxValue);
+    
+    public event StatChanged OnHealthChanged;
+    public event StatChanged OnOxygenChanged;
+    
     public Rigidbody2D rb;
     public const float BASE_SPEED = 7;
 
@@ -23,9 +29,12 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Vector2 differenceMouseToPlayerNormalized;
     [HideInInspector] public PlayerStates currentPlayerGameState;
 
-    [SerializeField] private float oxygenTankLevel;
-    [SerializeField] private float maxOxygenTankLevel;
-    [SerializeField] private float health;
+    [SerializeField] private float oxygenTankLevel = 10.0f;
+    [SerializeField] private float maxOxygenTankLevel = 10.0f;
+    [SerializeField] private float oxygenTankDecaySpeed = 1.0f;
+    [SerializeField] private float oxygenTankGainSpeed = 1.0f;
+    [SerializeField] private float health = 100.0f;
+    [SerializeField] private float maxHealth = 100.0f;
     private bool isInOxygenArea;
 
     // Dash variables
@@ -57,9 +66,8 @@ public class PlayerController : MonoBehaviour
 
         currentPlayerGameState = PlayerStates.InGame;
         isInOxygenArea = false;
-        maxOxygenTankLevel = 10;
-        oxygenTankLevel = 10;
-        health = 100;
+        oxygenTankLevel = maxOxygenTankLevel;
+        health = maxHealth;
 
         dashSpeed = 20f;
         dashDuration = 0.2f;
@@ -202,16 +210,18 @@ public class PlayerController : MonoBehaviour
     {
         if (isInOxygenArea)
         {
-            oxygenTankLevel = Mathf.Min(maxOxygenTankLevel, oxygenTankLevel + Time.deltaTime);
+            oxygenTankLevel = Mathf.Min(maxOxygenTankLevel, oxygenTankLevel + (Time.deltaTime * oxygenTankGainSpeed));
         }
         else
         {
-            oxygenTankLevel = Mathf.Max(0, oxygenTankLevel - Time.deltaTime);
+            oxygenTankLevel = Mathf.Max(0, oxygenTankLevel - (Time.deltaTime * oxygenTankDecaySpeed));
             if (oxygenTankLevel <= 0)
             {
                 health = Mathf.Max(0, health - 10 * Time.deltaTime);
             }
         }
+        OnHealthChanged?.Invoke(health, maxHealth);
+        OnOxygenChanged?.Invoke(oxygenTankLevel, maxOxygenTankLevel);
     }
 
     private void OnTriggerStay2D(Collider2D other)

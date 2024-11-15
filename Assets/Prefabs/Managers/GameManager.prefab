@@ -483,6 +483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5954b72cf15ee4d4f94d790afe34da73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealthBarSlider: {fileID: 1028493840814986053}
+  playerOxygenBarSlider: {fileID: 4057364633313447875}
 --- !u!114 &286285766510686836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +501,7 @@ MonoBehaviour:
   - {fileID: 122771650095066289, guid: f6f0e1c1c7a91404d88bf3a313e9ca13, type: 3}
   - {fileID: 122771650095066289, guid: f649882dfd305294db0063790526ec09, type: 3}
   - {fileID: 122771650095066289, guid: 0ed8a68dd3bb7a6469edcfd8956c27b0, type: 3}
+  firstWaveSpawnTime: 5
   timeBetweenWaves: 20
   showWarningTime: 8
   firstWaveWarningText: First wave is about to start!
