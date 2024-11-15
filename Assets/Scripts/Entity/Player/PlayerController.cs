@@ -1,10 +1,11 @@
 using System.Collections;
 using Enums;
+using Interfaces;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     public delegate void StatChanged(float currValue, float maxValue);
     public delegate void PlayerDeath();
@@ -37,7 +38,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float oxygenTankGainSpeed = 1.0f;
     [SerializeField] private float health = 100.0f;
     [SerializeField] private float maxHealth = 100.0f;
+    private float continuousDamage = 0;
     private bool isInOxygenArea;
+    private bool isInDamageArea;
     private bool _isDead;
 
     // Dash variables
@@ -185,11 +188,13 @@ public class PlayerController : MonoBehaviour
 
     private void SpawnClone()
     {
-        GameObject clone = Instantiate(clonePrefab, transform.position, transform.rotation);
+        Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y - 2, transform.position.z);
+        GameObject clone = Instantiate(clonePrefab, spawnPosition, transform.rotation);
         Destroy(clone, cloneTimer); // Destroy the clone after 30 seconds
         canClone = false;
         cloneCooldownTimer = 0f;
     }
+
 
     private void SpriteFlip()
     {
@@ -220,8 +225,14 @@ public class PlayerController : MonoBehaviour
                 health = Mathf.Max(0, health - 10 * Time.deltaTime);
             }
         }
+
+        if (isInDamageArea)
+        {
+            health = Mathf.Max(0, health - (continuousDamage * Time.deltaTime));
+        }
         OnHealthChanged?.Invoke(health, maxHealth);
         OnOxygenChanged?.Invoke(oxygenTankLevel, maxOxygenTankLevel);
+    
     }
 
     private void Die()
@@ -240,6 +251,13 @@ public class PlayerController : MonoBehaviour
         {
             isInOxygenArea = true;
         }
+
+        if(other.CompareTag("DamageArea"))
+        {
+            isInDamageArea = true;
+            BogFlowerPoison damageArea = other.GetComponent<BogFlowerPoison>();
+            continuousDamage = damageArea.GetDamage();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -247,6 +265,21 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("OxygenArea"))
         {
             isInOxygenArea = false;
+        }
+        if (other.CompareTag("DamageArea"))
+        {
+            isInDamageArea = false;
+            continuousDamage = 0;
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health = Mathf.Clamp(health - damage, 0, maxHealth);
+
+        if (health <= 0)
+        {
+            Die();
         }
     }
 }

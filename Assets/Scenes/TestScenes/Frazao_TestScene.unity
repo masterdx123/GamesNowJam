@@ -3527,6 +3527,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 178879567185822326, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
   m_PrefabInstance: {fileID: 709471443}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1452872008 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1729073818652285823, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+  m_PrefabInstance: {fileID: 5465155555856661056}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1494360755 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 178879567185822326, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
@@ -3833,6 +3838,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4069138799199273539, guid: 18382943e44daea47be7f03738aeb728, type: 3}
+      propertyPath: clonePrefab
+      value: 
+      objectReference: {fileID: 3599291580118467567, guid: 7a71dda7380c9cb4ca49468c7b59130e, type: 3}
+    - target: {fileID: 4069138799199273539, guid: 18382943e44daea47be7f03738aeb728, type: 3}
+      propertyPath: teleportTarget
+      value: 
+      objectReference: {fileID: 1452872008}
     - target: {fileID: 4069138799199273539, guid: 18382943e44daea47be7f03738aeb728, type: 3}
       propertyPath: oxygenTankDecaySpeed
       value: 0.5
@@ -4818,6 +4831,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2025985886}
+    - target: {fileID: 7351091733012403390, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 67.58002
+      objectReference: {fileID: 0}
     - target: {fileID: 8261156093768109784, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4996,6 +5013,30 @@ PrefabInstance:
     - target: {fileID: 1729073818652285823, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506810250291117923, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: borderColor.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506810250291117923, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: borderColor.b
+      value: 3.9215684
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506810250291117923, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: borderColor.g
+      value: 3.560784
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506810250291117923, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: borderColor.r
+      value: 0.7686274
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133184652295914294, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133184652295914294, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[0].isUnlocked

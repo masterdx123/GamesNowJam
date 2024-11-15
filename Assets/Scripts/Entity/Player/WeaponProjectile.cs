@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
 public class WeaponProjectile : MonoBehaviour
 {
     public Weapon senderWeapon;
+    public GameObject Owner{ set => _owner = value; }
 
     [Header("If there is a senderWeapon the values will be replaced with those of the senderWeapon!")]
     [SerializeField] private int finalDamage;
@@ -15,6 +17,8 @@ public class WeaponProjectile : MonoBehaviour
 
     public Rigidbody2D rb;
     public BoxCollider2D boxCollider;
+    
+    private GameObject _owner;
 
     private void Start()
     {
@@ -42,8 +46,16 @@ public class WeaponProjectile : MonoBehaviour
         if (projectileLifeRemain <= 0) Destroy(this.gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {     
-        Destroy(gameObject);    
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider && collider.gameObject && _owner && !_owner.CompareTag(collider.gameObject.tag))
+        {
+            IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
+            float damage = senderWeapon
+                ? finalDamage * (1 + senderWeapon.DamageModifier) + senderWeapon.DamageModifier
+                : finalDamage;
+            damageable.TakeDamage(damage);
+            Destroy(gameObject);    
+        }
     }
 }

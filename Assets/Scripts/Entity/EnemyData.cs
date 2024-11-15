@@ -59,6 +59,7 @@ public class EnemyData : ScriptableObject
         var selfBehaviour = self.GetComponent<EnemyBehaviour>();
         var attackGo = Instantiate(AttacksProjectiles[0], self.transform.position, Quaternion.Euler(0, 0, selfBehaviour.GetAngleToTarget()));
         WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
+        attackProjectileComponent.Owner = self;
         attackProjectileComponent.angle = selfBehaviour.GetAngleToTarget();
     }
     #endregion

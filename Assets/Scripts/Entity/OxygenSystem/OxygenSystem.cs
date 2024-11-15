@@ -11,6 +11,7 @@ public class OxygenSystem : MonoBehaviour
     private float currentEnergy;
 
     // This is a light blue color.
+    [SerializeField, ColorUsage(true, true)]
     private Color borderColor = new Color(49/255f,227/255f,250/255f,1f);
 
     private void Awake()
