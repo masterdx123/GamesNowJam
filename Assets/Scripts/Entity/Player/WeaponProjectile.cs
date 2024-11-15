@@ -51,10 +51,13 @@ public class WeaponProjectile : MonoBehaviour
         if (collider && collider.gameObject && _owner && !_owner.CompareTag(collider.gameObject.tag))
         {
             IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
-            float damage = senderWeapon
-                ? finalDamage * (1 + senderWeapon.DamageModifier) + senderWeapon.DamageModifier
-                : finalDamage;
-            damageable.TakeDamage(damage);
+            if (damageable != null)
+            {
+                float damage = senderWeapon
+                    ? finalDamage * (1 + senderWeapon.DamageModifier) + senderWeapon.DamageModifier
+                    : finalDamage;
+                damageable.TakeDamage(damage);
+            }
             Destroy(gameObject);    
         }
     }
