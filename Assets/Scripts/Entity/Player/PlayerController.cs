@@ -38,7 +38,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private float oxygenTankGainSpeed = 1.0f;
     [SerializeField] private float health = 100.0f;
     [SerializeField] private float maxHealth = 100.0f;
+    private float continuousDamage = 0;
     private bool isInOxygenArea;
+    private bool isInDamageArea;
     private bool _isDead;
 
     // Dash variables
@@ -223,8 +225,14 @@ public class PlayerController : MonoBehaviour, IDamageable
                 health = Mathf.Max(0, health - 10 * Time.deltaTime);
             }
         }
+
+        if (isInDamageArea)
+        {
+            health = Mathf.Max(0, health - (continuousDamage * Time.deltaTime));
+        }
         OnHealthChanged?.Invoke(health, maxHealth);
         OnOxygenChanged?.Invoke(oxygenTankLevel, maxOxygenTankLevel);
+    
     }
 
     private void Die()
@@ -243,6 +251,13 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             isInOxygenArea = true;
         }
+
+        if(other.CompareTag("DamageArea"))
+        {
+            isInDamageArea = true;
+            BogFlowerPoison damageArea = other.GetComponent<BogFlowerPoison>();
+            continuousDamage = damageArea.GetDamage();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -250,6 +265,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (other.CompareTag("OxygenArea"))
         {
             isInOxygenArea = false;
+        }
+        if (other.CompareTag("DamageArea"))
+        {
+            isInDamageArea = false;
+            continuousDamage = 0;
         }
     }
 
