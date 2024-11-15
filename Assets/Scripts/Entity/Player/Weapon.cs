@@ -89,7 +89,6 @@ public class Weapon : MonoBehaviour
     }
     private void Attack()
     {
-        ResetModifiers();
         var attackGo = Instantiate(weaponData.attackObject, projectilePivot.position, Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z));
         WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
         attackProjectileComponent.senderWeapon = this;
@@ -97,7 +96,6 @@ public class Weapon : MonoBehaviour
         {
             if(upgrade.GetType() == typeof(WeaponUpgradeData))
             {
-                upgrade.ExecuteUpgrade(this);
                 upgrade.ExecuteUpgrade(attackProjectileComponent);
             }
         }
@@ -115,7 +113,15 @@ public class Weapon : MonoBehaviour
 
     public void RemoveUpgrade(UpgradeData upgrade)
     {
-        upgrades.Remove(upgrade);
+        if (upgrades.Contains(upgrade))
+        {
+            upgrades.Remove(upgrade);
+
+            if (upgrade.GetType() == typeof(WeaponUpgradeData))
+            {
+                upgrade.RemoveUpgrade(this);
+            }
+        }
     }
 
     public void AddUpgrade(UpgradeData upgrade)
@@ -123,6 +129,11 @@ public class Weapon : MonoBehaviour
         if (!upgrades.Contains(upgrade))
         {
             upgrades.Add(upgrade);
+
+            if (upgrade.GetType() == typeof(WeaponUpgradeData))
+            {
+                upgrade.AddUpgrade(this);
+            }
         }
     }
 

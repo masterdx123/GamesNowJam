@@ -22,5 +22,10 @@ namespace ScriptableObjects
         public abstract void ExecuteUpgrade(WeaponProjectile target);
         public abstract void ExecuteUpgrade(Weapon target);
         public abstract void ExecuteUpgrade(PlayerController target);
+        
+        public abstract void AddUpgrade(Weapon target);
+        public abstract void AddUpgrade(PlayerController target);
+        public abstract void RemoveUpgrade(Weapon target);
+        public abstract void RemoveUpgrade(PlayerController target);
     }
 }
