@@ -243,11 +243,9 @@ GameObject:
   - component: {fileID: 1518413562621471978}
   - component: {fileID: 4069138799199273539}
   - component: {fileID: 8429774714761237374}
-  - component: {fileID: 8509165807595982059}
-  - component: {fileID: 1970559136018141811}
   m_Layer: 0
   m_Name: Clone
-  m_TagString: Player
+  m_TagString: Clone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -394,47 +392,7 @@ MonoBehaviour:
     m_Id: 1433d2af-5edf-4459-824c-50515f1af1dd
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 2D Vector
-      m_Id: 531ba4f1-2257-4141-b23a-2451bd651bbc
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 4
-    - m_Name: up
-      m_Id: b4bd0d85-ab9a-4ccb-addb-4afee9023ed7
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: down
-      m_Id: 96224a4a-f746-4b8a-8f27-9b7aec3fc9e5
-      m_Path: <Keyboard>/s
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 2c855415-4da2-4746-8c02-9d74423cba9f
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: right
-      m_Id: b9b752d7-4061-435c-9135-5cf5d71d3422
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
+    m_SingletonActionBindings: []
     m_Flags: 0
   aimAction:
     m_Name: Aim
@@ -492,7 +450,10 @@ MonoBehaviour:
   currentPlayerGameState: 0
   oxygenTankLevel: 0
   maxOxygenTankLevel: 0
+  oxygenTankDecaySpeed: 1
+  oxygenTankGainSpeed: 1
   health: 0
+  maxHealth: 100
   dashSpeed: 20
   dashDuration: 0.2
   dashCooldown: 5
@@ -500,6 +461,7 @@ MonoBehaviour:
   teleportCooldown: 60
   clonePrefab: {fileID: 0}
   cloneCooldown: 0
+  cloneTimer: 30
 --- !u!114 &8429774714761237374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,75 +493,3 @@ MonoBehaviour:
       m_Action: Inventory
       m_Flags: 0
     m_Flags: 0
---- !u!58 &8509165807595982059
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599291580118467567}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.41803205}
-  m_Radius: 0.41803205
---- !u!58 &1970559136018141811
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599291580118467567}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.37}
-  m_Radius: 0.33
