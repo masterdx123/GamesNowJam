@@ -21,11 +21,23 @@ namespace UI.Tooltip
 
         public static void Show(string title, string description)
         {
+            if (!_instance || !_instance.tooltip)
+            {
+                Debug.LogError(
+                    "No Tooltip Set! Go to Prefabs/UI/Tooltip and drag the TooltipCanvas prefab into the Scene");
+                return;
+            }
             _instance.StartCoroutine(title, description);
         }
 
         public static void Hide()
         {
+            if (!_instance || !_instance.tooltip)
+            {
+                Debug.LogError(
+                    "No Tooltip Set! Go to Prefabs/UI/Tooltip and drag the TooltipCanvas prefab into the Scene");
+                return;
+            }
             _instance.StopCoroutine();
             _instance.tooltip.gameObject.SetActive(false);
         }
