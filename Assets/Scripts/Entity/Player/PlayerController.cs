@@ -1,10 +1,11 @@
 using System.Collections;
 using Enums;
+using Interfaces;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     public delegate void StatChanged(float currValue, float maxValue);
     public delegate void PlayerDeath();
@@ -249,6 +250,16 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("OxygenArea"))
         {
             isInOxygenArea = false;
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health = Mathf.Clamp(health - damage, 0, maxHealth);
+
+        if (health <= 0)
+        {
+            Die();
         }
     }
 }

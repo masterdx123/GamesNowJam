@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6540711874248845157}
   - component: {fileID: 3602825737023726782}
   - component: {fileID: 6929423802516130245}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ItemPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4bb54bf15c0a94aa1830418abe4f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: a52c686c1ed16aa48af174cbf98511e1, type: 2}
+  itemData: {fileID: 0}
 --- !u!58 &6929423802516130245
 CircleCollider2D:
   m_ObjectHideFlags: 0

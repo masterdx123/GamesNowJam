@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
@@ -42,8 +43,16 @@ public class WeaponProjectile : MonoBehaviour
         if (projectileLifeRemain <= 0) Destroy(this.gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {     
-        Destroy(gameObject);    
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject)
+        {
+            IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
+            float damage = senderWeapon
+                ? finalDamage * (1 + senderWeapon.DamageModifier) + senderWeapon.DamageModifier
+                : finalDamage;
+            damageable.TakeDamage(damage);
+            Destroy(gameObject);    
+        }
     }
 }

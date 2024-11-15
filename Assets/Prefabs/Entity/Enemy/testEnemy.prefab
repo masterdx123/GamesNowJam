@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3889654655812459123}
   - component: {fileID: 4070875629530914657}
   - component: {fileID: 7874537694397813590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: testEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -160,4 +160,5 @@ MonoBehaviour:
   - SingleShot
   enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
   speed: 3
+  maxHealth: 50
   attackInterval: 1

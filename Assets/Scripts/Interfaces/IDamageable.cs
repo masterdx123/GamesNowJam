@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public interface IDamageable
+namespace Interfaces
 {
-    public void TakeDamage(int damage);
+    public interface IDamageable
+    {
+        public void TakeDamage(float damage);
+    }
 }

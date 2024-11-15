@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using Interfaces;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.Events;
@@ -84,7 +85,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         spriteRenderer.flipX = -normalizedDifferenceX != 1;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         _health = Mathf.Clamp(_health - damage, 0, maxHealth);
 
