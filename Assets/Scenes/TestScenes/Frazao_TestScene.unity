@@ -2441,7 +2441,7 @@ PrefabInstance:
     - target: {fileID: 6540711874248845157, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2063562215157607591, guid: 338ff1105e897d446b1d43c863894990, type: 3}
+      objectReference: {fileID: 21300000, guid: 055b52bcbeb6d124e96df19fd365fb7a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4309,11 +4309,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 178879567185822326, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.822339
+      value: 5.6
       objectReference: {fileID: 0}
     - target: {fileID: 178879567185822326, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9614427
+      value: -3.06
       objectReference: {fileID: 0}
     - target: {fileID: 178879567185822326, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4358,7 +4358,7 @@ PrefabInstance:
     - target: {fileID: 6540711874248845157, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2063562215157607591, guid: 338ff1105e897d446b1d43c863894990, type: 3}
+      objectReference: {fileID: 21300000, guid: 055b52bcbeb6d124e96df19fd365fb7a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

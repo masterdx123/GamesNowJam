@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: f1e88fbf7a58997498085231c93c75ee
+guid: 055b52bcbeb6d124e96df19fd365fb7a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1718097936202340095
-    second: statBars 1_0
-  - first:
-      213: -6517531953669511366
-    second: statBars 1_1
-  - first:
-      213: 7520290764864220117
-    second: statBars 1_2
+      213: -5928227942933684878
+    second: ChargedGoo16_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -119,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: statBars 1_0
+      name: ChargedGoo16_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 16
+        x: 1
+        y: 3
+        width: 13
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 109e357a7071828e0800000000000000
-      internalID: -1718097936202340095
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: statBars 1_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a37654138331d85a0800000000000000
-      internalID: -6517531953669511366
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: statBars 1_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5dbe16f3b907d5860800000000000000
-      internalID: 7520290764864220117
+      spriteID: 27d94e15814babda0800000000000000
+      internalID: -5928227942933684878
       vertices: []
       indices: 
       edges: []
@@ -188,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9e6e9dedc38bef841b9a8fc9e03e92d5
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      statBars 1_0: -1718097936202340095
-      statBars 1_1: -6517531953669511366
-      statBars 1_2: 7520290764864220117
+      ChargedGoo16_0: -5928227942933684878
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
