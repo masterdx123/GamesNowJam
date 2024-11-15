@@ -297,7 +297,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sporehoundenemy_0: 8500035217752538899
+      Sporehoundenemy_1: 7074549857438985555
+      Sporehoundenemy_2: -8069233137209496655
+      Sporehoundenemy_3: -4960762328373831631
+      Sporehoundenemy_4: 9072029126747419937
+      Sporehoundenemy_5: 7486423038418954957
+      Sporehoundenemy_6: 2242683371641032592
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

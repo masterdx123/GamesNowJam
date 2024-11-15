@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bog Flowerenemy_0: -4814044236683643786
+      Bog Flowerenemy_1: -4167498802892707069
+      Bog Flowerenemy_2: -6437547963578552519
+      Bog Flowerenemy_3: 2389405618597855298
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

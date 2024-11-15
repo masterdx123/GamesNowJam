@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ExoticBlood_0: -2884847333407950948
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
