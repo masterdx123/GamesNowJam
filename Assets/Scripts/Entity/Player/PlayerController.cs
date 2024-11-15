@@ -7,9 +7,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public delegate void StatChanged(float currValue, float maxValue);
+    public delegate void PlayerDeath();
     
     public event StatChanged OnHealthChanged;
     public event StatChanged OnOxygenChanged;
+    public event PlayerDeath OnPlayerDeath;
     
     public Rigidbody2D rb;
     public const float BASE_SPEED = 7;
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float health = 100.0f;
     [SerializeField] private float maxHealth = 100.0f;
     private bool isInOxygenArea;
+    private bool _isDead;
 
     // Dash variables
     [SerializeField] private float dashSpeed;
@@ -81,10 +84,12 @@ public class PlayerController : MonoBehaviour
         cloneCooldownTimer = cloneCooldown;
         canTeleport = true;
         canClone = true;
+        _isDead = false;
     }
 
     private void Update()
     {
+        if (_isDead) return;
         HandleDash();
         HandleTeleport();
         HandleClone();
@@ -98,7 +103,7 @@ public class PlayerController : MonoBehaviour
 
         if (health <= 0)
         {
-            // Handle player death logic here
+            Die();
         }
     }
 
@@ -222,6 +227,16 @@ public class PlayerController : MonoBehaviour
         }
         OnHealthChanged?.Invoke(health, maxHealth);
         OnOxygenChanged?.Invoke(oxygenTankLevel, maxOxygenTankLevel);
+    }
+
+    private void Die()
+    {
+        _isDead = true;
+        isDashing = false;
+        canTeleport = false;
+        rb.linearVelocity = Vector2.zero;
+        ChangeAnimationState(IDLE);
+        OnPlayerDeath?.Invoke();
     }
 
     private void OnTriggerStay2D(Collider2D other)

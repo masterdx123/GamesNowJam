@@ -21,6 +21,7 @@ namespace Managers
             if (!_playerController) return;
             _playerController.OnHealthChanged += OnHealthChanged;
             _playerController.OnOxygenChanged += OnOxygenChanged;
+            _playerController.OnPlayerDeath += OnPlayerDeath;
         }
 
         // Update is called once per frame
@@ -34,6 +35,7 @@ namespace Managers
             if (!_playerController) return;
             _playerController.OnHealthChanged -= OnHealthChanged;
             _playerController.OnOxygenChanged -= OnOxygenChanged;
+            _playerController.OnPlayerDeath -= OnPlayerDeath;
         }
 
         private void OnHealthChanged(float health, float maxHealth)
@@ -44,6 +46,11 @@ namespace Managers
         private void OnOxygenChanged(float oxygen, float maxOxygen)
         {
             playerOxygenBarSlider.value = oxygen / maxOxygen;
+        }
+
+        private void OnPlayerDeath()
+        {
+            Debug.Log("Player Death");
         }
     }
 }
