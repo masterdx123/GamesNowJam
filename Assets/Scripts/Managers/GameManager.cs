@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Managers
@@ -11,6 +12,8 @@ namespace Managers
         private Slider playerHealthBarSlider;
         [SerializeField]
         private Slider playerOxygenBarSlider;
+        [SerializeField]
+        private Image gameOverImage;
 
         private PlayerController _playerController;
         
@@ -51,6 +54,17 @@ namespace Managers
         private void OnPlayerDeath()
         {
             Debug.Log("Player Death");
+            gameOverImage.gameObject.SetActive(true);
+        }
+
+        public void RestartLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
         }
     }
 }
