@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      volt leech enemy_0: -2709490606286234952
+      volt leech enemy_1: -7115092048778605164
+      volt leech enemy_2: -4308593114506257212
+      volt leech enemy_3: -6986008023519386724
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86feb673b1584cf4796357578e8fda16, type: 3}
   m_Name: Pistol Pedro
   m_EditorClassIdentifier: 
-  weaponName: Pistol Test
+  weaponName: Pistol Pedro
   sprite: {fileID: -7351497889628635928, guid: 08a149e69f7a06a45b25d1505a5d38a4, type: 3}
   damage: 10
-  fireRateInterval: 1
+  fireRateInterval: 0.5
   attackObject: {fileID: 8306978968838758409, guid: 67b0b336bf1d141419994a7f0bb3db5c, type: 3}
   projectileVelocity: 10
   projectileDuration: 1
