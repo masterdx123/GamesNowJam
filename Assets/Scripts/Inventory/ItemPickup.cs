@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Inventory
 {
+    [ExecuteInEditMode]
     [RequireComponent(typeof(CircleCollider2D), typeof(SpriteRenderer))]
     public class ItemPickup : MonoBehaviour
     {
@@ -29,7 +30,7 @@ namespace Inventory
         // Update is called once per frame
         void Update()
         {
-        
+            
         }
 
         private void OnTriggerEnter2D(Collider2D other)

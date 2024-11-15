@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace UI.Inventory
 {
-    public class InventorySlotController : MonoBehaviour
+    public class InventorySlotController : MonoBehaviour, ITooltipable
     {
         public int Slot
         {
@@ -65,6 +65,21 @@ namespace UI.Inventory
             _item = item.Value.ItemData;
             iconRenderer.sprite = _item.Icon;
             itemNameText.text = _item.CanStack ? item.Value.Amount.ToString() : "";
+        }
+
+        public string GetTitle()
+        {
+            return _item ? _item.ItemName : "";
+        }
+
+        public string GetDescription()
+        {
+            return _item ? _item.Description : "";
+        }
+
+        public bool CanShow()
+        {
+            return _item;
         }
     }
 }

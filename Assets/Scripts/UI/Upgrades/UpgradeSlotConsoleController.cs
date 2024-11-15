@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace UI.Upgrades
 {
-    public class UpgradeSlotConsoleController : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+    public class UpgradeSlotConsoleController : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, ITooltipable
     {
         public int Slot
         {
@@ -77,6 +77,21 @@ namespace UI.Upgrades
             if (!_upgradeData || !_draggedObject) return;
             iconRenderer.enabled = true;
             Destroy(_draggedObject);
+        }
+
+        public string GetTitle()
+        {
+            return _upgradeData ? _upgradeData.UpgradeName : "";
+        }
+
+        public string GetDescription()
+        {
+            return _upgradeData ? _upgradeData.Description : "";
+        }
+
+        public bool CanShow()
+        {
+            return _upgradeData;
         }
     }
 }

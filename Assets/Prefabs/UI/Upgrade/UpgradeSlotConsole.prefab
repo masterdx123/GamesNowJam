@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 9116371807681253428}
   - component: {fileID: 6595802453242888981}
   - component: {fileID: 3960995828152767147}
+  - component: {fileID: 5843414505811634883}
   m_Layer: 5
   m_Name: UpgradeSlotConsole
   m_TagString: Untagged
@@ -211,3 +212,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconRenderer: {fileID: 3213166047584266968}
   draggableObjectPrefab: {fileID: 7842876632382077310, guid: 48914fcd6bce428409573a231fa0f9a1, type: 3}
+--- !u!114 &5843414505811634883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4386521978022000305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fbccda07b51ca4fb57ccee76cdafd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

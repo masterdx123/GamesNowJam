@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd60c039461c15d48a3205906ef88dd6, type: 3}
   m_Name: Material
   m_EditorClassIdentifier: 
-  itemName: 
-  description: 
-  icon: {fileID: 0}
-  canStack: 0
-  maxStackSize: 0
+  itemName: Material
+  description: Description
+  icon: {fileID: -2063562215157607591, guid: 338ff1105e897d446b1d43c863894990, type: 3}
+  canStack: 1
+  maxStackSize: 5
