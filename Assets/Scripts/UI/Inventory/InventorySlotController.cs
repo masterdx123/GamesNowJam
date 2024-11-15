@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Inventory;
 using ScriptableObjects;
 using TMPro;
@@ -35,6 +36,18 @@ namespace UI.Inventory
         void Update()
         {
         
+        }
+
+        public void OnItemRemoved(List<Item> items)
+        {
+            if (items.Count <= _slot)
+            {
+                UpdateItem(_slot, null);
+            }
+            else
+            {
+                UpdateItem(_slot, items[_slot]);
+            }
         }
 
         public void UpdateItem(int slot, Item? item)

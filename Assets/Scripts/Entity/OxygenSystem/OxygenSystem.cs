@@ -81,4 +81,10 @@ public class OxygenSystem : MonoBehaviour
             lineRenderer.SetPosition(i, new Vector3(x, y, 0));
         }
     }
+
+    public void RefillEnergy(float amount)
+    {
+        // TODO: Maybe add a limit?
+        currentEnergy += amount;
+    }
 }

@@ -41,6 +41,7 @@ namespace UI.Inventory
                 if (inventorySlot)
                 {
                     _inventory.AddedItem -= inventorySlot.UpdateItem;
+                    _inventory.RemovedItem -= inventorySlot.OnItemRemoved;
                 }
             }
         }
@@ -59,6 +60,7 @@ namespace UI.Inventory
                         slotController.Slot = i;
                         slotController.UpdateItem(i, _inventory.GetItem(i));
                         _inventory.AddedItem += slotController.UpdateItem;
+                        _inventory.RemovedItem += slotController.OnItemRemoved;
                     }
                 }
             }

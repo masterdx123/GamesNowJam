@@ -8,6 +8,8 @@ using UnityEngine.InputSystem;
 
 namespace Entity.UpgradeConsole
 {
+    using Inventory;
+    
     [Serializable]
     public struct Upgrade : IEquatable<Upgrade>
     {
@@ -47,19 +49,41 @@ namespace Entity.UpgradeConsole
         private Canvas upgradeManagementCanvas;
         
         [SerializeField]
+        private Canvas weaponUpgradesUIControllerPrefab;
+        
+        [Header("Oxygen Bubble Energy")]
+        [SerializeField]
+        private ItemData energyData;
+        [SerializeField]
+        private float energyIncreasePerItem;
+        
+        
+        [Header("Upgrades")]
+        [SerializeField]
         private Upgrade[] weaponUpgrades;
         [SerializeField]
         private Upgrade[] characterUpgrades;
         
+        private Canvas _instantiatedWeaponUpgradesUI;
         private Canvas _instantiatedUpgradeUI;
         private UpgradeManagementUIController _uiController;
         private GameObject _player;
         private PlayerController _playerController;
+        [SerializeField]private OxygenSystem _oxygenSystem;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-        
+            _oxygenSystem = gameObject.GetComponentInChildren<OxygenSystem>();
+            if (!_instantiatedWeaponUpgradesUI)
+            {
+                _instantiatedWeaponUpgradesUI = Instantiate(weaponUpgradesUIControllerPrefab);
+                WeaponUpgradesUIController controller = _instantiatedWeaponUpgradesUI.gameObject.GetComponentInChildren<WeaponUpgradesUIController>();
+                if (!controller) return;
+                Weapon playerWeapon = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Weapon>();
+                controller.UpdateWeapon(playerWeapon);
+                UpdatePlayerStatus(true);
+            }
         }
 
         // Update is called once per frame
@@ -86,6 +110,16 @@ namespace Entity.UpgradeConsole
             if (!other.CompareTag("Player")) return;
             _player = other.gameObject;
             _playerController = _player.GetComponent<PlayerController>();
+            
+            // Check if player can feed the oxygen energy
+            Inventory inventory = _player.GetComponent<Inventory>();
+            Item? item = inventory.CheckAndGetIfItemExistsInInventory(energyData);
+            if (item.HasValue)
+            {
+                float amountToFill = item.Value.Amount * energyIncreasePerItem;
+                inventory.RemoveItem(energyData);
+                _oxygenSystem.RefillEnergy(amountToFill);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D other)

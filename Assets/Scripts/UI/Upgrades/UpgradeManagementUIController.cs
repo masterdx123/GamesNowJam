@@ -16,9 +16,6 @@ namespace UI.Upgrades
         private GameObject upgradeConsoleSlotPrefab;
         [SerializeField]
         private GameObject upgradeConsoleSlotContainer;
-
-        [SerializeField] 
-        private WeaponUpgradesUIController weaponUpgradesUIController;
         
         private UpgradeConsole _upgradeConsole;
         private List<UpgradeSlotConsoleController> _upgradeSlotControllers;
@@ -49,7 +46,6 @@ namespace UI.Upgrades
             }
             if (_upgradeSlotControllers == null) _upgradeSlotControllers = new List<UpgradeSlotConsoleController>();
             UpdateWeaponUpgradeList();
-            weaponUpgradesUIController.UpdateWeapon(_playerWeapon);
         }
 
         private void UpdateWeaponUpgradeList()

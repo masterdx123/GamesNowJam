@@ -33,11 +33,12 @@ namespace Inventory
     
     public class Inventory : MonoBehaviour
     {
-        public delegate void ItemChangedDelegate(int index, Item? item);
+        public delegate void ItemAddedDelegate(int index, Item? item);
+        public delegate void ItemRemovedDelegate(List<Item> items);
         
         public int InventorySize => inventorySize;
-        public ItemChangedDelegate AddedItem;
-        public ItemChangedDelegate RemovedItem;
+        public ItemAddedDelegate AddedItem;
+        public ItemRemovedDelegate RemovedItem;
 
         [SerializeField]
         private Canvas inventoryCanvas;
@@ -116,7 +117,7 @@ namespace Inventory
             if (!item.ItemData) return;
             int index = _items.IndexOf(item);
             _items.RemoveAt(index);
-            RemovedItem?.Invoke(index, null);
+            RemovedItem?.Invoke(_items);
         }
 
         public Item GetItem(int id)
@@ -127,6 +128,12 @@ namespace Inventory
             }
 
             return new Item();
+        }
+
+        public Item? CheckAndGetIfItemExistsInInventory(ItemData inItemData)
+        {
+            Item item = _items.Find(i => i.ItemData == inItemData);
+            return item.ItemData ? item : null;
         }
         
         public void ToggleInventory()
