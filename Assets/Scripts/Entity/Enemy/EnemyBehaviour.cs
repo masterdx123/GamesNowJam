@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(SpriteRenderer),typeof(Rigidbody2D),typeof(Animator))]
-public class EnemyBehaviour : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour, IDamageable
 {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -19,6 +19,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     [SerializeField] EnemyData enemyData;
     [SerializeField] private float speed;
+    [SerializeField] private float maxHealth = 50.0f;
+    private float _health;
     public float Speed { private set => speed = value; get => speed; }
 
     private UnityEvent<EnemyBehaviour> Move = new UnityEvent<EnemyBehaviour>();
@@ -38,6 +40,8 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Attack.AddListener(enemyData.AttacksDictionary[attack]);
         }
+        
+        _health = maxHealth;
     }
 
     // Update is called once per frame
@@ -78,5 +82,20 @@ public class EnemyBehaviour : MonoBehaviour
         if (rb.linearVelocity.normalized.x != 0) normalizedDifferenceX = Mathf.Abs(rb.linearVelocity.normalized.x) / rb.linearVelocity.normalized.x;
 
         spriteRenderer.flipX = -normalizedDifferenceX != 1;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _health = Mathf.Clamp(_health - damage, 0, maxHealth);
+
+        if (_health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

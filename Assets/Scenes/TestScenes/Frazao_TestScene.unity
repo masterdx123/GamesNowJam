@@ -3833,6 +3833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4069138799199273539, guid: 18382943e44daea47be7f03738aeb728, type: 3}
+      propertyPath: oxygenTankDecaySpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
