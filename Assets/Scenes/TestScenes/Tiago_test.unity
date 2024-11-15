@@ -1752,7 +1752,7 @@ PrefabInstance:
     - target: {fileID: 4069138799199273539, guid: 18382943e44daea47be7f03738aeb728, type: 3}
       propertyPath: clonePrefab
       value: 
-      objectReference: {fileID: 3599291580118467567, guid: c34fc8d210491c04aadf10d56bd7a31c, type: 3}
+      objectReference: {fileID: 3599291580118467567, guid: 7a71dda7380c9cb4ca49468c7b59130e, type: 3}
     - target: {fileID: 4069138799199273539, guid: 18382943e44daea47be7f03738aeb728, type: 3}
       propertyPath: cloneCooldown
       value: 120

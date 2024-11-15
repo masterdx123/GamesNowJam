@@ -185,11 +185,13 @@ public class PlayerController : MonoBehaviour
 
     private void SpawnClone()
     {
-        GameObject clone = Instantiate(clonePrefab, transform.position, transform.rotation);
+        Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y - 2, transform.position.z);
+        GameObject clone = Instantiate(clonePrefab, spawnPosition, transform.rotation);
         Destroy(clone, cloneTimer); // Destroy the clone after 30 seconds
         canClone = false;
         cloneCooldownTimer = 0f;
     }
+
 
     private void SpriteFlip()
     {

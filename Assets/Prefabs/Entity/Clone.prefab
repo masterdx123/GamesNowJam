@@ -311,7 +311,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1681871678, guid: 2fad7432fa6f32744922aa490402eef8, type: 3}
-  m_Color: {r: 1, g: 0.8808179, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.95985556, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -392,7 +392,47 @@ MonoBehaviour:
     m_Id: 1433d2af-5edf-4459-824c-50515f1af1dd
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 531ba4f1-2257-4141-b23a-2451bd651bbc
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: b4bd0d85-ab9a-4ccb-addb-4afee9023ed7
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 96224a4a-f746-4b8a-8f27-9b7aec3fc9e5
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 2c855415-4da2-4746-8c02-9d74423cba9f
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: b9b752d7-4061-435c-9135-5cf5d71d3422
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
     m_Flags: 0
   aimAction:
     m_Name: Aim
@@ -418,15 +458,7 @@ MonoBehaviour:
     m_Id: 88f85367-4e34-420f-8eed-390b35e91d67
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 38581f77-5197-41cd-aa9f-74d082524bb4
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Dash
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
   teleportAction:
     m_Name: Teleport
@@ -448,11 +480,11 @@ MonoBehaviour:
     m_Flags: 0
   differenceMouseToPlayerNormalized: {x: 0, y: 0}
   currentPlayerGameState: 0
-  oxygenTankLevel: 0
-  maxOxygenTankLevel: 0
-  oxygenTankDecaySpeed: 1
-  oxygenTankGainSpeed: 1
-  health: 0
+  oxygenTankLevel: 10
+  maxOxygenTankLevel: 10
+  oxygenTankDecaySpeed: 0.5
+  oxygenTankGainSpeed: 2
+  health: 100
   maxHealth: 100
   dashSpeed: 20
   dashDuration: 0.2
