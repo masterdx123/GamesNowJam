@@ -14,6 +14,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     [Header("Actions")]
     [SerializeField] private List<string> movementList;
     [SerializeField] private List<string> attackList;
+    [SerializeField] private List<string> onDeathList;
 
     public GameObject target {  get => GetTarget();}
 
@@ -25,6 +26,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
     private UnityEvent<EnemyBehaviour> Move = new UnityEvent<EnemyBehaviour>();
     private UnityEvent<GameObject, GameObject> Attack = new UnityEvent<GameObject, GameObject>();
+    private UnityEvent<GameObject, GameObject> OnDeath = new UnityEvent<GameObject, GameObject>();
     private float internalCooldown;
     [SerializeField] private float attackInterval;
     
@@ -40,7 +42,11 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         {
             Attack.AddListener(enemyData.AttacksDictionary[attack]);
         }
-        
+        foreach (var attack in onDeathList)
+        {
+            OnDeath.AddListener(enemyData.AttacksDictionary[attack]);
+        }
+
         _health = maxHealth;
     }
 
@@ -53,7 +59,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
         if (internalCooldown <= 0)
         {
-            Attack?.Invoke(this.gameObject, GameObject.FindGameObjectWithTag("Player"));
+            Attack?.Invoke(this.gameObject, GetTarget());
             internalCooldown = attackInterval;
         }
 
@@ -96,6 +102,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        OnDeath?.Invoke(this.gameObject, GetTarget());
         Destroy(gameObject);
     }
 }

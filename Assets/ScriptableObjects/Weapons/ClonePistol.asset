@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86feb673b1584cf4796357578e8fda16, type: 3}
+  m_Name: ClonePistol
+  m_EditorClassIdentifier: 
+  weaponName: Pistol Test
+  sprite: {fileID: -7351497889628635928, guid: 08a149e69f7a06a45b25d1505a5d38a4, type: 3}
+  damage: 10
+  fireRateInterval: 0.5
+  attackObject: {fileID: 8306978968838758409, guid: 67b0b336bf1d141419994a7f0bb3db5c, type: 3}
+  projectileVelocity: 20
+  projectileDuration: 2
+  numberUniqueAttacks: 1
+  offsetInHand: {x: 9, y: 2}
+  offsetProjectile: {x: 8, y: 0}
+  angleInHand: 0
+  animations: {fileID: 9100000, guid: 230143487effe6442abec0c594a1ab3a, type: 2}

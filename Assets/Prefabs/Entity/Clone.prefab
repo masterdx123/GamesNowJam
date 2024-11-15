@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponPivot: {fileID: 3107219624794825933}
   projectilePivot: {fileID: 7857549887035792068}
-  weaponData: {fileID: 11400000, guid: 3cc95a3f4595c3543acb707c63ef9a02, type: 2}
+  weaponData: {fileID: 11400000, guid: 87503e0b1c45ec446948ff49d364ed42, type: 2}
   animator: {fileID: 9189470516596634735}
   spriteRenderer: {fileID: 6904952269274999397}
   attackAction:
@@ -310,8 +310,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1681871678, guid: 2fad7432fa6f32744922aa490402eef8, type: 3}
-  m_Color: {r: 1, g: 0.8808179, b: 0, a: 1}
+  m_Sprite: {fileID: -5803653700046855067, guid: 299e725bcb95945489ee6102e57b6b21, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
