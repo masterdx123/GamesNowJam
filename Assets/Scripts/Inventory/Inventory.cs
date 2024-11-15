@@ -121,6 +121,36 @@ namespace Inventory
             RemovedItem?.Invoke(_items);
         }
 
+        /**
+         * This function will try to remove a specific amount of an item from the inventory
+         *
+         * returns true if able to remove the required amount and false if not.
+         */
+        public bool RemoveAmount(ItemData inItemData, int amount)
+        {
+            Item item = _items.Find(i => i.ItemData == inItemData);
+            if (!item.ItemData) return false;
+            int index = _items.IndexOf(item);
+
+            // If the item doesn't have enough, return false
+            if (item.Amount > amount) return false;
+            // decrease amount to item
+            item.Amount -= amount;
+
+            // if its 0, just remove it since the inventory no longer has any amount of this item
+            if (item.Amount == 0)
+            {
+                _items.RemoveAt(index);
+                RemovedItem?.Invoke(_items);
+            }
+            else // else update the item
+            {
+                _items[index] = item;
+                AddedItem?.Invoke(index, item);
+            }
+            return true;
+        }
+
         public Item GetItem(int id)
         {
             if (_items.Count > id && id >= 0)
@@ -135,6 +165,12 @@ namespace Inventory
         {
             Item item = _items.Find(i => i.ItemData == inItemData);
             return item.ItemData ? item : null;
+        }
+
+        public bool CheckAndIfItemExistsInInventoryAndHasAmount(ItemData inItemData, int amount)
+        {
+            Item item = _items.Find(i => i.ItemData == inItemData);
+            return item.ItemData && item.Amount >= amount;
         }
         
         public void ToggleInventory()

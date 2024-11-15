@@ -1386,6 +1386,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[0].materialRequirements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[0].materialRequirements.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[0].materialRequirements.Array.data[0].quantity
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

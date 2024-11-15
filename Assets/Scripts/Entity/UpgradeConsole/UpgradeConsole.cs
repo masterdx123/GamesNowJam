@@ -10,17 +10,26 @@ using UnityEngine.InputSystem;
 namespace Entity.UpgradeConsole
 {
     using Inventory;
+
+    [Serializable]
+    public struct MaterialRequirement
+    {
+        public ItemData itemData;
+        public int quantity;
+    }
     
     [Serializable]
     public struct Upgrade : IEquatable<Upgrade>
     {
         public UpgradeData upgradeData;
         public bool isUnlocked;
+        public MaterialRequirement[] materialRequirements;
 
         public Upgrade(UpgradeData inUpgradeData, bool inIsUnlocked)
         {
             upgradeData = inUpgradeData;
             isUnlocked = inIsUnlocked;
+            materialRequirements = new MaterialRequirement[] { };
         }
 
         public override int GetHashCode()
