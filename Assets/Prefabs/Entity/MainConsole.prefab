@@ -157,7 +157,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oxygenSystemStats: {fileID: 11400000, guid: e8149907c9a29d840885852edcb11094, type: 2}
+  borderColor: {r: 0.7686274, g: 3.560784, b: 3.9215684, a: 0.78431374}
 --- !u!1 &1003512583006467778
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +399,11 @@ MonoBehaviour:
   energyIncreasePerItem: 0.7
   weaponUpgrades:
   - upgradeData: {fileID: 11400000, guid: a52c686c1ed16aa48af174cbf98511e1, type: 2}
-    isUnlocked: 1
+    isUnlocked: 0
+    materialRequirements:
+    - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+      quantity: 2
+    - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+      quantity: 5
   characterUpgrades: []
   _oxygenSystem: {fileID: 0}
