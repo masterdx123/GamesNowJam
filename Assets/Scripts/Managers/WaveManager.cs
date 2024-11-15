@@ -11,6 +11,8 @@ namespace Managers
         [SerializeField]
         private GameObject[] enemiesToSpawn;
         [SerializeField, Tooltip("Time between waves in seconds")]
+        private double firstWaveSpawnTime = 10.0f;
+        [SerializeField, Tooltip("Time between waves in seconds")]
         private double timeBetweenWaves = 90.0f;
         [SerializeField, Tooltip("How close the time needs to be to show the warning about the next wave in seconds")]
         private double showWarningTime = 8.0f;
@@ -39,7 +41,7 @@ namespace Managers
         {
             _waveInfoText.text = "";
             _currentWaveCounter = 0;
-            _currentTimeBetweenWaves = 11.0f;
+            _currentTimeBetweenWaves = firstWaveSpawnTime;
 
             UpdateTimerText();
             UpdateWaveText();
