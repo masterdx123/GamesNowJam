@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 1
   upgradeName: God Shot
   description: Double Damage, -Firerate
-  icon: {fileID: -7351497889628635928, guid: 08a149e69f7a06a45b25d1505a5d38a4, type: 3}
+  icon: {fileID: -5230012275019313502, guid: 3924b7464635e214cb4a8c86e7fc29e4, type: 3}
   statsToUpgrade:
   - stat: 0
     value: 1

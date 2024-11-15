@@ -10,9 +10,12 @@ public class OxygenSystem : MonoBehaviour
     private int segments = 50; // Defines the smoothness of the circle
     private float currentEnergy;
 
+    // This is a light blue color.
+    private Color borderColor = new Color(49/255f,227/255f,250/255f,1f);
+
     private void Awake()
     {
-        // Set up LineRenderer component for the green border
+        // Set up LineRenderer component for the border
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = segments + 1;
         lineRenderer.useWorldSpace = false;
@@ -22,8 +25,8 @@ public class OxygenSystem : MonoBehaviour
 
         // Set the material to avoid pink color
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.startColor = Color.green;
-        lineRenderer.endColor = Color.green;
+        lineRenderer.startColor = borderColor;
+        lineRenderer.endColor = borderColor;
 
         // Initialize and configure the CircleCollider2D for the oxygen bubble
         oxygenBubbleCollider = GetComponent<CircleCollider2D>();

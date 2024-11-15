@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 816721059824304302}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.58, y: -0.81, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -394,7 +394,10 @@ MonoBehaviour:
     m_Flags: 0
   upgradeManagementCanvas: {fileID: 5588560862504849677, guid: a33abafed54bde740ba8a835829ada11, type: 3}
   weaponUpgradesUIControllerPrefab: {fileID: 5588560862504849677, guid: 139485bd45ab7944580ff6c18dfd4e85, type: 3}
+  energyData: {fileID: 0}
+  energyIncreasePerItem: 0
   weaponUpgrades:
   - upgradeData: {fileID: 11400000, guid: a52c686c1ed16aa48af174cbf98511e1, type: 2}
     isUnlocked: 1
   characterUpgrades: []
+  _oxygenSystem: {fileID: 0}
