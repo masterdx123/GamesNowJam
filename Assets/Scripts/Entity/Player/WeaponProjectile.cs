@@ -16,8 +16,9 @@ public class WeaponProjectile : MonoBehaviour
     
     [SerializeField] private bool isExplosive = false;
     [SerializeField] private GameObject explosionPrefab;
-    
     public bool IsExplosive { get => isExplosive; set => isExplosive = value; }
+    [SerializeField] private bool isBoomerang = false;
+    public bool IsBoomerang { get => isBoomerang; set => isBoomerang = value; }
     public float angle;
 
     public Rigidbody2D rb;

@@ -8,7 +8,6 @@ public class Explosion : MonoBehaviour
 
     private float damage;
     public float Damage { get => damage; set => damage = value; }
-
     private GameObject _owner;
     public GameObject _Owner { get => _owner; set => _owner = value; }
 
