@@ -78,11 +78,12 @@ public class WeaponProjectile : MonoBehaviour
                     : finalDamage;
                 damageable.TakeDamage(damage);
 
-                if(isExplosive && enemiesPenetrated == 0) {
+                if(isExplosive) {
                     GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
                     Debug.Log("explosion name:" + explosion.name);
                     explosion.GetComponent<Explosion>()._Owner = _owner;
                     explosion.GetComponent<Explosion>().Damage = damage/2;
+                    isExplosive = false;
                 }
             }
 

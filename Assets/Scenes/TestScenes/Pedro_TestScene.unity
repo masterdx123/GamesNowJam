@@ -1820,19 +1820,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[0].isUnlocked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[1].isUnlocked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[2].isUnlocked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[3].isUnlocked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[4].isUnlocked
