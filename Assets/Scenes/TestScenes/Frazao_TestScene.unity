@@ -5072,17 +5072,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 620463791}
     m_Modifications:
     - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
-      propertyPath: enemiesToSpawn.Array.size
-      value: 4
+      propertyPath: creditIncrement
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
-      propertyPath: 'enemiesToSpawn.Array.data[2]'
-      value: 
-      objectReference: {fileID: 122771650095066289, guid: f649882dfd305294db0063790526ec09, type: 3}
-    - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
-      propertyPath: 'enemiesToSpawn.Array.data[3]'
-      value: 
-      objectReference: {fileID: 122771650095066289, guid: 0ed8a68dd3bb7a6469edcfd8956c27b0, type: 3}
+      propertyPath: timeBetweenWaves
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 3327362093323292133, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -5134,18 +5130,6 @@ PrefabInstance:
     - target: {fileID: 5092253531279479066, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5329485936374097162, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 2025985886}
-    - target: {fileID: 5329485936374097162, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7351091733012403390, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 67.58002
       objectReference: {fileID: 0}
     - target: {fileID: 8261156093768109784, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: m_AnchorMax.x
