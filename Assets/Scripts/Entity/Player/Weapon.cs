@@ -93,7 +93,7 @@ public class Weapon : MonoBehaviour
     }
     private void Attack()
     {
-        FunctionLibrary.ShootSpread(
+        WeaponProjectile[] weaponProjectiles = FunctionLibrary.ShootSpread(
             weaponData.projectileAmount + ProjectileAmountModifier, 
             90, 
             weaponData.attackObject, 
@@ -103,6 +103,17 @@ public class Weapon : MonoBehaviour
             WeaponPivot.localRotation.eulerAngles.z,
             this
         );
+
+        foreach (var projectile in weaponProjectiles)
+        {
+            foreach (var upgrade in upgrades)
+            {
+                if(upgrade.GetType() == typeof(WeaponUpgradeData))
+                {
+                    upgrade.ExecuteUpgrade(projectile);
+                }
+            }
+        }
     }
 
     public void PlayIdleAnimation()
