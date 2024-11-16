@@ -96,7 +96,7 @@ public class Weapon : MonoBehaviour
         float[] cenas = {0, -45.0f, 45.0f};
 
         for(int i = 0; i <= ProjectileAmountModifier; i++) {
-            var attackGo = Instantiate(weaponData.attackObject, projectilePivot.position, Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z); * Quaternion.Euler(0,0,cenas[i]));
+            var attackGo = Instantiate(weaponData.attackObject, projectilePivot.position, Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z) * Quaternion.Euler(0,0,cenas[i]));
             WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
             attackProjectileComponent.senderWeapon = this;
             attackProjectileComponent.Owner = playerController.gameObject;
