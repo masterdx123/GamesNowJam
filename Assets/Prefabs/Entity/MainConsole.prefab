@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oxygenSystemStats: {fileID: 11400000, guid: e8149907c9a29d840885852edcb11094, type: 2}
+  currentEnergy: 0
   circleVisual: {fileID: 1749618963339775167}
   borderColor: {r: 0.7686274, g: 3.560784, b: 3.9215684, a: 0.78431374}
 --- !u!1 &1003512583006467778
@@ -432,7 +433,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
