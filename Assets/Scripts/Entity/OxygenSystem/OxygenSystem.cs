@@ -9,6 +9,7 @@ public class OxygenSystem : MonoBehaviour
     private CircleCollider2D oxygenBubbleCollider;
     private int segments = 50; // Defines the smoothness of the circle
     private float currentEnergy;
+    [SerializeField] GameObject circleVisual;
 
     // This is a light blue color.
     [SerializeField, ColorUsage(true, true)]
@@ -64,6 +65,7 @@ public class OxygenSystem : MonoBehaviour
         {
             // Calculate radius based on current energy as a percentage of max energy
             float radius = (oxygenSystemStats.Radius * currentEnergy) / oxygenSystemStats.Energy;
+            circleVisual.transform.localScale = new Vector3(radius, radius, .5f)*2;
 
             // Update the visual circle and collider radius
             DrawCircle(radius);
