@@ -100,7 +100,7 @@ namespace Managers
                 GameObject possbileEnemy = enemiesToSpawn[Random.Range(0, enemiesToSpawn.Length)];
                 EnemyBehaviour enemyBehaviour = possbileEnemy.GetComponent<EnemyBehaviour>();
                 
-                if (enemyBehaviour.CreditValue <= currentCredits) {
+                if (enemyBehaviour.CreditValue <= currentCredits && _currentWaveCounter >= enemyBehaviour.SpawnAfterWave) {
                     currentCredits -= enemyBehaviour.CreditValue;
                     GameObject spawnedEnemy = Instantiate(possbileEnemy);
                     spawnedEnemy.transform.position = GetRandomPosOffScreen();

@@ -35,6 +35,10 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     private int creditValue = 1;
     public int CreditValue { get => creditValue; }
 
+    [SerializeField]
+    private int spawnAfterWave = 0;
+    public int SpawnAfterWave { get => spawnAfterWave; }
+
     private UnityEvent<EnemyBehaviour> Move = new UnityEvent<EnemyBehaviour>();
     private UnityEvent<GameObject, GameObject> Attack = new UnityEvent<GameObject, GameObject>();
     private UnityEvent<GameObject, GameObject> OnDeath = new UnityEvent<GameObject, GameObject>();
