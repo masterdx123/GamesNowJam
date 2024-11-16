@@ -10,6 +10,7 @@ TagManager:
   - Clone
   - DamageArea
   - Clone
+  - MainConsole
   layers:
   - Default
   - TransparentFX

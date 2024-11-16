@@ -6,10 +6,12 @@ using Inventory;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D), typeof(Animator))]
 public class EnemyBehaviour : MonoBehaviour, IDamageable
 {
+
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator animator;
@@ -48,8 +50,14 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     [SerializeField] private bool doesAttackOnAnimationCondition = false;
     [SerializeField] private bool stopOnRange = false;
 
+    [SerializeField] private AudioClip damageClip;
+    [SerializeField] private AudioClip deathClip;
+    [SerializeField] private AudioClip attackClip;
+    private AudioSource audioSource;
+
     void Start()
     {
+        audioSource = this.GetComponent<AudioSource>();
         enemyData.Start();
 
         foreach (var move in movementList)
@@ -92,6 +100,8 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     {
         Attack?.Invoke(this.gameObject, GetTarget());
         internalCooldown = attackInterval;
+        audioSource.clip = attackClip;
+        audioSource.Play();
     }
 
     GameObject GetTarget()
@@ -122,6 +132,8 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        audioSource.clip = damageClip;
+        audioSource.Play();
         _health = Mathf.Clamp(_health - damage, 0, maxHealth);
 
         if (_health <= 0)
@@ -135,7 +147,9 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         OnDeath?.Invoke(gameObject, GetTarget());
         ItemData[] items = enemyData.GetIdemDrops(null);
         items = items.Concat(enemyData.GetIdemDrops(droppedItems)).ToArray();
-        
+        audioSource.clip = deathClip;
+        AudioSource.PlayClipAtPoint(deathClip, transform.position);
+
         foreach (var item in items)
         {
             GameObject pickup = new GameObject();

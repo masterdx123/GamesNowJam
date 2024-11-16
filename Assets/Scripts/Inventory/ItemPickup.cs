@@ -5,8 +5,11 @@ using UnityEngine;
 
 namespace Inventory
 {
+
     [ExecuteInEditMode]
     [RequireComponent(typeof(CircleCollider2D))]
+
+
     public class ItemPickup : MonoBehaviour
     {
         public ItemData ItemData
@@ -20,10 +23,14 @@ namespace Inventory
         
         protected SpriteRenderer SpriteRenderer;
         private CircleCollider2D _circleCollider;
-        
+
+        [SerializeField] private AudioClip pickupClip;
+        private AudioSource audioSource;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            audioSource = this.GetComponent<AudioSource>();
             _circleCollider = GetComponent<CircleCollider2D>();
             _circleCollider.isTrigger = true;
             if (transform.childCount <= 0) return;
@@ -56,6 +63,8 @@ namespace Inventory
 
             if (inventory.AddItem(itemData))
             {
+                audioSource.clip = pickupClip;
+                AudioSource.PlayClipAtPoint(pickupClip, transform.position);
                 Destroy(gameObject);
             }
         }

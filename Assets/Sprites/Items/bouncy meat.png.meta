@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7bc8fa4aac171b24691b9c132d313f4e
+guid: 20aeeb354e9982843bc36722277f6595
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -851156976067251002
-    second: ignition powder_0
+      213: 6652165989542497353
+    second: bouncy meat_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ignition powder_0
+      name: bouncy meat_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6c47a696d351034f0800000000000000
-      internalID: -851156976067251002
+      spriteID: 94c8d9909bd315c50800000000000000
+      internalID: 6652165989542497353
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ignition powder_0: -851156976067251002
+      bouncy meat_0: 6652165989542497353
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
