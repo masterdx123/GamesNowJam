@@ -9,6 +9,12 @@ namespace Inventory
     [RequireComponent(typeof(CircleCollider2D), typeof(SpriteRenderer))]
     public class ItemPickup : MonoBehaviour
     {
+        public ItemData ItemData
+        {
+            private get => itemData;
+            set => itemData = value;
+        }
+
         [SerializeField]
         private ItemData itemData;
         

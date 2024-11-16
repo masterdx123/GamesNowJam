@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttacksProjectiles:
   - {fileID: 8306978968838758409, guid: c8d59479c4c45a641a479f3073f4bd4a, type: 3}
+  droppedItems:
+  - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    dropChance: 100
+  - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+    dropChance: 25

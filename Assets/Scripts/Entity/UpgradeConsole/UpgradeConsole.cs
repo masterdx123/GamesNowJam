@@ -46,6 +46,11 @@ namespace Entity.UpgradeConsole
         {
             return obj is Upgrade other && Equals(other);
         }
+
+        public void SetUnlockable(bool unlockable)
+        {
+            isUnlocked = unlockable;
+        }
     }
     public class UpgradeConsole : MonoBehaviour
     {
@@ -193,6 +198,15 @@ namespace Entity.UpgradeConsole
             }
 
             return new Upgrade();
+        }
+
+        public void SetWeponUpgradeUnlock(Upgrade? upgrade, bool isUnlocked)
+        {
+            for (int i = 0; i < WeaponUpgrades.Length; i++) {
+                if(WeaponUpgrades[i].Equals(upgrade)) {
+                    weaponUpgrades[i].SetUnlockable(isUnlocked);
+                }
+            }
         }
     }
 }

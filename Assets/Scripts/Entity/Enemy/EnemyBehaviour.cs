@@ -1,7 +1,8 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using Interfaces;
-using UnityEditor.Timeline.Actions;
+using Inventory;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -103,7 +104,16 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        OnDeath?.Invoke(this.gameObject, GetTarget());
+        OnDeath?.Invoke(gameObject, GetTarget());
+        ItemData[] items = enemyData.GetIdemDrops();
+        foreach (var item in items)
+        {
+            GameObject pickup = new GameObject();
+            pickup.AddComponent<ItemPickup>();
+            ItemPickup itemPickup = pickup.GetComponent<ItemPickup>();
+            itemPickup.ItemData = item;
+            Instantiate(pickup, transform.position, Quaternion.Euler(0,0, transform.localRotation.eulerAngles.z));
+        }
         Destroy(gameObject);
     }
 }
