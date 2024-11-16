@@ -7,7 +7,7 @@ using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(SpriteRenderer),typeof(Rigidbody2D),typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D), typeof(Animator))]
 public class EnemyBehaviour : MonoBehaviour, IDamageable
 {
     [SerializeField] Rigidbody2D rb;
@@ -18,18 +18,22 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     [SerializeField] private List<string> movementList;
     [SerializeField] private List<string> attackList;
     [SerializeField] private List<string> onDeathList;
-    
+
     [Header("Loot")]
     [SerializeField]
     private DroppedItem[] droppedItems;
 
-    public GameObject target {  get => GetTarget();}
+    public GameObject target { get => GetTarget(); }
 
     [SerializeField] EnemyData enemyData;
     [SerializeField] private float speed;
     [SerializeField] private float maxHealth = 50.0f;
     private float _health;
     public float Speed { private set => speed = value; get => speed; }
+
+    [SerializeField, Space(15)]
+    private int creditValue = 1;
+    public int CreditValue { get => creditValue; }
 
     private UnityEvent<EnemyBehaviour> Move = new UnityEvent<EnemyBehaviour>();
     private UnityEvent<GameObject, GameObject> Attack = new UnityEvent<GameObject, GameObject>();

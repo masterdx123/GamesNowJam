@@ -24,7 +24,13 @@ namespace Managers
         private int startingNumberOfEnemies = 2;
         [SerializeField]
         private int enemyIncrementMultiplier = 1;
-        
+        [SerializeField, Space(15)]
+        private int startingCredits = 5;
+        [SerializeField]
+        private int creditIncrement = 2;
+        [SerializeField]
+        private int currentCredits = 0;
+
         [Header("Text References")]
         [SerializeField]
         private TextMeshProUGUI _timerText;
@@ -42,6 +48,7 @@ namespace Managers
             _waveInfoText.text = "";
             _currentWaveCounter = 0;
             _currentTimeBetweenWaves = firstWaveSpawnTime;
+            currentCredits = startingCredits;
 
             UpdateTimerText();
             UpdateWaveText();
@@ -82,16 +89,22 @@ namespace Managers
         private void SpawnEnemies()
         {
             _currentTimeBetweenWaves = timeBetweenWaves;
-            int numEnemiesToSpawn = CalculateNumberOfEnemiesToSpawn();
+            int usableCredits = startingCredits + ((creditIncrement-1) * _currentWaveCounter);
             _currentWaveCounter += 1;
             UpdateWaveText();
             
             Debug.Log("Spawning enemies");
 
-            for (int i = 0; i < numEnemiesToSpawn; i++)
+            while (currentCredits > 0)
             {
-                GameObject spawnedEnemy = Instantiate(enemiesToSpawn[Random.Range(0, enemiesToSpawn.Length)]);
-                spawnedEnemy.transform.position = GetRandomPosOffScreen();
+                GameObject possbileEnemy = enemiesToSpawn[Random.Range(0, enemiesToSpawn.Length)];
+                EnemyBehaviour enemyBehaviour = possbileEnemy.GetComponent<EnemyBehaviour>();
+                
+                if (enemyBehaviour.CreditValue <= currentCredits) {
+                    currentCredits -= enemyBehaviour.CreditValue;
+                    GameObject spawnedEnemy = Instantiate(possbileEnemy);
+                    spawnedEnemy.transform.position = GetRandomPosOffScreen();
+                }
             }
         }
 
