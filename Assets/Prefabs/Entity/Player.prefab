@@ -332,7 +332,7 @@ AudioSource:
   m_GameObject: {fileID: 2640940027171550350}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5900724802251129530, guid: 82e016f54393a454abacd9a64f1a8720, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -715,6 +715,9 @@ MonoBehaviour:
   cloneTimer: 30
   damageClip: {fileID: 8300000, guid: ad854fa32a45aa848bc5c69851c8c9c5, type: 3}
   deathClip: {fileID: 8300000, guid: 3996db7510483274681e6d5c69b6d0b5, type: 3}
+  dashCooldownImage: {fileID: 0}
+  teleportCooldownImage: {fileID: 0}
+  cloneCooldownImage: {fileID: 0}
 --- !u!114 &8429774714761237374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,7 +830,7 @@ AudioSource:
   m_GameObject: {fileID: 3599291580118467567}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5900724802251129530, guid: 82e016f54393a454abacd9a64f1a8720, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
