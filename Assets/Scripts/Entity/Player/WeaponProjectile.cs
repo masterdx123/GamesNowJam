@@ -28,12 +28,14 @@ public class WeaponProjectile : MonoBehaviour
     private GameObject _owner;
     private float initialProjectileLifetime;
 
+    private int directionModifier = 1;
+
     private void Start()
     {
         if (senderWeapon)
         {
             projectileLifeRemain = senderWeapon.weaponData.projectileDuration * (1 + senderWeapon.RangeModifier);
-            initialProjectileLifetime = projectileLifeRemain;
+            initialProjectileLifetime = senderWeapon.weaponData.projectileDuration * (1 + senderWeapon.RangeModifier);
             angle = senderWeapon.transform.rotation.eulerAngles.z;
         }
     }
@@ -51,24 +53,21 @@ public class WeaponProjectile : MonoBehaviour
         Vector2 velocity;
 
         if (projectileLifeRemain <= 0 && isBoomerang) {
-            Debug.Log("triggered boomerang");
             projectileLifeRemain = initialProjectileLifetime;
-            Debug.Log("initialProjectileLifetime:" + initialProjectileLifetime);
-            Debug.Log("new lifetime:" + projectileLifeRemain);
             isBoomerang = false;
-
-            velocity = gameObject.transform.right * projectileVelocity;
-            rb.linearVelocity = velocity;
+            directionModifier = -1;
 
             return;   
         }
 
-        velocity = gameObject.transform.right * projectileVelocity;
+        velocity = gameObject.transform.right * projectileVelocity * directionModifier;
         rb.linearVelocity = velocity;
 
         if (projectileLifeRemain > 0) projectileLifeRemain -= Time.deltaTime;
 
-        if (projectileLifeRemain <= 0 && !isBoomerang) Destroy(this.gameObject);
+        if (projectileLifeRemain <= 0 && !isBoomerang) {
+            Destroy(this.gameObject);
+        } 
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

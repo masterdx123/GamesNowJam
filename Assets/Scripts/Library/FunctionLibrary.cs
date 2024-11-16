@@ -20,6 +20,7 @@ namespace Library
                     WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
                     attackProjectileComponent.Owner = owner;
                     attackProjectileComponent.angle = angle;
+                    if(senderWeapon) attackProjectileComponent.senderWeapon = senderWeapon;
                     createdWeapon.Add(attackProjectileComponent);
                 }
             }
@@ -29,6 +30,7 @@ namespace Library
                 WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
                 attackProjectileComponent.Owner = owner;
                 attackProjectileComponent.angle = angle;
+                if(senderWeapon) attackProjectileComponent.senderWeapon = senderWeapon;
                 createdWeapon.Add(attackProjectileComponent);
             }
 
