@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a9b868e6f6140458389495f783491f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 10
   damageRadius: 3
   radiusSpeed: 0.7
   circleVisual: {fileID: 5457923058701262665}
