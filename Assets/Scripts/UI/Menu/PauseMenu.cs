@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace UI.Menu
 {
@@ -44,6 +45,10 @@ namespace UI.Menu
         public void OpenOptions() {
             _pauseMenu.SetActive(false);
             _optionsMenu.SetActive(true);
+        }
+
+        public void ReturnToMainMenu() {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
