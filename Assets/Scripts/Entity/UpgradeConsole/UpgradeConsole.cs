@@ -87,10 +87,14 @@ namespace Entity.UpgradeConsole
         private GameObject _player;
         private PlayerController _playerController;
         [SerializeField]private OxygenSystem _oxygenSystem;
-        
+
+        [SerializeField] private AudioClip depositClip;
+        private AudioSource audioSource;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            audioSource = this.GetComponent<AudioSource>();
             _oxygenSystem = gameObject.GetComponentInChildren<OxygenSystem>();
             if (!_instantiatedWeaponUpgradesUI)
             {
@@ -137,8 +141,10 @@ namespace Entity.UpgradeConsole
                 float amountToFill = oxygenSystemStats.Energy - _oxygenSystem.GetCurrentEnergy();
                 int energyNeeded = (int) Math.Ceiling(amountToFill / energyIncreasePerItem);
                 int energyInInventory = inventory.GetItemAmount(energyData);
+                audioSource.clip = depositClip;
+                audioSource.Play();
 
-                if(energyInInventory >= energyNeeded) {
+                if (energyInInventory >= energyNeeded) {
                     inventory.RemoveAmount(energyData, energyNeeded);
                     _oxygenSystem.RefillEnergy(amountToFill);
                 } else {

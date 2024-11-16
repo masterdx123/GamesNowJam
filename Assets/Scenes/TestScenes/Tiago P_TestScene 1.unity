@@ -2221,22 +2221,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3602825737023726782, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
-      propertyPath: itemData
-      value: 
-      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
-    - target: {fileID: 5501128999022743521, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2884847333407950948, guid: bf876770dff5cc04fb8a484fade4c1af, type: 3}
     - target: {fileID: 5749644437572208633, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
       propertyPath: m_Name
       value: ItemPickup (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 6540711874248845157, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2884847333407950948, guid: bf876770dff5cc04fb8a484fade4c1af, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4893,6 +4881,10 @@ PrefabInstance:
       objectReference: {fileID: 2025985886}
     - target: {fileID: 5329485936374097162, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263946487896028691, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7351091733012403390, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}

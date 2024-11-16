@@ -243,7 +243,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void Die()
     {
         audioSource.clip = deathClip;
-        audioSource.Play();
+        AudioSource.PlayClipAtPoint(deathClip, transform.position);
         _isDead = true;
         isDashing = false;
         canTeleport = false;

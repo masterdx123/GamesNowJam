@@ -714,6 +714,7 @@ MonoBehaviour:
   cloneCooldown: 0
   cloneTimer: 30
   damageClip: {fileID: 8300000, guid: ad854fa32a45aa848bc5c69851c8c9c5, type: 3}
+  deathClip: {fileID: 8300000, guid: 3996db7510483274681e6d5c69b6d0b5, type: 3}
 --- !u!114 &8429774714761237374
 MonoBehaviour:
   m_ObjectHideFlags: 0
