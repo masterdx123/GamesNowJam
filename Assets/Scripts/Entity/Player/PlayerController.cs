@@ -63,8 +63,13 @@ public class PlayerController : MonoBehaviour, IDamageable
     private bool canClone;
     [SerializeField] private float cloneTimer = 30f;
 
+    [SerializeField] private AudioClip damageClip;
+    [SerializeField] private AudioClip deathClip;
+    private AudioSource audioSource;
+
     private void Start()
     {
+        audioSource = this.GetComponent<AudioSource>();
         moveAction.Enable();
         aimAction.Enable();
         dashAction.Enable();
@@ -237,6 +242,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        audioSource.clip = deathClip;
+        audioSource.Play();
         _isDead = true;
         isDashing = false;
         canTeleport = false;
@@ -275,6 +282,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        audioSource.clip = damageClip;
+        audioSource.Play();
         health = Mathf.Clamp(health - damage, 0, maxHealth);
 
         if (health <= 0)

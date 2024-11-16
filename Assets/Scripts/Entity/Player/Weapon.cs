@@ -7,6 +7,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
 public class Weapon : MonoBehaviour
@@ -43,11 +44,13 @@ public class Weapon : MonoBehaviour
     public float AttackIntervalModifier { get => attackIntervalModifier; set => attackIntervalModifier = value; }
     public int ProjectileAmountModifier { get => projectileAmountModifier; set => projectileAmountModifier = value; }
 
-
-
+    [SerializeField] private AudioClip[] shoot;
+    private AudioSource audioSource;
+    private AudioClip shootClip;
 
     void Start()
     {
+        audioSource = this.GetComponent<AudioSource>();
         weaponPivot = WeaponPivot;
         attackAction.Enable();
         UpdateWeapon();
@@ -85,6 +88,12 @@ public class Weapon : MonoBehaviour
     {
         //Resets cooldown of the weapon based on the weapon attack speed.
         internalCooldown = weaponData.fireRateInterval * (1 + AttackIntervalModifier);
+
+        int index = Random.Range(0, shoot.Length);
+        shootClip = shoot[index];
+
+        audioSource.clip = shootClip;
+        audioSource.Play();
 
         animator.Play($"Attack{attackCounter}", 0, 0f);
         Attack();
