@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Growth Lily
   description: A lily that helps with growth.
-  icon: {fileID: -4814044236683643786, guid: eb244b59ef95e494ea9f1fffb183c62b, type: 3}
+  icon: {fileID: 21300000, guid: cdb2b566dce257c40a2081fbcf76481f, type: 3}
   canStack: 1
   maxStackSize: 999
