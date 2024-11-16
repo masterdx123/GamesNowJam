@@ -19,6 +19,8 @@ public class WeaponData : ScriptableObject
     [Tooltip("If set to 0 means the projectile is STATIC!")] public float projectileVelocity;
 	public float projectileDuration;
 
+	public int projectileAmount;
+
     [Space(15), Header("Display Settings")]
 	[Range(1, MaxNumberAttacks)] public int numberUniqueAttacks;
     [Tooltip("Value is in pixels.")] public Vector2 offsetInHand;

@@ -39,7 +39,7 @@ public class WeaponProjectile : MonoBehaviour
     {
         // Temp for test
         var projectileVelocity = senderWeapon ? senderWeapon.weaponData.projectileVelocity * (1 + senderWeapon.BulletVelocityModifier) : bulletSpeed;
-        Vector2 velocity = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)) * projectileVelocity;
+        Vector2 velocity = gameObject.transform.right * projectileVelocity;
         rb.linearVelocity = velocity;
 
         if (projectileLifeRemain > 0) projectileLifeRemain -= Time.deltaTime;

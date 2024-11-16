@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      leechfinalenemy-export_0: -2096446635276383771
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

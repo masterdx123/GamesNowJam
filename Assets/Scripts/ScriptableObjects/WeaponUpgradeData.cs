@@ -79,6 +79,9 @@ namespace ScriptableObjects
                 case Stat.BulletVelocity:
                     target.BulletVelocityModifier += value;
                     break;
+                case Stat.ProjectileAmount:
+                    target.ProjectileAmountModifier += (int)Math.Round(value);
+                    break;                    
             }
         }
     }

@@ -33,12 +33,15 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float bulletVelocityModifier;
     [SerializeField] private float rangeModifier;
     [SerializeField] private float attackIntervalModifier;
+    [SerializeField] private int projectileAmountModifier;
 
     public int DamageFlatModifier { get => damageFlatModifier; set => damageFlatModifier = value; }
     public float DamageModifier { get => damageModifier; set => damageModifier = value; }
     public float BulletVelocityModifier { get => bulletVelocityModifier; set => bulletVelocityModifier = value; }
     public float RangeModifier { get => rangeModifier; set => rangeModifier = value; }
     public float AttackIntervalModifier { get => attackIntervalModifier; set => attackIntervalModifier = value; }
+    public int ProjectileAmountModifier { get => projectileAmountModifier; set => projectileAmountModifier = value; }
+
 
 
 
@@ -89,17 +92,24 @@ public class Weapon : MonoBehaviour
     }
     private void Attack()
     {
-        var attackGo = Instantiate(weaponData.attackObject, projectilePivot.position, Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z));
-        WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
-        attackProjectileComponent.senderWeapon = this;
-        attackProjectileComponent.Owner = playerController.gameObject;
-        foreach (var upgrade in upgrades)
-        {
-            if(upgrade.GetType() == typeof(WeaponUpgradeData))
+        Quaternion projectileRotation = Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z);
+        float[] cenas = {0, -45.0f, 45.0f};
+
+        for(int i = 0; i <= ProjectileAmountModifier; i++) {
+            var attackGo = Instantiate(weaponData.attackObject, projectilePivot.position, Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z); * Quaternion.Euler(0,0,cenas[i]));
+            WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
+            attackProjectileComponent.senderWeapon = this;
+            attackProjectileComponent.Owner = playerController.gameObject;
+            foreach (var upgrade in upgrades)
             {
-                upgrade.ExecuteUpgrade(attackProjectileComponent);
+                if(upgrade.GetType() == typeof(WeaponUpgradeData))
+                {
+                    upgrade.ExecuteUpgrade(attackProjectileComponent);
+                }
             }
+
         }
+
     }
 
     public void PlayIdleAnimation()

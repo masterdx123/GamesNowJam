@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bogFlower_0: 7174249172038836308
+      bogFlower_1: -8713898679122853490
+      bogFlower_2: 4528253001081043129
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
