@@ -112,11 +112,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         string state = rb.linearVelocity != Vector2.zero ? MOVE : IDLE;
         ChangeAnimationState(state);
-
-        if (health <= 0)
-        {
-            Die();
-        }
     }
 
     private void Movement()
@@ -130,6 +125,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void UpdateCooldownImages()
     {
+        if (!dashCooldownImage || !teleportCooldownImage || !cloneCooldownImage) return;
         dashCooldownImage.fillAmount = 1 - Mathf.Clamp01(dashCooldownTimer / dashCooldown);
         teleportCooldownImage.fillAmount = 1 - Mathf.Clamp01(teleportCooldownTimer / teleportCooldown);
         cloneCooldownImage.fillAmount = 1 - Mathf.Clamp01(cloneCooldownTimer / cloneCooldown);
@@ -252,6 +248,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (isInDamageArea)
         {
             health = Mathf.Max(0, health - (continuousDamage * Time.deltaTime));
+        }
+
+        if (health <= 0)
+        {
+            Die();
         }
         OnHealthChanged?.Invoke(health, maxHealth);
         OnOxygenChanged?.Invoke(oxygenTankLevel, maxOxygenTankLevel);
