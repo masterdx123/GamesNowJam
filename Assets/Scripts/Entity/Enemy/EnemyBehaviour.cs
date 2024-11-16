@@ -44,8 +44,10 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     private UnityEvent<GameObject, GameObject> OnDeath = new UnityEvent<GameObject, GameObject>();
     private float internalCooldown;
     [SerializeField] private float attackInterval;
+    [SerializeField] private float attackRange;
     [SerializeField] private bool doesAttackOnAnimationCondition = false;
-    
+    [SerializeField] private bool stopOnRange = false;
+
     void Start()
     {
         enemyData.Start();
@@ -71,9 +73,10 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     {
         SpriteFlip();
 
-        Move?.Invoke(this);
+        if (DistanceFromTarget(target.transform.position) >= attackRange || !stopOnRange) Move?.Invoke(this);
+        else rb.linearVelocity = Vector3.zero;
 
-        if (internalCooldown <= 0 && doesAttackOnAnimationCondition == false)
+        if (DistanceFromTarget(target.transform.position) < attackRange && internalCooldown <= 0 && doesAttackOnAnimationCondition == false)
         {
             OnAttack();
         }
@@ -101,14 +104,20 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         var differenceFromEnemyToTarget = targetPosition == null ?  target.transform.position - this.gameObject.transform.position : targetPosition.Value - this.gameObject.transform.position;
         return Mathf.Atan2(differenceFromEnemyToTarget.y, differenceFromEnemyToTarget.x) * Mathf.Rad2Deg;
     }
+    public float DistanceFromTarget(Vector3? targetPosition)
+    {
+        var differenceFromEnemyToTarget = targetPosition == null ? target.transform.position - this.gameObject.transform.position : targetPosition.Value - this.gameObject.transform.position;
+        return differenceFromEnemyToTarget.magnitude;
+    }
 
     void SpriteFlip()
     {
-        var normalizedDifferenceX = 0f;
+        float normalizedDifferenceX = 0f;
 
-        if (rb.linearVelocity.normalized.x != 0) normalizedDifferenceX = Mathf.Abs(rb.linearVelocity.normalized.x) / rb.linearVelocity.normalized.x;
+        if ((target.transform.position - this.transform.position).normalized.x != 0) normalizedDifferenceX = (target.transform.position - this.transform.position).normalized.x;
+        Debug.Log(normalizedDifferenceX);
 
-        spriteRenderer.flipX = -normalizedDifferenceX != 1;
+        spriteRenderer.flipX = normalizedDifferenceX >= 0 ? true : false;
     }
 
     public void TakeDamage(float damage)

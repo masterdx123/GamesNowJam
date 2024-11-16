@@ -171,7 +171,9 @@ MonoBehaviour:
   creditValue: 7
   spawnAfterWave: 6
   attackInterval: 1
+  attackRange: 5
   doesAttackOnAnimationCondition: 0
+  stopOnRange: 1
 --- !u!70 &6188177658613778489
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
