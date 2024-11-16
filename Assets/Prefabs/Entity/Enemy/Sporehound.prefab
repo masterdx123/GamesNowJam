@@ -171,8 +171,11 @@ MonoBehaviour:
   maxHealth: 40
   creditValue: 1
   spawnAfterWave: 0
+  spawnAtMachine: 0
   attackInterval: 0.8
+  attackRange: 5
   doesAttackOnAnimationCondition: 0
+  stopOnRange: 0
   damageClip: {fileID: 8300000, guid: 7916c3d049e5204468c73c1f451a41e8, type: 3}
   deathClip: {fileID: 8300000, guid: 939dc2109840bbf4ab0230b5640e1654, type: 3}
   attackClip: {fileID: 8300000, guid: 26e19197cd788614b8774c9f0f7fe4be, type: 3}

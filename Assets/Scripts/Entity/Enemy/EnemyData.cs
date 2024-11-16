@@ -28,6 +28,11 @@ public class EnemyData : ScriptableObject
     [SerializeField]
     private DroppedItem[] droppedItems;
 
+    [SerializeField]
+    private GameObject itemPickupObject;
+    [SerializeField]
+    private GameObject usableItemPickupObject;
+
     public void Start()
     {
         List<StringActionEB> movesDictionary = new List<StringActionEB>(){
@@ -108,6 +113,11 @@ public class EnemyData : ScriptableObject
         return drops.ToArray();
     }
     #endregion
+
+    public GameObject GetPickupObject(ItemData itemData)
+    {
+        return itemData.GetType() == typeof(UsableItemData) ? usableItemPickupObject : itemPickupObject;
+    }
 }
 [Serializable]
 struct StringActionEB

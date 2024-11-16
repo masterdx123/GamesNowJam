@@ -41,6 +41,10 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     private int spawnAfterWave = 0;
     public int SpawnAfterWave { get => spawnAfterWave; }
 
+    [SerializeField]
+    private bool spawnAtMachine = false;
+    public bool SpawnAtMachine { get => spawnAtMachine; }
+
     private UnityEvent<EnemyBehaviour> Move = new UnityEvent<EnemyBehaviour>();
     private UnityEvent<GameObject, GameObject> Attack = new UnityEvent<GameObject, GameObject>();
     private UnityEvent<GameObject, GameObject> OnDeath = new UnityEvent<GameObject, GameObject>();
@@ -152,9 +156,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
         foreach (var item in items)
         {
-            GameObject pickup = new GameObject();
-            pickup.AddComponent<ItemPickup>();
-            pickup.layer = LayerMask.NameToLayer("ItemPickup");
+            GameObject pickup = enemyData.GetPickupObject(item);
             ItemPickup itemPickup = pickup.GetComponent<ItemPickup>();
             itemPickup.ItemData = item;
             Vector3 offset = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
