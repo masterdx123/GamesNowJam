@@ -1,5 +1,6 @@
 using ScriptableObjects;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Inventory
 {
@@ -8,6 +9,7 @@ namespace Inventory
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            audioSource = this.GetComponent<AudioSource>();
             if (transform.childCount <= 0) return;
             SpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
             if (SpriteRenderer && ItemData)
@@ -31,7 +33,10 @@ namespace Inventory
             {
                 PlayerController player = other.gameObject.GetComponent<PlayerController>();
                 if (!player.CanHeal()) return;
-                
+
+                audioSource.clip = pickupClip;
+                AudioSource.PlayClipAtPoint(pickupClip, transform.position);
+
                 usableItemData.Use(other.gameObject.GetComponent<PlayerController>());
                 Destroy(gameObject);
             }

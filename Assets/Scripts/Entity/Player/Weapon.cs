@@ -12,6 +12,8 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
 public class Weapon : MonoBehaviour
 {
+
+    private const float MINIMUM_ATTACK_INTERVAL = 0.1f;
     public Transform weaponPivot { get; private set; }
     private PlayerController playerController { get => GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>(); }
     [SerializeField] private Transform WeaponPivot;
@@ -93,12 +95,13 @@ public class Weapon : MonoBehaviour
     {
         //Resets cooldown of the weapon based on the weapon attack speed.
         internalCooldown = weaponData.fireRateInterval * (1 + AttackIntervalModifier);
-        Debug.Log("Pre Frenzy:" + internalCooldown);
+    
         if(isFrenzied){
             currentOxygenCount = _oxygenSystem.CurrentEnergy;
-            internalCooldown = internalCooldown - (1 - currentOxygenCount/100) ;
-            Debug.Log("After Frenzy:" + internalCooldown);
-        }  
+            internalCooldown = internalCooldown - (0.5f - currentOxygenCount/200);
+        } 
+
+        if(internalCooldown < MINIMUM_ATTACK_INTERVAL) internalCooldown = MINIMUM_ATTACK_INTERVAL;
 
         int index = Random.Range(0, shoot.Length);
         shootClip = shoot[index];

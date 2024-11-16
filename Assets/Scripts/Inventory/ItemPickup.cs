@@ -24,8 +24,8 @@ namespace Inventory
         protected SpriteRenderer SpriteRenderer;
         private CircleCollider2D _circleCollider;
 
-        [SerializeField] private AudioClip pickupClip;
-        private AudioSource audioSource;
+        [SerializeField] protected AudioClip pickupClip;
+        protected AudioSource audioSource;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()

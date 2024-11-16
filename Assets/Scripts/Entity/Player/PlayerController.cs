@@ -301,7 +301,11 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        audioSource.clip = damageClip;
+        if (damage > 0)
+        {
+            audioSource.clip = damageClip;
+        }
+        
         audioSource.Play();
         health = Mathf.Clamp(health - damage, 0, maxHealth);
         OnHealthChanged?.Invoke(health, maxHealth);
