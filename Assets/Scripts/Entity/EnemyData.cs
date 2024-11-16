@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -61,6 +62,13 @@ public class EnemyData : ScriptableObject
         WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
         attackProjectileComponent.Owner = self;
         attackProjectileComponent.angle = selfBehaviour.GetAngleToTarget();
+    }
+    #endregion
+
+    #region Drops
+    public ItemData[] GetIdemDrops()
+    {
+        return Array.Empty<ItemData>();
     }
     #endregion
 }

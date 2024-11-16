@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using Interfaces;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -102,7 +103,12 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        OnDeath?.Invoke(this.gameObject, GetTarget());
+        OnDeath?.Invoke(gameObject, GetTarget());
+        ItemData[] items = enemyData.GetIdemDrops();
+        foreach (var item in items)
+        {
+            Instantiate(item, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 }

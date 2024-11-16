@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using Interfaces;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +15,7 @@ public class BogFlowerBehaviour : MonoBehaviour, IDamageable
 
     private Transform bogFlowerPoison;
 
+    [SerializeField] EnemyData enemyData;
     [SerializeField] private float maxHealth = 50.0f;
     private float health;
     private bool isMature;
@@ -50,6 +52,11 @@ public class BogFlowerBehaviour : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        ItemData[] items = enemyData.GetIdemDrops();
+        foreach (var item in items)
+        {
+            Instantiate(item, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 
