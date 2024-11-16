@@ -1364,8 +1364,8 @@ MonoBehaviour:
   nextWaveWarningText: Next wave is about to start!
   startingNumberOfEnemies: 2
   enemyIncrementMultiplier: 1
-  startingCredits: 5
-  creditIncrement: 2
+  startingCredits: 25
+  creditIncrement: 25
   currentCredits: 0
   _timerText: {fileID: 8613624849162957850}
   _waveInfoText: {fileID: 3506314330744125589}

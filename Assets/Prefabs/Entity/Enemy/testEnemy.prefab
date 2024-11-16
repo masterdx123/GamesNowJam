@@ -168,7 +168,9 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
   speed: 3
   maxHealth: 50
+  creditValue: 10
   attackInterval: 1
+  doesAttackOnAnimationCondition: 0
 --- !u!70 &6188177658613778489
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

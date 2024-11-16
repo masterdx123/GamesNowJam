@@ -163,7 +163,7 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
   speed: 0
   maxHealth: 50
-  creditValue: 5
+  creditValue: 7
   attackInterval: 0
   doesAttackOnAnimationCondition: 1
 --- !u!58 &8093032024046821849
