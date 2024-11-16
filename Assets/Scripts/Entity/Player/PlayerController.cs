@@ -4,6 +4,7 @@ using Interfaces;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
@@ -67,6 +68,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private AudioClip deathClip;
     private AudioSource audioSource;
 
+    // Cooldown UI Images
+    [SerializeField] private Image dashCooldownImage;
+    [SerializeField] private Image teleportCooldownImage;
+    [SerializeField] private Image cloneCooldownImage;
+
     private void Start()
     {
         audioSource = this.GetComponent<AudioSource>();
@@ -87,6 +93,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         canTeleport = true;
         canClone = true;
         _isDead = false;
+
+        UpdateCooldownImages();
     }
 
     private void Update()
@@ -99,6 +107,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         Movement();
         SpriteFlip();
         HandleOxygenAndHealth();
+
+        UpdateCooldownImages();
 
         string state = rb.linearVelocity != Vector2.zero ? MOVE : IDLE;
         ChangeAnimationState(state);
@@ -117,6 +127,14 @@ public class PlayerController : MonoBehaviour, IDamageable
             rb.linearVelocity = moveDirection * BASE_SPEED;
         }
     }
+
+    private void UpdateCooldownImages()
+    {
+        dashCooldownImage.fillAmount = 1 - Mathf.Clamp01(dashCooldownTimer / dashCooldown);
+        teleportCooldownImage.fillAmount = 1 - Mathf.Clamp01(teleportCooldownTimer / teleportCooldown);
+        cloneCooldownImage.fillAmount = 1 - Mathf.Clamp01(cloneCooldownTimer / cloneCooldown);
+    }
+
 
     private void HandleDash()
     {
