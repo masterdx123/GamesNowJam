@@ -11,14 +11,14 @@ namespace Inventory
     {
         public ItemData ItemData
         {
-            private get => itemData;
+            get => itemData;
             set => itemData = value;
         }
 
         [SerializeField]
         private ItemData itemData;
         
-        private SpriteRenderer _spriteRenderer;
+        protected SpriteRenderer SpriteRenderer;
         private CircleCollider2D _circleCollider;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,10 +26,11 @@ namespace Inventory
         {
             _circleCollider = GetComponent<CircleCollider2D>();
             _circleCollider.isTrigger = true;
-            _spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
-            if (_spriteRenderer && itemData)
+            if (transform.childCount <= 0) return;
+            SpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+            if (SpriteRenderer && itemData)
             {
-                _spriteRenderer.sprite = itemData.Icon;
+                SpriteRenderer.sprite = itemData.Icon;
             }
         }
 
@@ -39,8 +40,14 @@ namespace Inventory
             
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        protected void OnTriggerEnter2D(Collider2D other)
         {
+            Triggered(other);
+        }
+
+        protected virtual void Triggered(Collider2D other)
+        {
+            Debug.Log("PARENT");
             if (!other.CompareTag("Player")) return;
             
             // Add to inventory and if successfull destroy

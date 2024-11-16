@@ -276,10 +276,16 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         health = Mathf.Clamp(health - damage, 0, maxHealth);
+        OnHealthChanged?.Invoke(health, maxHealth);
 
         if (health <= 0)
         {
             Die();
         }
+    }
+
+    public bool CanHeal()
+    {
+        return health < maxHealth;
     }
 }
