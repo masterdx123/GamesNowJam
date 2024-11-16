@@ -399,21 +399,22 @@ MonoBehaviour:
   weaponUpgradesUIControllerPrefab: {fileID: 5588560862504849677, guid: 139485bd45ab7944580ff6c18dfd4e85, type: 3}
   energyData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
   energyIncreasePerItem: 0.7
+  oxygenSystemStats: {fileID: 11400000, guid: e8149907c9a29d840885852edcb11094, type: 2}
   weaponUpgrades:
   - upgradeData: {fileID: 11400000, guid: a52c686c1ed16aa48af174cbf98511e1, type: 2}
     isUnlocked: 0
     materialRequirements:
     - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
       quantity: 2
-    - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - itemData: {fileID: 11400000, guid: 64ffe60598805eb4e90f0df887dcba23, type: 2}
       quantity: 5
-  - upgradeData: {fileID: 11400000, guid: a52c686c1ed16aa48af174cbf98511e1, type: 2}
+  - upgradeData: {fileID: 11400000, guid: feeba06d39f27604a8a4175708482e90, type: 2}
     isUnlocked: 0
     materialRequirements:
     - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
-      quantity: 2
-    - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
       quantity: 5
+    - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+      quantity: 2
   characterUpgrades: []
   _oxygenSystem: {fileID: 0}
 --- !u!1 &1749618963339775167

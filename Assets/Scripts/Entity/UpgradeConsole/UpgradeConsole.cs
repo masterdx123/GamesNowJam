@@ -71,6 +71,8 @@ namespace Entity.UpgradeConsole
         private ItemData energyData;
         [SerializeField]
         private float energyIncreasePerItem;
+        [SerializeField] 
+        private OxygenSystemStats oxygenSystemStats;
         
         
         [Header("Upgrades")]
@@ -129,11 +131,20 @@ namespace Entity.UpgradeConsole
             // Check if player can feed the oxygen energy
             Inventory inventory = _player.GetComponent<Inventory>();
             Item? item = inventory.CheckAndGetIfItemExistsInInventory(energyData);
+
             if (item.HasValue)
             {
-                float amountToFill = item.Value.Amount * energyIncreasePerItem;
-                inventory.RemoveItem(energyData);
-                _oxygenSystem.RefillEnergy(amountToFill);
+                float amountToFill = oxygenSystemStats.Energy - _oxygenSystem.GetCurrentEnergy();
+                int energyNeeded = (int) Math.Ceiling(amountToFill / energyIncreasePerItem);
+                int energyInInventory = inventory.GetItemAmount(energyData);
+
+                if(energyInInventory >= energyNeeded) {
+                    inventory.RemoveAmount(energyData, energyNeeded);
+                    _oxygenSystem.RefillEnergy(amountToFill);
+                } else {
+                    inventory.RemoveAmount(energyData, energyInInventory);
+                    _oxygenSystem.RefillEnergy(energyInInventory * energyIncreasePerItem);
+                }
             }
         }
 
