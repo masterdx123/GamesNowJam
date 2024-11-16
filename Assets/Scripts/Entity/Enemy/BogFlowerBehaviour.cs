@@ -55,7 +55,7 @@ public class BogFlowerBehaviour : MonoBehaviour, IDamageable
         ItemData[] items = enemyData.GetIdemDrops();
         foreach (var item in items)
         {
-            Instantiate(item, transform.position, Quaternion.identity);
+            Instantiate(item, transform.position, Quaternion.Euler(0,0, transform.localRotation.eulerAngles.z));
         }
         Destroy(gameObject);
     }

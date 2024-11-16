@@ -1,8 +1,18 @@
 using System;
 using System.Collections.Generic;
 using ScriptableObjects;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using Math = Unity.Mathematics.Geometry.Math;
+using Random = UnityEngine.Random;
+
+[Serializable]
+public struct DroppedItem
+{
+    public ItemData itemData;
+    public float dropChance;
+}
 
 [CreateAssetMenu(fileName = "Attack Dictionary", menuName = "Add Attack Dictionary")]
 public class EnemyData : ScriptableObject
@@ -11,6 +21,9 @@ public class EnemyData : ScriptableObject
     public Dictionary<string, UnityAction<GameObject, GameObject>> AttacksDictionary = new Dictionary<string, UnityAction<GameObject, GameObject>>();
 
     public GameObject[] AttacksProjectiles;
+    
+    [SerializeField]
+    private DroppedItem[] droppedItems;
 
     public void Start()
     {
@@ -68,7 +81,16 @@ public class EnemyData : ScriptableObject
     #region Drops
     public ItemData[] GetIdemDrops()
     {
-        return Array.Empty<ItemData>();
+        List<ItemData> drops = new List<ItemData>();
+        for (int i = 0; i < droppedItems.Length; i++)
+        {
+            if (droppedItems[i].dropChance >= Random.Range(0.0f, 100.0f))
+            {
+                drops.Add(droppedItems[i].itemData);
+            }
+        }
+        
+        return drops.ToArray();
     }
     #endregion
 }

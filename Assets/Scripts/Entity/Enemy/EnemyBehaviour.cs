@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using Interfaces;
+using Inventory;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
@@ -107,7 +108,11 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         ItemData[] items = enemyData.GetIdemDrops();
         foreach (var item in items)
         {
-            Instantiate(item, transform.position, Quaternion.identity);
+            GameObject pickup = new GameObject();
+            pickup.AddComponent<ItemPickup>();
+            ItemPickup itemPickup = pickup.GetComponent<ItemPickup>();
+            itemPickup.ItemData = item;
+            Instantiate(pickup, transform.position, Quaternion.Euler(0,0, transform.localRotation.eulerAngles.z));
         }
         Destroy(gameObject);
     }
