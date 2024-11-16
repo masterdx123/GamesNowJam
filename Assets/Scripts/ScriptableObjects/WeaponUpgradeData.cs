@@ -23,13 +23,12 @@ namespace ScriptableObjects
 
         public override void ExecuteUpgrade(WeaponProjectile target)
         {
-            if (target.IsExplosive){
-                return;
+            if (!target.IsExplosive){
+                target.IsExplosive = isExplosive;
             }
-            if (target.IsBoomerang){
-                return;
-            }            
-            target.IsExplosive = isExplosive;
+            if (!target.IsBoomerang){
+                target.IsBoomerang = isBoomerang;
+            }
             Debug.Log("Executing Weapon Upgrade For Projectile!");
         }
         
