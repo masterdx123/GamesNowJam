@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   upgradeName: Triple Shot
-  description: TRIPLE SHOOOOT
+  description: Shoot three bullets.
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   statsToUpgrade:
   - stat: 5
     value: 2
+  isExplosive: 0
+  isBoomerang: 0
+  isFrenzied: 0
+  enemiesPenetrated: 0

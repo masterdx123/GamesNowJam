@@ -96,11 +96,13 @@ public class Weapon : MonoBehaviour
         //Resets cooldown of the weapon based on the weapon attack speed.
         internalCooldown = weaponData.fireRateInterval * (1 + AttackIntervalModifier);
     
+        //When the player has the Frenzy Module upgrade, their firerate interval may be reduced by an additional 0.5 secs (scaling inversely with bubble size)
         if(isFrenzied){
             currentOxygenCount = _oxygenSystem.CurrentEnergy;
             internalCooldown = internalCooldown - (0.5f - currentOxygenCount/200);
         } 
-
+        
+        //Weapons CANNOT shoot faster than MINIMUM_ATTACK_INTERVAL (aka 0.1 seconds).
         if(internalCooldown < MINIMUM_ATTACK_INTERVAL) internalCooldown = MINIMUM_ATTACK_INTERVAL;
 
         int index = Random.Range(0, shoot.Length);
@@ -116,6 +118,7 @@ public class Weapon : MonoBehaviour
     }
     private void Attack()
     {
+        //When the player has the Spread Shot upgrade they shoot more than 3 bullets which fire at an angle of each other 
         WeaponProjectile[] weaponProjectiles = FunctionLibrary.ShootSpread(
             weaponData.projectileAmount + ProjectileAmountModifier, 
             90, 

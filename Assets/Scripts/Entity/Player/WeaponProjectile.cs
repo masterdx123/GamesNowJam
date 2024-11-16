@@ -51,7 +51,8 @@ public class WeaponProjectile : MonoBehaviour
     {
         // Temp for test
         var projectileVelocity = senderWeapon ? senderWeapon.weaponData.projectileVelocity * (1 + senderWeapon.BulletVelocityModifier) : bulletSpeed;
-
+        
+        //If the player has the Boomerang Bullets upgrade, projectiles return to their origin point after they reach their maximum distance.
         if (projectileLifeRemain <= 0 && isBoomerang) {
             projectileLifeRemain = initialProjectileLifetime;
             isBoomerang = false;
@@ -78,6 +79,7 @@ public class WeaponProjectile : MonoBehaviour
                     : finalDamage;
                 damageable.TakeDamage(damage);
 
+                //If the player has the Explosive Ammo upgrade, the first hit of each projectile generates an explosion (via a prefab)
                 if(isExplosive) {
                     GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
                     Debug.Log("explosion name:" + explosion.name);
@@ -87,6 +89,7 @@ public class WeaponProjectile : MonoBehaviour
                 }
             }
 
+            //If the player has the Penetrating Bullets upgrade, projectiles may penetrate up to an "enemiesPenetrated" amount of damageable hitboxes
             if(enemiesPenetrated == 0) {
                 Destroy(gameObject);    
             }
