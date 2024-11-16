@@ -17,6 +17,8 @@ public class OxygenSystem : MonoBehaviour
     [SerializeField, ColorUsage(true, true)]
     private Color borderColor = new Color(49/255f,227/255f,250/255f,1f);
 
+    public float CurrentRadius { get => oxygenBubbleCollider.radius; }
+
     private void Awake()
     {
         // Set up LineRenderer component for the border
