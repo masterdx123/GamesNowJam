@@ -97,4 +97,9 @@ public class OxygenSystem : MonoBehaviour
             currentEnergy = oxygenSystemStats.Energy;
         }
     }
+
+    public float GetCurrentEnergy() 
+    {
+        return currentEnergy;
+    }
 }

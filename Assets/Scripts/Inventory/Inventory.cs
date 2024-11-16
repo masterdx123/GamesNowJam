@@ -133,7 +133,7 @@ namespace Inventory
             int index = _items.IndexOf(item);
 
             // If the item doesn't have enough, return false
-            if (item.Amount > amount) return false;
+            if (item.Amount < amount) return false;
             // decrease amount to item
             item.Amount -= amount;
 
@@ -171,6 +171,12 @@ namespace Inventory
         {
             Item item = _items.Find(i => i.ItemData == inItemData);
             return item.ItemData && item.Amount >= amount;
+        }
+
+        public int GetItemAmount(ItemData inItemData)
+        {
+            Item item = _items.Find(i => i.ItemData == inItemData);
+            return item.Amount;
         }
         
         public void ToggleInventory()
