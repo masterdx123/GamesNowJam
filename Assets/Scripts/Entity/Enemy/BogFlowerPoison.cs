@@ -13,6 +13,8 @@ public class BogFlowerPoison : MonoBehaviour
     private CircleCollider2D damageCollider;
     private int segments = 50;
     private float currentRadius;
+    [SerializeField] GameObject circleVisual;
+
     private void Awake()
     {
         currentRadius = 0.1f;
@@ -50,6 +52,7 @@ public class BogFlowerPoison : MonoBehaviour
             // Update the visual circle and collider radius
             DrawCircle(currentRadius);
             damageCollider.radius = currentRadius;
+            circleVisual.transform.localScale = new Vector3(currentRadius, currentRadius, .5f) * 2;
         }
         else { DrawCircle(currentRadius); }
 

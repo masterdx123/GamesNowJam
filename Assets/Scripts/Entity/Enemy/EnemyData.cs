@@ -36,7 +36,8 @@ public class EnemyData : ScriptableObject
 
         List<StringActionGO> attacksDictionary = new List<StringActionGO>()
         {
-            new StringActionGO("SingleShot", SingleShot)
+            new StringActionGO("SingleShot", SingleShot),
+            new StringActionGO("PoisonCloud", PoisonCloud)
         };
 
         foreach (var move in movesDictionary)
@@ -84,6 +85,10 @@ public class EnemyData : ScriptableObject
             selfBehaviour.GetAngleToTarget(target.transform.position),
             null
             );
+    }
+    public void PoisonCloud(GameObject self, GameObject target)
+    {
+        Instantiate(AttacksProjectiles[1], self.transform.position, Quaternion.identity, self.transform);
     }
     #endregion
 

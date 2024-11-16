@@ -40,6 +40,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     private UnityEvent<GameObject, GameObject> OnDeath = new UnityEvent<GameObject, GameObject>();
     private float internalCooldown;
     [SerializeField] private float attackInterval;
+    [SerializeField] private bool doesAttackOnAnimationCondition = false;
     
     void Start()
     {
@@ -68,10 +69,9 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
         Move?.Invoke(this);
 
-        if (internalCooldown <= 0)
+        if (internalCooldown <= 0 && doesAttackOnAnimationCondition == false)
         {
-            Attack?.Invoke(this.gameObject, GetTarget());
-            internalCooldown = attackInterval;
+            OnAttack();
         }
 
         //Reduces cooldown as a timer.
@@ -79,6 +79,12 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         {
             internalCooldown -= Time.deltaTime;
         }
+    }
+
+    public void OnAttack()
+    {
+        Attack?.Invoke(this.gameObject, GetTarget());
+        internalCooldown = attackInterval;
     }
 
     GameObject GetTarget()
