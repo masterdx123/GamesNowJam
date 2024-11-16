@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChargedGoo
   m_EditorClassIdentifier: 
   itemName: Charged Goo
-  description: A goo that is charged
+  description: A goo that is charged.
   icon: {fileID: 21300000, guid: 055b52bcbeb6d124e96df19fd365fb7a, type: 3}
   canStack: 1
-  maxStackSize: 25
+  maxStackSize: 999

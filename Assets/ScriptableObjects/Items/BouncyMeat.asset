@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd60c039461c15d48a3205906ef88dd6, type: 3}
-  m_Name: ExoticBlood
+  m_Name: BouncyMeat
   m_EditorClassIdentifier: 
-  itemName: ExoticBlood
-  description: Replenish your energy.
-  icon: {fileID: -2884847333407950948, guid: bf876770dff5cc04fb8a484fade4c1af, type: 3}
+  itemName: Bouncy Meat
+  description: Very Bouncy!
+  icon: {fileID: 21300000, guid: 055b52bcbeb6d124e96df19fd365fb7a, type: 3}
   canStack: 1
   maxStackSize: 999
