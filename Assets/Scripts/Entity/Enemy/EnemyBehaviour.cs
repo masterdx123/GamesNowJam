@@ -15,6 +15,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator animator;
+    private string currentState;
 
     [Header("Actions")]
     [SerializeField] private List<string> movementList;
@@ -163,5 +164,19 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
             Instantiate(pickup, transform.position + offset, Quaternion.Euler(0,0, transform.localRotation.eulerAngles.z));
         }
         Destroy(gameObject);
+    }
+
+    private void ChangeAnimationState(string newState)
+    {
+        if (currentState != newState)
+        {
+            animator.Play(newState, 0, 0f);
+            currentState = newState;
+        }
+    }
+
+    public void OnHitFinish()
+    {
+
     }
 }
