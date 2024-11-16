@@ -8,7 +8,8 @@ public class OxygenSystem : MonoBehaviour
     private LineRenderer lineRenderer;
     private CircleCollider2D oxygenBubbleCollider;
     private int segments = 50; // Defines the smoothness of the circle
-    private float currentEnergy;
+    [SerializeField] private float currentEnergy;
+    public float CurrentEnergy { get => currentEnergy; set => currentEnergy = value; }
     [SerializeField] GameObject circleVisual;
 
     // This is a light blue color.

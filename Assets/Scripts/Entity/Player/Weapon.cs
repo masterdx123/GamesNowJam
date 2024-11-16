@@ -24,6 +24,8 @@ public class Weapon : MonoBehaviour
 
     private int attackCounter;
     private float internalCooldown;
+    private OxygenSystem _oxygenSystem;
+    private float currentOxygenCount;
 
     [Space(15), Header("Upgrades")]
     [SerializeField] private List<UpgradeData> upgrades;
@@ -36,6 +38,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float rangeModifier;
     [SerializeField] private float attackIntervalModifier;
     [SerializeField] private int projectileAmountModifier;
+    [SerializeField] private bool isFrenzied = false;
 
     public int DamageFlatModifier { get => damageFlatModifier; set => damageFlatModifier = value; }
     public float DamageModifier { get => damageModifier; set => damageModifier = value; }
@@ -43,6 +46,7 @@ public class Weapon : MonoBehaviour
     public float RangeModifier { get => rangeModifier; set => rangeModifier = value; }
     public float AttackIntervalModifier { get => attackIntervalModifier; set => attackIntervalModifier = value; }
     public int ProjectileAmountModifier { get => projectileAmountModifier; set => projectileAmountModifier = value; }
+    public bool IsFrenzied { get => isFrenzied; set => isFrenzied = value; }
 
     [SerializeField] private AudioClip[] shoot;
     private AudioSource audioSource;
@@ -54,6 +58,7 @@ public class Weapon : MonoBehaviour
         weaponPivot = WeaponPivot;
         attackAction.Enable();
         UpdateWeapon();
+        _oxygenSystem = GameObject.FindGameObjectWithTag("MainConsole").GetComponentInChildren<OxygenSystem>();
     }
 
     void Update()
@@ -88,6 +93,12 @@ public class Weapon : MonoBehaviour
     {
         //Resets cooldown of the weapon based on the weapon attack speed.
         internalCooldown = weaponData.fireRateInterval * (1 + AttackIntervalModifier);
+        Debug.Log("Pre Frenzy:" + internalCooldown);
+        if(isFrenzied){
+            currentOxygenCount = _oxygenSystem.CurrentEnergy;
+            internalCooldown = internalCooldown - (1 - currentOxygenCount/100) ;
+            Debug.Log("After Frenzy:" + internalCooldown);
+        }  
 
         int index = Random.Range(0, shoot.Length);
         shootClip = shoot[index];

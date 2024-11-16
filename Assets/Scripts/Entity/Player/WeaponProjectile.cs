@@ -51,24 +51,19 @@ public class WeaponProjectile : MonoBehaviour
     {
         // Temp for test
         var projectileVelocity = senderWeapon ? senderWeapon.weaponData.projectileVelocity * (1 + senderWeapon.BulletVelocityModifier) : bulletSpeed;
-        Vector2 velocity;
 
         if (projectileLifeRemain <= 0 && isBoomerang) {
             projectileLifeRemain = initialProjectileLifetime;
             isBoomerang = false;
             directionModifier = -1;
-
-            return;   
         }
 
-        velocity = gameObject.transform.right * projectileVelocity * directionModifier;
+        Vector2 velocity = gameObject.transform.right * projectileVelocity * directionModifier;
         rb.linearVelocity = velocity;
 
         if (projectileLifeRemain > 0) projectileLifeRemain -= Time.deltaTime;
 
-        if (projectileLifeRemain <= 0 && !isBoomerang) {
-            Destroy(this.gameObject);
-        } 
+        if (projectileLifeRemain <= 0 && !isBoomerang) Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
