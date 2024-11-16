@@ -166,6 +166,7 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
   speed: 3
   maxHealth: 50
+  creditValue: 2
   attackInterval: 1
 --- !u!70 &8321124944451895553
 CapsuleCollider2D:
