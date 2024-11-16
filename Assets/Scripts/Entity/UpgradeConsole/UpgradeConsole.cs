@@ -4,6 +4,7 @@ using Enums;
 using ScriptableObjects;
 using UI.Tooltip;
 using UI.Upgrades;
+using UI.MainConsole;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -73,6 +74,15 @@ namespace Entity.UpgradeConsole
         private float energyIncreasePerItem;
         [SerializeField] 
         private OxygenSystemStats oxygenSystemStats;
+        [SerializeField]
+        private Transform _gameManagerCanvas;
+        [SerializeField] 
+        private GameObject _machineOxygenBar;
+        [SerializeField] 
+        private GameObject _machineArrowPrefab; 
+        private GameObject _machineArrow;
+        [SerializeField] 
+        private float _machineArrowOffset = 1f; 
         
         
         [Header("Upgrades")]
@@ -86,6 +96,7 @@ namespace Entity.UpgradeConsole
         private UpgradeManagementUIController _uiController;
         private GameObject _player;
         private PlayerController _playerController;
+        private Camera _mainCamera;
         [SerializeField]private OxygenSystem _oxygenSystem;
 
         [SerializeField] private AudioClip depositClip;
@@ -96,6 +107,7 @@ namespace Entity.UpgradeConsole
         {
             audioSource = this.GetComponent<AudioSource>();
             _oxygenSystem = gameObject.GetComponentInChildren<OxygenSystem>();
+            _mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
             if (!_instantiatedWeaponUpgradesUI)
             {
                 _instantiatedWeaponUpgradesUI = Instantiate(weaponUpgradesUIControllerPrefab);
@@ -113,6 +125,20 @@ namespace Entity.UpgradeConsole
             if (openUpgradeConsoleAction.triggered && _player)
             {
                 ToggleUpgradeUI();
+            }
+
+            if (!IsObjectVisible(_mainCamera, gameObject))
+            {
+                _machineOxygenBar.SetActive(true);
+                if(!_machineArrow) {
+                    _machineArrow = Instantiate(_machineArrowPrefab, _gameManagerCanvas);
+                    _machineArrow.GetComponent<MachineArrow>().UpgradeConsole = gameObject;
+                    _machineArrow.GetComponent<MachineArrow>().Offset = _machineArrowOffset;
+                    _machineArrow.GetComponent<MachineArrow>().Canvas = _gameManagerCanvas;
+                } 
+            } else {
+                _machineOxygenBar.SetActive(false);
+                if(_machineArrow) Destroy(_machineArrow);
             }
         }
 
@@ -224,6 +250,14 @@ namespace Entity.UpgradeConsole
                     weaponUpgrades[i].SetUnlockable(isUnlocked);
                 }
             }
+        }
+
+        private bool IsObjectVisible(Camera camera, GameObject gameObject)
+        {
+            Vector3 viewportPoint = camera.WorldToViewportPoint(gameObject.transform.position);
+
+            return viewportPoint.x >= 0 && viewportPoint.x <= 1 &&
+                viewportPoint.y >= 0 && viewportPoint.y <= 1;
         }
     }
 }

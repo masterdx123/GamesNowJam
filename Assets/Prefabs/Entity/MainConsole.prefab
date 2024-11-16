@@ -402,6 +402,8 @@ MonoBehaviour:
   energyData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
   energyIncreasePerItem: 0.7
   oxygenSystemStats: {fileID: 11400000, guid: e8149907c9a29d840885852edcb11094, type: 2}
+  _machineOxygenBar: {fileID: 0}
+  _machineArrowPrefab: {fileID: 744172287356460095, guid: 7d4021e1ff09352408cace1a37c565bb, type: 3}
   weaponUpgrades:
   - upgradeData: {fileID: 11400000, guid: a52c686c1ed16aa48af174cbf98511e1, type: 2}
     isUnlocked: 0

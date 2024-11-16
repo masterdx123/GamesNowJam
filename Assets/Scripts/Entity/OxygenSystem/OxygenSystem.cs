@@ -9,6 +9,7 @@ public class OxygenSystem : MonoBehaviour
     private CircleCollider2D oxygenBubbleCollider;
     private int segments = 50; // Defines the smoothness of the circle
     [SerializeField] private float currentEnergy;
+    private float _initialEnergy;
     public float CurrentEnergy { get => currentEnergy; set => currentEnergy = value; }
     [SerializeField] GameObject circleVisual;
 
@@ -37,6 +38,7 @@ public class OxygenSystem : MonoBehaviour
 
         // Initialize energy to maximum
         currentEnergy = oxygenSystemStats.Energy;
+        _initialEnergy = oxygenSystemStats.Energy;
     }
 
     private void Start()
@@ -102,5 +104,10 @@ public class OxygenSystem : MonoBehaviour
     public float GetCurrentEnergy() 
     {
         return currentEnergy;
+    }
+
+    public float GetMaxEnergy() 
+    {
+        return _initialEnergy;
     }
 }
