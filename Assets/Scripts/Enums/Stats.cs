@@ -7,5 +7,6 @@ namespace Enums
         BulletVelocity,
         AttackInterval,
         Range,
+        ProjectileAmount,
     }
 }

@@ -59,7 +59,6 @@ namespace Managers
 
         public void RestartLevel()
         {
-            Time.timeScale = 1f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 

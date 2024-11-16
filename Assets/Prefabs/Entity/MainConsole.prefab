@@ -405,5 +405,12 @@ MonoBehaviour:
       quantity: 2
     - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
       quantity: 5
+  - upgradeData: {fileID: 11400000, guid: a52c686c1ed16aa48af174cbf98511e1, type: 2}
+    isUnlocked: 0
+    materialRequirements:
+    - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+      quantity: 2
+    - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+      quantity: 5
   characterUpgrades: []
   _oxygenSystem: {fileID: 0}

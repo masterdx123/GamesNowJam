@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   upgradeName: God Shot
-  description: Double Damage, -Firerate
+  description: Triple Damage, -Firerate
   icon: {fileID: -5230012275019313502, guid: 3924b7464635e214cb4a8c86e7fc29e4, type: 3}
   statsToUpgrade:
   - stat: 0
-    value: 1
+    value: 2
   - stat: 1
     value: 0
   - stat: 2
