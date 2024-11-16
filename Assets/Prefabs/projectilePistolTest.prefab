@@ -179,6 +179,8 @@ MonoBehaviour:
   finalDamage: 10
   projectileLifeRemain: 2
   bulletSpeed: 10
+  explosionPrefab: {fileID: 5730333019578818343, guid: 4bab1e40ddd1d0442bf6fbe1f8c8bd52, type: 3}
+  isExplosive: 0
   angle: 0
   rb: {fileID: 6721735098913636635}
   boxCollider: {fileID: 5719081759093962486}

@@ -17,9 +17,11 @@ namespace ScriptableObjects
     {
         [SerializeField]
         public StatValue[] statsToUpgrade;
+        public bool isExplosive;
 
         public override void ExecuteUpgrade(WeaponProjectile target)
         {
+            target.IsExplosive = isExplosive;
             Debug.Log("Executing Weapon Upgrade For Projectile!");
         }
         
