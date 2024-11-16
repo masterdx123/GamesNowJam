@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Inventory
 {
     [ExecuteInEditMode]
-    [RequireComponent(typeof(CircleCollider2D), typeof(SpriteRenderer))]
+    [RequireComponent(typeof(CircleCollider2D))]
     public class ItemPickup : MonoBehaviour
     {
         public ItemData ItemData
@@ -26,7 +26,7 @@ namespace Inventory
         {
             _circleCollider = GetComponent<CircleCollider2D>();
             _circleCollider.isTrigger = true;
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
             if (_spriteRenderer && itemData)
             {
                 _spriteRenderer.sprite = itemData.Icon;

@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: d98775ff99a3c8a499f142d88fbaf8f7
+guid: 1426f6f6bb0b401438cbd0f00a3feb1c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7278791742645257144
-    second: Sporehound_0
-  - first:
-      213: -7176983836179857833
-    second: Sporehound_1
-  - first:
-      213: 8697206173001970355
-    second: Sporehound_2
+      213: 7680820834086852892
+    second: 16_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sporehound_0
+      name: 16_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 37
-        height: 23
+        width: 16
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8b3ca667686730560800000000000000
-      internalID: 7278791742645257144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sporehound_1
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 0
-        width: 42
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 75e77cde93b366c90800000000000000
-      internalID: -7176983836179857833
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sporehound_2
-      rect:
-        serializedVersion: 2
-        x: 99
-        y: 0
-        width: 43
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3b2fd104feea2b870800000000000000
-      internalID: 8697206173001970355
+      spriteID: c199a279ad1c79a60800000000000000
+      internalID: 7680820834086852892
       vertices: []
       indices: 
       edges: []
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sporehound_0: 7278791742645257144
-      Sporehound_1: -7176983836179857833
-      Sporehound_2: 8697206173001970355
+      16_0: 7680820834086852892
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
