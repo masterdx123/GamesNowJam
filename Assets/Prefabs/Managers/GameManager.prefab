@@ -1355,10 +1355,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesToSpawn:
+  - {fileID: 122771650095066289, guid: 0ed8a68dd3bb7a6469edcfd8956c27b0, type: 3}
+  - {fileID: 6485730617634244332, guid: 80a416c53d87b444ead1f2b8be51608b, type: 3}
+  - {fileID: 1256213752867205824, guid: a86d5c32155091d4eb86ed22d9ecf017, type: 3}
   - {fileID: 122771650095066289, guid: f6f0e1c1c7a91404d88bf3a313e9ca13, type: 3}
-  - {fileID: 1256213752867205824, guid: a86d5c32155091d4eb86ed22d9ecf017, type: 3}
-  - {fileID: 1256213752867205824, guid: a86d5c32155091d4eb86ed22d9ecf017, type: 3}
-  - {fileID: 1256213752867205824, guid: a86d5c32155091d4eb86ed22d9ecf017, type: 3}
   firstWaveSpawnTime: 5
   timeBetweenWaves: 20
   showWarningTime: 8

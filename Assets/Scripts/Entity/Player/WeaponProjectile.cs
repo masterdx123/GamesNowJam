@@ -15,22 +15,25 @@ public class WeaponProjectile : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     
     [SerializeField] private bool isExplosive = false;
+    [SerializeField] private bool isBoomerang = false;
     [SerializeField] private GameObject explosionPrefab;
     public bool IsExplosive { get => isExplosive; set => isExplosive = value; }
-    [SerializeField] private bool isBoomerang = false;
+
     public bool IsBoomerang { get => isBoomerang; set => isBoomerang = value; }
     public float angle;
 
     public Rigidbody2D rb;
     public BoxCollider2D boxCollider;
-    
+
     private GameObject _owner;
+    private float initialProjectileLifetime;
 
     private void Start()
     {
         if (senderWeapon)
         {
             projectileLifeRemain = senderWeapon.weaponData.projectileDuration * (1 + senderWeapon.RangeModifier);
+            initialProjectileLifetime = projectileLifeRemain;
             angle = senderWeapon.transform.rotation.eulerAngles.z;
         }
     }
@@ -45,11 +48,27 @@ public class WeaponProjectile : MonoBehaviour
     {
         // Temp for test
         var projectileVelocity = senderWeapon ? senderWeapon.weaponData.projectileVelocity * (1 + senderWeapon.BulletVelocityModifier) : bulletSpeed;
-        Vector2 velocity = gameObject.transform.right * projectileVelocity;
+        Vector2 velocity;
+
+        if (projectileLifeRemain <= 0 && isBoomerang) {
+            Debug.Log("triggered boomerang");
+            projectileLifeRemain = initialProjectileLifetime;
+            Debug.Log("initialProjectileLifetime:" + initialProjectileLifetime);
+            Debug.Log("new lifetime:" + projectileLifeRemain);
+            isBoomerang = false;
+
+            velocity = gameObject.transform.right * projectileVelocity;
+            rb.linearVelocity = velocity;
+
+            return;   
+        }
+
+        velocity = gameObject.transform.right * projectileVelocity;
         rb.linearVelocity = velocity;
 
         if (projectileLifeRemain > 0) projectileLifeRemain -= Time.deltaTime;
-        if (projectileLifeRemain <= 0) Destroy(this.gameObject);
+
+        if (projectileLifeRemain <= 0 && !isBoomerang) Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

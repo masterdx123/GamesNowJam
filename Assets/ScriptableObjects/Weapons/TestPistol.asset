@@ -19,6 +19,7 @@ MonoBehaviour:
   attackObject: {fileID: 8306978968838758409, guid: 67b0b336bf1d141419994a7f0bb3db5c, type: 3}
   projectileVelocity: 20
   projectileDuration: 2
+  projectileAmount: 1
   numberUniqueAttacks: 1
   offsetInHand: {x: 9, y: 2}
   offsetProjectile: {x: 8, y: 0}
