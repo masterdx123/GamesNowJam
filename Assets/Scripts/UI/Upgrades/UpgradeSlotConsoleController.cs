@@ -1,9 +1,10 @@
 ﻿using Entity.UpgradeConsole;
 using ScriptableObjects;
-using UI.Inventory;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Inv = Inventory;
+using UIInv = UI.Inventory;
 
 namespace UI.Upgrades
 {
@@ -15,14 +16,19 @@ namespace UI.Upgrades
         }
 
         public UpgradeData UpgradeData => _upgradeData;
+        public bool IsUnlocked => _isUnlocked;
         
         [SerializeField]
         private Image iconRenderer;
         [SerializeField]
         private GameObject draggableObjectPrefab;
         
+        private Upgrade _upgrade;
         private UpgradeData _upgradeData;
+        private bool _isUnlocked;
+        private MaterialRequirement[] _materialRequirements;
         private int _slot;
+        private Inv.Inventory _inventory;
         
         private GameObject _draggedObject;
         
@@ -49,21 +55,37 @@ namespace UI.Upgrades
             }
             
             iconRenderer.enabled = true;
+            iconRenderer.color = new Color(1,1,1,0.25f);
+            _upgrade = upgrade.Value;
             _upgradeData = upgrade.Value.upgradeData;
+            _isUnlocked = upgrade.Value.isUnlocked;
+            _materialRequirements = upgrade.Value.materialRequirements;
             iconRenderer.sprite = _upgradeData.Icon;
+
+            _inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inv.Inventory>();
+
+            if(IsCraftable() && !IsUnlocked) {
+                GetComponent<Image>().color = Color.green;
+                GetComponent<Button>().onClick.AddListener(UnlockUpgrade);
+            } else if(IsUnlocked) {
+                GetComponent<Image>().color = Color.white;
+                iconRenderer.color = Color.white;
+            }
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (!_upgradeData) return;
-            iconRenderer.enabled = false;
-            _draggedObject = Instantiate(draggableObjectPrefab, transform.root);
-            DraggableItem draggableItem = _draggedObject.GetComponent<DraggableItem>();
-            if (draggableItem)
-            {
-                draggableItem.SetDraggableData(_upgradeData);
+            if(_isUnlocked) {
+                iconRenderer.enabled = false;
+                _draggedObject = Instantiate(draggableObjectPrefab, transform.root);
+                DraggableItem draggableItem = _draggedObject.GetComponent<DraggableItem>();
+                if (draggableItem)
+                {
+                    draggableItem.SetDraggableData(_upgradeData);
+                }
+                _draggedObject.transform.SetAsLastSibling();
             }
-            _draggedObject.transform.SetAsLastSibling();
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -79,6 +101,19 @@ namespace UI.Upgrades
             Destroy(_draggedObject);
         }
 
+        public void UnlockUpgrade()
+        {
+            GetComponent<Image>().color = Color.white;
+            transform.root.GetComponent<UpgradeManagementUIController>().UpgradeConsole.SetWeponUpgradeUnlock(_upgrade, true);
+            for (int i = 0; i < _materialRequirements.Length; i++) 
+            {
+                _inventory.RemoveAmount(_materialRequirements[i].itemData, _materialRequirements[i].quantity);
+            }
+            GetComponent<Button>().onClick.RemoveListener(UnlockUpgrade);
+            _isUnlocked = true;
+            iconRenderer.color = Color.white;
+        }
+
         public string GetTitle()
         {
             return _upgradeData ? _upgradeData.UpgradeName : "";
@@ -92,6 +127,17 @@ namespace UI.Upgrades
         public bool CanShow()
         {
             return _upgradeData;
+        }
+
+        private bool IsCraftable() 
+        {
+            if (_materialRequirements == null || _materialRequirements.Length == 0) return false;
+
+            for (int i = 0; i < _materialRequirements.Length; i++) 
+            {
+                if(!_inventory.CheckAndIfItemExistsInInventoryAndHasAmount(_materialRequirements[i].itemData, _materialRequirements[i].quantity)) return false;
+            }
+            return true;
         }
     }
 }

@@ -9,6 +9,7 @@ namespace UI.Upgrades
     {
         public UpgradeConsole UpgradeConsole
         {
+            get => _upgradeConsole;
             set => _upgradeConsole = value;
         }
 

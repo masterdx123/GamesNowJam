@@ -247,7 +247,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      leechenemy_0: -7656689703206719450
+      leechenemy_1: -2425686314456285768
+      leechenemy_2: 7280993844111393950
+      leechenemy_3: -5588896788086148204
+      leechenemy_4: -4387770993587827505
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
