@@ -2667,9 +2667,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2690080841963895471}
-        m_TargetAssemblyTypeName: Managers.GameManager, Assembly-CSharp
-        m_MethodName: RestartLevel
+      - m_Target: {fileID: 9162535746434199417}
+        m_TargetAssemblyTypeName: UI.Menu.PauseMenu, Assembly-CSharp
+        m_MethodName: ReturnToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

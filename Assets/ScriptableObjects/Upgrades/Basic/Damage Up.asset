@@ -17,13 +17,5 @@ MonoBehaviour:
   description: +Flat Damage
   icon: {fileID: -834752967, guid: 08a149e69f7a06a45b25d1505a5d38a4, type: 3}
   statsToUpgrade:
-  - stat: 0
-    value: 0
   - stat: 1
     value: 5
-  - stat: 2
-    value: 0
-  - stat: 3
-    value: 0
-  - stat: 4
-    value: 0

@@ -13,6 +13,12 @@ public class WeaponProjectile : MonoBehaviour
     [SerializeField] private int finalDamage;
     [SerializeField] private float projectileLifeRemain;
     [SerializeField] private float bulletSpeed;
+    
+    [SerializeField] private bool isExplosive = false;
+    [SerializeField] private GameObject explosionPrefab;
+    public bool IsExplosive { get => isExplosive; set => isExplosive = value; }
+    [SerializeField] private bool isBoomerang = false;
+    public bool IsBoomerang { get => isBoomerang; set => isBoomerang = value; }
     public float angle;
 
     public Rigidbody2D rb;
@@ -57,6 +63,14 @@ public class WeaponProjectile : MonoBehaviour
                     ? finalDamage * (1 + senderWeapon.DamageModifier) + senderWeapon.DamageModifier
                     : finalDamage;
                 damageable.TakeDamage(damage);
+
+                
+                if(isExplosive) {
+                    GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
+                    Debug.Log("explosion name:" + explosion.name);
+                    explosion.GetComponent<Explosion>()._Owner = _owner;
+                    explosion.GetComponent<Explosion>().Damage = damage/2;
+                }
             }
             Destroy(gameObject);    
         }

@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65a522784e3c0d4458d879caf162c809, type: 3}
-  m_Name: Range Up
+  m_Name: Exploding Ammo
   m_EditorClassIdentifier: 
   id: 1
-  upgradeName: Range Up
-  description: +Range
-  icon: {fileID: -834752967, guid: 08a149e69f7a06a45b25d1505a5d38a4, type: 3}
-  statsToUpgrade:
-  - stat: 4
-    value: 0.5
+  upgradeName: Exploding Ammo
+  description: boom boom
+  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  statsToUpgrade: []
+  isExplosive: 1
