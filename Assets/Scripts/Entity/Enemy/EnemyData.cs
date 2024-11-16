@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Library;
 using ScriptableObjects;
 using Unity.Mathematics;
 using UnityEngine;
@@ -62,7 +63,7 @@ public class EnemyData : ScriptableObject
     {
         Rigidbody2D rigidbody = enemy.GetComponent<Rigidbody2D>();
 
-        float angle = enemy.GetAngleToTarget();
+        float angle = enemy.GetAngleToTarget(null);
         Vector2 velocity = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)) * enemy.Speed;
 
         rigidbody.linearVelocity = velocity;
@@ -73,7 +74,16 @@ public class EnemyData : ScriptableObject
     public void SingleShot(GameObject self, GameObject target)
     {
         var selfBehaviour = self.GetComponent<EnemyBehaviour>();
-        ShootSpread(1, 0, AttacksProjectiles[0], selfBehaviour.GetAngleToTarget(), selfBehaviour);
+        FunctionLibrary.ShootSpread(
+            1,
+            0, 
+            AttacksProjectiles[0], 
+            selfBehaviour.GetAngleToTarget(target.transform.position),
+            selfBehaviour.gameObject.transform.position,
+            selfBehaviour.gameObject,
+            selfBehaviour.GetAngleToTarget(target.transform.position),
+            null
+            );
     }
     #endregion
 
@@ -93,29 +103,6 @@ public class EnemyData : ScriptableObject
         return drops.ToArray();
     }
     #endregion
-    void ShootSpread(int numOfShotsNonInclusive, float spreadAngle, GameObject projectile, float angleToTarget, EnemyBehaviour selfBehaviour)
-    {
-        float leftMostPoint = angleToTarget - (spreadAngle/2);
-
-        if (numOfShotsNonInclusive > 1)
-        {
-            float deltaSpread = spreadAngle/numOfShotsNonInclusive;
-            for (int i = 0; i < numOfShotsNonInclusive; i++)
-            {
-                var attackGo = Instantiate(AttacksProjectiles[0], selfBehaviour.gameObject.transform.position, Quaternion.Euler(0, 0, leftMostPoint + deltaSpread * i));
-                WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
-                attackProjectileComponent.Owner = selfBehaviour.gameObject;
-                attackProjectileComponent.angle = selfBehaviour.GetAngleToTarget();
-            }
-        }
-        else
-        {
-            var attackGo = Instantiate(AttacksProjectiles[0], selfBehaviour.gameObject.transform.position, Quaternion.Euler(0, 0, selfBehaviour.GetAngleToTarget()));
-            WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
-            attackProjectileComponent.Owner = selfBehaviour.gameObject;
-            attackProjectileComponent.angle = selfBehaviour.GetAngleToTarget();
-        }
-    }
 }
 [Serializable]
 struct StringActionEB

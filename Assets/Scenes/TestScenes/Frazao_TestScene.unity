@@ -4839,6 +4839,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2025985886}
+    - target: {fileID: 5329485936374097162, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7351091733012403390, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 67.58002

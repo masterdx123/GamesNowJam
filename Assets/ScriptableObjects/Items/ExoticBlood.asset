@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Replenish your oxygen cenas
   icon: {fileID: -2884847333407950948, guid: bf876770dff5cc04fb8a484fade4c1af, type: 3}
   canStack: 1
-  maxStackSize: 10
+  maxStackSize: 99
