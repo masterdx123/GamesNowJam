@@ -18,8 +18,8 @@ namespace ScriptableObjects
         [SerializeField]
         public StatValue[] statsToUpgrade;
         public bool isExplosive;
-
         public bool isBoomerang;
+        public int enemiesPenetrated = 0;
 
         public override void ExecuteUpgrade(WeaponProjectile target)
         {
@@ -29,6 +29,8 @@ namespace ScriptableObjects
             if (!target.IsBoomerang){
                 target.IsBoomerang = isBoomerang;
             }
+            target.EnemiesPenetrated += enemiesPenetrated;
+
             Debug.Log("Executing Weapon Upgrade For Projectile!");
         }
         
