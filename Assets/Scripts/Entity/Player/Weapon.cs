@@ -2,6 +2,7 @@ using ScriptableObjects;
 using System.Collections;
 using System.Collections.Generic;
 using Enums;
+using Library;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -92,24 +93,16 @@ public class Weapon : MonoBehaviour
     }
     private void Attack()
     {
-        Quaternion projectileRotation = Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z);
-        float[] cenas = {0, -45.0f, 45.0f};
-
-        for(int i = 0; i <= ProjectileAmountModifier; i++) {
-            var attackGo = Instantiate(weaponData.attackObject, projectilePivot.position, Quaternion.Euler(0,0, WeaponPivot.localRotation.eulerAngles.z) * Quaternion.Euler(0,0,cenas[i]));
-            WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
-            attackProjectileComponent.senderWeapon = this;
-            attackProjectileComponent.Owner = playerController.gameObject;
-            foreach (var upgrade in upgrades)
-            {
-                if(upgrade.GetType() == typeof(WeaponUpgradeData))
-                {
-                    upgrade.ExecuteUpgrade(attackProjectileComponent);
-                }
-            }
-
-        }
-
+        FunctionLibrary.ShootSpread(
+            weaponData.projectileAmount + ProjectileAmountModifier, 
+            90, 
+            weaponData.attackObject, 
+            WeaponPivot.localRotation.eulerAngles.z,
+            projectilePivot.position,
+            playerController.gameObject,
+            WeaponPivot.localRotation.eulerAngles.z,
+            this
+        );
     }
 
     public void PlayIdleAnimation()

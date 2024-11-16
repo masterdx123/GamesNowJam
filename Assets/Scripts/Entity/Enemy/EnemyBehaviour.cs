@@ -82,9 +82,9 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         return GameObject.FindGameObjectWithTag("Player");
     }
 
-    public float GetAngleToTarget()
+    public float GetAngleToTarget(Vector3? targetPosition)
     {
-        var differenceFromEnemyToTarget = target.transform.position - this.gameObject.transform.position;
+        var differenceFromEnemyToTarget = targetPosition == null ?  target.transform.position - this.gameObject.transform.position : targetPosition.Value - this.gameObject.transform.position;
         return Mathf.Atan2(differenceFromEnemyToTarget.y, differenceFromEnemyToTarget.x) * Mathf.Rad2Deg;
     }
 
@@ -117,6 +117,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         {
             GameObject pickup = new GameObject();
             pickup.AddComponent<ItemPickup>();
+            pickup.layer = LayerMask.NameToLayer("ItemPickup");
             ItemPickup itemPickup = pickup.GetComponent<ItemPickup>();
             itemPickup.ItemData = item;
             Vector3 offset = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
