@@ -8,6 +8,8 @@ public class Options : MonoBehaviour
     private AudioMixer _audioMixer;
     [SerializeField]
     private Slider _slider;
+    [SerializeField]
+    private GameObject _pauseMenu;
 
     private const string VolumeParameter = "MasterVolume";
 
@@ -28,5 +30,10 @@ public class Options : MonoBehaviour
         // Convert linear slider value to logarithmic (dB)
         float volume = Mathf.Log10(sliderValue) * 20;
         _audioMixer.SetFloat(VolumeParameter, volume);
+    }
+
+    public void CloseOptions() {
+        _pauseMenu.SetActive(true);
+        gameObject.SetActive(false);
     }
 }
