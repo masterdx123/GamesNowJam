@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cdb2b566dce257c40a2081fbcf76481f, type: 3}
+  m_Sprite: {fileID: 4528253001081043129, guid: 135303f25cfd07a4786ff67eadbd6e6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,9 +156,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2767325617810495784}
   spriteRenderer: {fileID: 470487088992201121}
-  sprite1: {fileID: -9072398340738212121, guid: f2e5e1b9bdb565b4eb594318c9f78ddf, type: 3}
-  sprite2: {fileID: -7826156996304436058, guid: fe98e9a8322ec5e4facb9f59184954fc, type: 3}
-  sprite3: {fileID: 1595653969511378232, guid: addcd554c55b53f4abd1bed3511bb970, type: 3}
+  sprite1: {fileID: 7174249172038836308, guid: 135303f25cfd07a4786ff67eadbd6e6c, type: 3}
+  sprite2: {fileID: -8713898679122853490, guid: 135303f25cfd07a4786ff67eadbd6e6c, type: 3}
+  sprite3: {fileID: 4528253001081043129, guid: 135303f25cfd07a4786ff67eadbd6e6c, type: 3}
   stage1Threshold: 50
   stage2Threshold: 100
   growthRate: 10
@@ -178,7 +178,11 @@ MonoBehaviour:
   rb: {fileID: 2767325617810495784}
   spriteRenderer: {fileID: 470487088992201121}
   flowerGrowthSystem: {fileID: 7221237372207030038}
-  droppedItems: []
+  droppedItems:
+  - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    dropChance: 50
+  - itemData: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
+    dropChance: 25
   enemyData: {fileID: 0}
   maxHealth: 50
 --- !u!58 &8093032024046821849
