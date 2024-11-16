@@ -159,6 +159,10 @@ MonoBehaviour:
   - MoveToTarget
   attackList:
   - SingleShot
+  onDeathList: []
+  droppedItems:
+  - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+    dropChance: 5
   enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
   speed: 3
   maxHealth: 50

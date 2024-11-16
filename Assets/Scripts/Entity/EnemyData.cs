@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using ScriptableObjects;
 using Unity.Mathematics;
 using UnityEngine;
@@ -79,14 +80,15 @@ public class EnemyData : ScriptableObject
     #endregion
 
     #region Drops
-    public ItemData[] GetIdemDrops()
+    public ItemData[] GetIdemDrops([CanBeNull] DroppedItem[] inDroppedItems)
     {
+        DroppedItem[] itemsToAnalyze = inDroppedItems ?? droppedItems;
         List<ItemData> drops = new List<ItemData>();
-        for (int i = 0; i < droppedItems.Length; i++)
+        for (int i = 0; i < itemsToAnalyze.Length; i++)
         {
-            if (droppedItems[i].dropChance >= Random.Range(0.0f, 100.0f))
+            if (itemsToAnalyze[i].dropChance >= Random.Range(0.0f, 100.0f))
             {
-                drops.Add(droppedItems[i].itemData);
+                drops.Add(itemsToAnalyze[i].itemData);
             }
         }
         

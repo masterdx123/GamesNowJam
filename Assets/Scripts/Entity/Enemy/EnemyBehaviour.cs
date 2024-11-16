@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using Interfaces;
 using Inventory;
 using ScriptableObjects;
@@ -17,6 +18,10 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     [SerializeField] private List<string> movementList;
     [SerializeField] private List<string> attackList;
     [SerializeField] private List<string> onDeathList;
+    
+    [Header("Loot")]
+    [SerializeField]
+    private DroppedItem[] droppedItems;
 
     public GameObject target {  get => GetTarget();}
 
@@ -105,14 +110,17 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     private void Die()
     {
         OnDeath?.Invoke(gameObject, GetTarget());
-        ItemData[] items = enemyData.GetIdemDrops();
+        ItemData[] items = enemyData.GetIdemDrops(null);
+        items = items.Concat(enemyData.GetIdemDrops(droppedItems)).ToArray();
+        
         foreach (var item in items)
         {
             GameObject pickup = new GameObject();
             pickup.AddComponent<ItemPickup>();
             ItemPickup itemPickup = pickup.GetComponent<ItemPickup>();
             itemPickup.ItemData = item;
-            Instantiate(pickup, transform.position, Quaternion.Euler(0,0, transform.localRotation.eulerAngles.z));
+            Vector3 offset = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
+            Instantiate(pickup, transform.position + offset, Quaternion.Euler(0,0, transform.localRotation.eulerAngles.z));
         }
         Destroy(gameObject);
     }

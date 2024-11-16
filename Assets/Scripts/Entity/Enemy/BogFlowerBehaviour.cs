@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using Interfaces;
 using ScriptableObjects;
 using UnityEngine;
@@ -12,6 +13,10 @@ public class BogFlowerBehaviour : MonoBehaviour, IDamageable
     [SerializeField] SpriteRenderer spriteRenderer;
 
     [SerializeField] FlowerGrowthSystem flowerGrowthSystem;
+    
+    [Header("Loot")]
+    [SerializeField]
+    private DroppedItem[] droppedItems;
 
     private Transform bogFlowerPoison;
 
@@ -52,7 +57,9 @@ public class BogFlowerBehaviour : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        ItemData[] items = enemyData.GetIdemDrops();
+        ItemData[] items = enemyData.GetIdemDrops(null);
+        items = items.Concat(enemyData.GetIdemDrops(droppedItems)).ToArray();
+        
         foreach (var item in items)
         {
             Instantiate(item, transform.position, Quaternion.Euler(0,0, transform.localRotation.eulerAngles.z));
