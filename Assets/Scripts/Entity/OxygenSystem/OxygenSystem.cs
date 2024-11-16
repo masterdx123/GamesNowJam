@@ -9,12 +9,15 @@ public class OxygenSystem : MonoBehaviour
     private CircleCollider2D oxygenBubbleCollider;
     private int segments = 50; // Defines the smoothness of the circle
     [SerializeField] private float currentEnergy;
+    private float _initialEnergy;
     public float CurrentEnergy { get => currentEnergy; set => currentEnergy = value; }
     [SerializeField] GameObject circleVisual;
 
     // This is a light blue color.
     [SerializeField, ColorUsage(true, true)]
     private Color borderColor = new Color(49/255f,227/255f,250/255f,1f);
+
+    public float CurrentRadius { get => oxygenBubbleCollider.radius; }
 
     private void Awake()
     {
@@ -37,6 +40,7 @@ public class OxygenSystem : MonoBehaviour
 
         // Initialize energy to maximum
         currentEnergy = oxygenSystemStats.Energy;
+        _initialEnergy = oxygenSystemStats.Energy;
     }
 
     private void Start()
@@ -102,5 +106,10 @@ public class OxygenSystem : MonoBehaviour
     public float GetCurrentEnergy() 
     {
         return currentEnergy;
+    }
+
+    public float GetMaxEnergy() 
+    {
+        return _initialEnergy;
     }
 }

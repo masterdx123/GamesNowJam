@@ -106,7 +106,7 @@ namespace Managers
                     spawnedEnemy.transform.position = enemyBehaviour.SpawnAtMachine ? GetRandomPosNearMachine() : GetRandomPosOffScreen();
                 }
             }
-            currentCredits += startingCredits + creditIncrement * _currentWaveCounter;
+            currentCredits += startingCredits + (creditIncrement - 1) * _currentWaveCounter;
         }
 
         private int CalculateNumberOfEnemiesToSpawn()
@@ -134,7 +134,8 @@ namespace Managers
         
         private Vector3 GetRandomPosNearMachine() 
         {
-            Vector2 randomUnitInsideCircle = Random.insideUnitCircle * 5f;
+            OxygenSystem oxygenSystem = _mainConsole.GetComponentInChildren<OxygenSystem>();
+            Vector2 randomUnitInsideCircle = Random.insideUnitCircle * oxygenSystem.CurrentRadius;
 
             return _mainConsole.transform.position + new Vector3(randomUnitInsideCircle.x, randomUnitInsideCircle.y, 0f);
         }

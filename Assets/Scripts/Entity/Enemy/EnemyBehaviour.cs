@@ -59,6 +59,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     [SerializeField] private AudioClip deathClip;
     [SerializeField] private AudioClip attackClip;
     private AudioSource audioSource;
+    private bool _onHit = false;
 
     void Start()
     {
@@ -140,6 +141,9 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         audioSource.clip = damageClip;
         audioSource.Play();
         _health = Mathf.Clamp(_health - damage, 0, maxHealth);
+        
+        ChangeAnimationState("Hit");
+        _onHit = true;
 
         if (_health <= 0)
         {
@@ -177,6 +181,6 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
     public void OnHitFinish()
     {
-
+        _onHit = false;
     }
 }
