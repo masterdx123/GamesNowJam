@@ -197,10 +197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Sporehound_0: 7278791742645257144
-      Sporehound_1: -7176983836179857833
-      Sporehound_2: 8697206173001970355
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
