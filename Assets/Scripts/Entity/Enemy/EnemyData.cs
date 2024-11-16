@@ -5,6 +5,7 @@ using ScriptableObjects;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 using Math = Unity.Mathematics.Geometry.Math;
 using Random = UnityEngine.Random;
 
@@ -72,10 +73,7 @@ public class EnemyData : ScriptableObject
     public void SingleShot(GameObject self, GameObject target)
     {
         var selfBehaviour = self.GetComponent<EnemyBehaviour>();
-        var attackGo = Instantiate(AttacksProjectiles[0], self.transform.position, Quaternion.Euler(0, 0, selfBehaviour.GetAngleToTarget()));
-        WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
-        attackProjectileComponent.Owner = self;
-        attackProjectileComponent.angle = selfBehaviour.GetAngleToTarget();
+        ShootSpread(1, 0, AttacksProjectiles[0], selfBehaviour.GetAngleToTarget(), selfBehaviour);
     }
     #endregion
 
@@ -95,6 +93,29 @@ public class EnemyData : ScriptableObject
         return drops.ToArray();
     }
     #endregion
+    void ShootSpread(int numOfShotsNonInclusive, float spreadAngle, GameObject projectile, float angleToTarget, EnemyBehaviour selfBehaviour)
+    {
+        float leftMostPoint = angleToTarget - (spreadAngle/2);
+
+        if (numOfShotsNonInclusive > 1)
+        {
+            float deltaSpread = spreadAngle/numOfShotsNonInclusive;
+            for (int i = 0; i < numOfShotsNonInclusive; i++)
+            {
+                var attackGo = Instantiate(AttacksProjectiles[0], selfBehaviour.gameObject.transform.position, Quaternion.Euler(0, 0, leftMostPoint + deltaSpread * i));
+                WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
+                attackProjectileComponent.Owner = selfBehaviour.gameObject;
+                attackProjectileComponent.angle = selfBehaviour.GetAngleToTarget();
+            }
+        }
+        else
+        {
+            var attackGo = Instantiate(AttacksProjectiles[0], selfBehaviour.gameObject.transform.position, Quaternion.Euler(0, 0, selfBehaviour.GetAngleToTarget()));
+            WeaponProjectile attackProjectileComponent = attackGo.GetComponent<WeaponProjectile>();
+            attackProjectileComponent.Owner = selfBehaviour.gameObject;
+            attackProjectileComponent.angle = selfBehaviour.GetAngleToTarget();
+        }
+    }
 }
 [Serializable]
 struct StringActionEB
