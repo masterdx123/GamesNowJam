@@ -131,7 +131,6 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         float normalizedDifferenceX = 0f;
 
         if ((target.transform.position - this.transform.position).normalized.x != 0) normalizedDifferenceX = (target.transform.position - this.transform.position).normalized.x;
-        Debug.Log(normalizedDifferenceX);
 
         spriteRenderer.flipX = normalizedDifferenceX >= 0 ? true : false;
     }
@@ -142,7 +141,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         audioSource.Play();
         _health = Mathf.Clamp(_health - damage, 0, maxHealth);
         
-        ChangeAnimationState("Hit");
+        ChangeAnimationState("OnHit");
         _onHit = true;
 
         if (_health <= 0)
@@ -182,5 +181,6 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     public void OnHitFinish()
     {
         _onHit = false;
+        ChangeAnimationState("Move");
     }
 }
