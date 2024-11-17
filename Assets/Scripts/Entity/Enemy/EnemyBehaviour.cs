@@ -7,6 +7,7 @@ using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Audio;
+using Unity.Properties;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D), typeof(Animator))]
 public class EnemyBehaviour : MonoBehaviour, IDamageable
@@ -57,6 +58,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     [SerializeField] private float attackInterval;
     [SerializeField] private float attackRange;
     [SerializeField] private bool doesAttackOnAnimationCondition = false;
+    [SerializeField] private bool doesNotHaveHitAnimation = false;
     [SerializeField] private bool stopOnRange = false;
 
     [SerializeField] private AudioClip damageClip;
@@ -93,26 +95,29 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        ChangeTarget();
-        if (_onHit == false)
+        if (targetList.Count != 0)
         {
-            if (DistanceFromTarget(target.transform.position) >= attackRange || !stopOnRange) Move?.Invoke(this);
-            else rb.linearVelocity = Vector3.zero;
-
-            if (DistanceFromTarget(target.transform.position) < attackRange && internalCooldown <= 0 && doesAttackOnAnimationCondition == false)
+            ChangeTarget();
+            if (_onHit == false)
             {
-                OnAttack();
+                if (DistanceFromTarget(target.transform.position) >= attackRange || !stopOnRange) Move?.Invoke(this);
+                else rb.linearVelocity = Vector3.zero;
+
+                if (DistanceFromTarget(target.transform.position) < attackRange && internalCooldown <= 0 && doesAttackOnAnimationCondition == false)
+                {
+                    OnAttack();
+                }
             }
-        }
-        else { if(rb.bodyType != RigidbodyType2D.Static) rb.linearVelocity = Vector3.zero; }
+            else { if (rb.bodyType != RigidbodyType2D.Static) rb.linearVelocity = Vector3.zero; }
 
-        //Reduces cooldown as a timer.
-        if (internalCooldown > 0)
-        {
-            internalCooldown -= Time.deltaTime;
-        }
+            //Reduces cooldown as a timer.
+            if (internalCooldown > 0)
+            {
+                internalCooldown -= Time.deltaTime;
+            }
 
-        SpriteFlip();
+            SpriteFlip();
+        }
     }
 
     public void OnAttack()
@@ -170,7 +175,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         audioSource.Play();
         _health = Mathf.Clamp(_health - damage, 0, maxHealth);
         
-        ChangeAnimationState("OnHit");
+        if(doesNotHaveHitAnimation == false) ChangeAnimationState("OnHit");
         _onHit = true;
 
         if (_health <= 0)
