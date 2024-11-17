@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Entity.UpgradeConsole;
 
 namespace UI.Tooltip
 {
@@ -19,7 +20,7 @@ namespace UI.Tooltip
             _instance = this;
         }
 
-        public static void Show(string title, string description)
+        public static void Show(string title, string description, MaterialRequirement[] materials)
         {
             if (!_instance || !_instance.tooltip)
             {
@@ -27,7 +28,7 @@ namespace UI.Tooltip
                     "No Tooltip Set! Go to Prefabs/UI/Tooltip and drag the TooltipCanvas prefab into the Scene");
                 return;
             }
-            _instance.StartCoroutine(title, description);
+            _instance.StartCoroutine(title, description, materials);
         }
 
         public static void Hide()
@@ -42,16 +43,16 @@ namespace UI.Tooltip
             _instance.tooltip.gameObject.SetActive(false);
         }
 
-        private void StartCoroutine(string title, string description)
+        private void StartCoroutine(string title, string description,  MaterialRequirement[] materials)
         {
-            _showTooltipCoroutine = WaitForShowTooltipCoroutine(title, description);
+            _showTooltipCoroutine = WaitForShowTooltipCoroutine(title, description, materials);
             StartCoroutine(_showTooltipCoroutine);
         }
 
-        private IEnumerator WaitForShowTooltipCoroutine(string title, string description)
+        private IEnumerator WaitForShowTooltipCoroutine(string title, string description,  MaterialRequirement[] materials)
         {
             yield return new WaitForSeconds(_instance.tooltipDelay);
-            _instance.tooltip.SetText(title, description);
+            _instance.tooltip.SetText(title, description, materials);
             _instance.tooltip.gameObject.SetActive(true);
         }
 

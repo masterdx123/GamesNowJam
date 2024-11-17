@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   upgradeName: Exploding Ammo
-  description: Bullets explode when they hit an enemy.
+  description: Bullets explode when they hit an enemy. -Damage
   icon: {fileID: 8549201992335799128, guid: 19600bf863538544e8bb8b143859e603, type: 3}
-  statsToUpgrade: []
+  statsToUpgrade:
+  - stat: 1
+    value: -3
   isExplosive: 1
   isBoomerang: 0
   isFrenzied: 0

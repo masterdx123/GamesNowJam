@@ -51,6 +51,7 @@ namespace Entity.UpgradeConsole
         public void SetUnlockable(bool unlockable)
         {
             isUnlocked = unlockable;
+            materialRequirements = new MaterialRequirement[0];
         }
     }
     public class UpgradeConsole : MonoBehaviour
@@ -258,6 +259,16 @@ namespace Entity.UpgradeConsole
 
             return viewportPoint.x >= 0 && viewportPoint.x <= 1 &&
                 viewportPoint.y >= 0 && viewportPoint.y <= 1;
+        }
+
+        public MaterialRequirement[] GetUpgradeMaterialsRequirements(UpgradeData inUpgradeData)
+        {
+            for(int i = 0; i < weaponUpgrades.Length; i++) {
+                if(weaponUpgrades[i].upgradeData == inUpgradeData) {
+                    return weaponUpgrades[i].materialRequirements;
+                }
+            }
+            return null;
         }
     }
 }

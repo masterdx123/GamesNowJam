@@ -311,7 +311,7 @@ MonoBehaviour:
   creditValue: 2
   spawnAfterWave: 0
   spawnAtMachine: 0
-  attackInterval: 0.2
+  attackInterval: 0.7
   attackRange: 1
   doesAttackOnAnimationCondition: 0
   doesNotHaveHitAnimation: 0
