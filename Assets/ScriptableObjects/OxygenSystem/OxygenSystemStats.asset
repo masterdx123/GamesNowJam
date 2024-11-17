@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 15
   energy: 100
-  depletionRate: 1
+  depletionRate: 0.5

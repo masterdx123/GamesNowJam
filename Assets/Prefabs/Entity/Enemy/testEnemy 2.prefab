@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -3378529612001810815, guid: d96024af0d1754847bfd5927f8d7536c, type: 3}
   m_Color: {r: 0.6488141, g: 1, b: 0.5424528, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2, y: 2}
@@ -180,6 +180,7 @@ MonoBehaviour:
   attackInterval: 1
   attackRange: 0
   doesAttackOnAnimationCondition: 0
+  doesNotHaveHitAnimation: 0
   stopOnRange: 0
   damageClip: {fileID: 8300000, guid: 7916c3d049e5204468c73c1f451a41e8, type: 3}
   deathClip: {fileID: 8300000, guid: 6fc843251c03c2645983f29132a750c8, type: 3}

@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 6114038870225719868, guid: a59c6fd992b4ab14da7b413d35bab460, type: 3}
   statsToUpgrade:
   - stat: 0
-    value: 2
+    value: 1
   - stat: 1
     value: 0
   - stat: 2
