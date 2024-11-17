@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65a522784e3c0d4458d879caf162c809, type: 3}
-  m_Name: Penetrating Bullets
+  m_Name: Penetrating Rounds
   m_EditorClassIdentifier: 
   id: 1
-  upgradeName: Penetrating Bullets
-  description: maximum depth
+  upgradeName: Penetrating Rounds
+  description: Bullets penetrate the first enemy hit.
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   statsToUpgrade: []
   isExplosive: 0
   isBoomerang: 0
+  isFrenzied: 0
   enemiesPenetrated: 5

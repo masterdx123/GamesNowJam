@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   upgradeName: Boomerang Bullets
-  description: Firerate scales with Oxygen
+  description: Bullets return to their origin point when they reach their maximum
+    Range.
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   statsToUpgrade: []
   isExplosive: 0
   isBoomerang: 1
+  isFrenzied: 0
+  enemiesPenetrated: 0
