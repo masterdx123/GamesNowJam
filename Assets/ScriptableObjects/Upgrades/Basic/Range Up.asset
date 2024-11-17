@@ -15,7 +15,11 @@ MonoBehaviour:
   id: 1
   upgradeName: Range Up
   description: +Range
-  icon: {fileID: -834752967, guid: 08a149e69f7a06a45b25d1505a5d38a4, type: 3}
+  icon: {fileID: 4888450503594966526, guid: 2a3a65c7425c113489d0342be2e80d59, type: 3}
   statsToUpgrade:
   - stat: 4
     value: 0.5
+  isExplosive: 0
+  isBoomerang: 0
+  isFrenzied: 0
+  enemiesPenetrated: 0

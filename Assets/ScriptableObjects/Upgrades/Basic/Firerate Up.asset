@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 1
   upgradeName: Firerate Up
   description: +Firerate
-  icon: {fileID: -834752967, guid: 08a149e69f7a06a45b25d1505a5d38a4, type: 3}
+  icon: {fileID: -7792627177763298145, guid: 55ac1af3b19726c4584d0e8ed86f38a2, type: 3}
   statsToUpgrade:
   - stat: 3
     value: -0.1
