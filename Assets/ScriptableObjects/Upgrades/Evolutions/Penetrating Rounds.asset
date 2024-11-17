@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 1
   upgradeName: Penetrating Rounds
   description: Bullets penetrate the first enemy hit.
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 3335790794120396915, guid: a25d1a93216142f4c8ce3006d1694185, type: 3}
   statsToUpgrade: []
   isExplosive: 0
   isBoomerang: 0
