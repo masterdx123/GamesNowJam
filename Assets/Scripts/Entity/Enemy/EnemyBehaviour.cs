@@ -20,6 +20,8 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     [Header("Actions")]
     [SerializeField] private List<string> movementList;
     [SerializeField] private List<string> attackList;
+    [SerializeField] private bool hasContactDamage;
+    [SerializeField] private float _contactDamage;
     [SerializeField] private List<string> targetList;
     [SerializeField] private List<string> onDeathList;
 
@@ -79,7 +81,6 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         foreach (var target in targetList)
         {
             TargetAcquisition.AddListener(enemyData.TargetAcquisitionDictionary[target]);
-            Debug.Log(enemyData.TargetAcquisitionDictionary[target].Method.Name);
         }
         foreach (var attack in onDeathList)
         {
@@ -120,6 +121,17 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         internalCooldown = attackInterval;
         audioSource.clip = attackClip;
         audioSource.Play();
+    }
+
+    protected void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (!other.isTrigger)
+            {
+                other.GetComponent<PlayerController>().TakeDamage(_contactDamage);
+            }
+        }
     }
 
     public void ChangeTarget()

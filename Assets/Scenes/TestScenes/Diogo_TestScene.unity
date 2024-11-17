@@ -4656,6 +4656,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620463791}
     m_Modifications:
+    - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: firstWaveSpawnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: enemiesToSpawn.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: 'enemiesToSpawn.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6485730617634244332, guid: 80a416c53d87b444ead1f2b8be51608b, type: 3}
     - target: {fileID: 3327362093323292133, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: m_Name
       value: GameManager

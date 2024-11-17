@@ -160,6 +160,8 @@ MonoBehaviour:
   - MoveToTarget
   attackList:
   - SingleShot
+  hasContactDamage: 1
+  _contactDamage: 10
   targetList:
   - Player
   onDeathList: []
