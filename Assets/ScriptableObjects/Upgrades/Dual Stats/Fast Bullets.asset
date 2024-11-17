@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 1
   upgradeName: Fast Bullets
   description: +Damage & +Range
-  icon: {fileID: -2063562215157607591, guid: 338ff1105e897d446b1d43c863894990, type: 3}
+  icon: {fileID: 3049188077802377562, guid: 15e59adec4e504547b77f6cdfad746ea, type: 3}
   statsToUpgrade:
   - stat: 0
     value: 0
@@ -27,3 +27,7 @@ MonoBehaviour:
     value: 0
   - stat: 4
     value: 0
+  isExplosive: 0
+  isBoomerang: 0
+  isFrenzied: 0
+  enemiesPenetrated: 0
