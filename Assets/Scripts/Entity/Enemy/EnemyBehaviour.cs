@@ -87,13 +87,17 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     {
         SpriteFlip();
 
-        if (DistanceFromTarget(target.transform.position) >= attackRange || !stopOnRange) Move?.Invoke(this);
-        else rb.linearVelocity = Vector3.zero;
-
-        if (DistanceFromTarget(target.transform.position) < attackRange && internalCooldown <= 0 && doesAttackOnAnimationCondition == false)
+        if (_onHit == false)
         {
-            OnAttack();
+            if (DistanceFromTarget(target.transform.position) >= attackRange || !stopOnRange) Move?.Invoke(this);
+            else rb.linearVelocity = Vector3.zero;
+
+            if (DistanceFromTarget(target.transform.position) < attackRange && internalCooldown <= 0 && doesAttackOnAnimationCondition == false)
+            {
+                OnAttack();
+            }
         }
+        else rb.linearVelocity = Vector3.zero;
 
         //Reduces cooldown as a timer.
         if (internalCooldown > 0)

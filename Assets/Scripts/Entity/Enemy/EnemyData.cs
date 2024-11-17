@@ -116,7 +116,7 @@ public class EnemyData : ScriptableObject
 
     public GameObject GetPickupObject(ItemData itemData)
     {
-        return itemData.GetType() == typeof(UsableItemData) ? usableItemPickupObject : itemPickupObject;
+        return itemData is UsableItemData ? usableItemPickupObject : itemPickupObject;
     }
 }
 [Serializable]
