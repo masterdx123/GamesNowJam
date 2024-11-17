@@ -7,6 +7,8 @@ namespace Managers
 {
     public class WaveManager : MonoBehaviour
     {
+        private const double SECONDS_TO_NEXT_WAVE = 5f;
+
         [Header("Wave Settings")]
         [SerializeField]
         private GameObject[] enemiesToSpawn;
@@ -40,8 +42,14 @@ namespace Managers
         private TextMeshProUGUI _waveCounterText;
         
         private int _currentWaveCounter = 1;
+        
         private double _currentTimeBetweenWaves = 10.0f;
+        public double CurrentTimeBetweenWaves { get => _currentTimeBetweenWaves;}
+        
         private GameObject _mainConsole;
+
+        private 
+
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -138,6 +146,15 @@ namespace Managers
             Vector2 randomUnitInsideCircle = Random.insideUnitCircle * oxygenSystem.CurrentRadius;
 
             return _mainConsole.transform.position + new Vector3(randomUnitInsideCircle.x, randomUnitInsideCircle.y, 0f);
+        }
+
+        //SECONDS_TO_NEXT_WAVE = 5f
+        public void SkipWave() {
+            Debug.Log("skipwave entered");
+            if (_currentTimeBetweenWaves > SECONDS_TO_NEXT_WAVE) {
+                _currentTimeBetweenWaves = SECONDS_TO_NEXT_WAVE;
+                Debug.Log("skipping wave");
+            }
         }
     }
 }

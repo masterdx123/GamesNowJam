@@ -193,6 +193,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3061740029371593160, guid: 18382943e44daea47be7f03738aeb728, type: 3}
   m_PrefabInstance: {fileID: 1703188603}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &344833577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7597154376096497959, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+  m_PrefabInstance: {fileID: 1298688718}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &441429927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1130,6 +1135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3327362093323292133, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: m_TagString
+      value: GameController
+      objectReference: {fileID: 0}
     - target: {fileID: 3421534892841682075, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1170,6 +1179,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4213578327860629802, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: _oxygenSystem
+      value: 
+      objectReference: {fileID: 2074247206}
     - target: {fileID: 4862641441058453874, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -1633,6 +1646,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
+--- !u!114 &2074247206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4506810250291117923, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+  m_PrefabInstance: {fileID: 5465155555856661056}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de508b7ef0957944bba822adcf7384f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2125033905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1815,8 +1839,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: _machineOxygenBar
+      value: 
+      objectReference: {fileID: 344833577}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: _gameManagerCanvas
+      value: 
+      objectReference: {fileID: 1291976745}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[0].isUnlocked
@@ -1863,6 +1895,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ab2d0df2cc2e18044971ee25a42f1bbc, type: 2}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[10].isUnlocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[1].upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: a0b037373cde43e4f8270000c4c5daf2, type: 2}
@@ -1901,7 +1937,7 @@ PrefabInstance:
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[10].upgradeData
       value: 
-      objectReference: {fileID: 11400000, guid: 6547468e79a0b69489cd44fae8416983, type: 2}
+      objectReference: {fileID: 11400000, guid: 154486bf7d951034eb57b8f18523bc68, type: 2}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[11].upgradeData
       value: 
