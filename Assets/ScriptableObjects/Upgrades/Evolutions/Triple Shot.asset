@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 1
   upgradeName: Triple Shot
   description: Shoot three bullets.
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 3802650955490657699, guid: cd51be5a890d98c4c97e2f02f6c0d140, type: 3}
   statsToUpgrade:
   - stat: 5
     value: 2

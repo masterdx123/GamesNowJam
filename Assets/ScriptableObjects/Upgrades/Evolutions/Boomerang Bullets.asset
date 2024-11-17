@@ -16,7 +16,7 @@ MonoBehaviour:
   upgradeName: Boomerang Bullets
   description: Bullets return to their origin point when they reach their maximum
     Range.
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 3160463102549149980, guid: 7ebee83f613d32743ad2fd91ef59002a, type: 3}
   statsToUpgrade: []
   isExplosive: 0
   isBoomerang: 1
