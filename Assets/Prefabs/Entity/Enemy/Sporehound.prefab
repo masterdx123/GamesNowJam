@@ -162,8 +162,6 @@ MonoBehaviour:
   - SingleShot
   onDeathList: []
   droppedItems:
-  - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
-    dropChance: 50
   - itemData: {fileID: 11400000, guid: 2634ea607fceb294ea6cdfb95826e3bb, type: 2}
     dropChance: 25
   - itemData: {fileID: 11400000, guid: c70642942ce553d459c5c387166f0848, type: 2}
