@@ -400,7 +400,7 @@ MonoBehaviour:
   upgradeManagementCanvas: {fileID: 5588560862504849677, guid: a33abafed54bde740ba8a835829ada11, type: 3}
   weaponUpgradesUIControllerPrefab: {fileID: 5588560862504849677, guid: 139485bd45ab7944580ff6c18dfd4e85, type: 3}
   energyData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
-  energyIncreasePerItem: 0.7
+  energyIncreasePerItem: 5
   oxygenSystemStats: {fileID: 11400000, guid: e8149907c9a29d840885852edcb11094, type: 2}
   _gameManagerCanvas: {fileID: 0}
   _machineOxygenBar: {fileID: 0}
