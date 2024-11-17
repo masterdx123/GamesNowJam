@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd60c039461c15d48a3205906ef88dd6, type: 3}
-  m_Name: ExoticBlood
+  m_Name: AlienBlood
   m_EditorClassIdentifier: 
-  itemName: ExoticBlood
-  description: Weird blood...
-  icon: {fileID: -2884847333407950948, guid: bf876770dff5cc04fb8a484fade4c1af, type: 3}
+  itemName: Alien Blood
+  description: Replenish your oxygen
+  icon: {fileID: -5507772619302353917, guid: fd615db603ff290448f1b718b181048b, type: 3}
   canStack: 1
   maxStackSize: 99

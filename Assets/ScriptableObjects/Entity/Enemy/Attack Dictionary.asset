@@ -16,7 +16,9 @@ MonoBehaviour:
   - {fileID: 8306978968838758409, guid: c8d59479c4c45a641a479f3073f4bd4a, type: 3}
   - {fileID: 4180259793071793295, guid: 4f3027062e781b5418c85725b1dc0537, type: 3}
   droppedItems:
-  - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+  - itemData: {fileID: 11400000, guid: e6c8293bd1c8d884899d9ec9f7dfae63, type: 2}
     dropChance: 50
+  - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    dropChance: 25
   itemPickupObject: {fileID: 5749644437572208633, guid: cf85a8f918c8ecc469fc85f3c5794633, type: 3}
   usableItemPickupObject: {fileID: 5749644437572208633, guid: 057eeb7aca3716c488feebf03a8babeb, type: 3}
