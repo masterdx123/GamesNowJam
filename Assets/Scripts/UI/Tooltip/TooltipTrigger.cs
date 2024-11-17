@@ -9,7 +9,7 @@ namespace UI.Tooltip
         {
             ITooltipable tooltipable = gameObject.GetComponent<ITooltipable>();
             if (tooltipable == null || !tooltipable.CanShow()) return;
-            TooltipSystem.Show(tooltipable.GetTitle(), tooltipable.GetDescription());
+            TooltipSystem.Show(tooltipable.GetTitle(), tooltipable.GetDescription(), tooltipable.GetMaterialRequirements());
         }
 
         public void OnPointerExit(PointerEventData eventData)

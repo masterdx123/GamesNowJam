@@ -124,6 +124,15 @@ namespace UI.Upgrades
             return _upgradeData ? _upgradeData.Description : "";
         }
 
+        public MaterialRequirement[] GetMaterialRequirements()
+        {
+            UpgradeConsole mainConsole = GameObject.FindGameObjectWithTag("MainConsole").GetComponent<UpgradeConsole>();
+            if(_upgradeData) {
+                return mainConsole.GetUpgradeMaterialsRequirements(_upgradeData);
+            }
+            return null;
+        }
+
         public bool CanShow()
         {
             return _upgradeData;
