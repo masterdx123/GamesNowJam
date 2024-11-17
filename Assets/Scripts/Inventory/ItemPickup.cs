@@ -54,7 +54,6 @@ namespace Inventory
 
         protected virtual void Triggered(Collider2D other)
         {
-            Debug.Log("PARENT");
             if (!other.CompareTag("Player")) return;
             
             // Add to inventory and if successfull destroy

@@ -159,6 +159,8 @@ MonoBehaviour:
   movementList: []
   attackList:
   - PoisonCloud
+  hasContactDamage: 1
+  _contactDamage: 10
   targetList: []
   onDeathList: []
   droppedItems:
