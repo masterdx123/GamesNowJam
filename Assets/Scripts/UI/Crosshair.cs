@@ -8,7 +8,6 @@ public class Crosshair : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         _player.OnPlayerDeath += () => Cursor.visible = true;
         Cursor.visible = false;
-        this.transform.parent = GameManagerCanvas.transform;
     }
     // Update is called once per frame
     void LateUpdate()

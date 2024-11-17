@@ -50,7 +50,7 @@ namespace UI.Menu
         }
 
         public void ReturnToMainMenu() {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene(0);
         }
     }
 }
