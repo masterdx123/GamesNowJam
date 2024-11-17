@@ -180,8 +180,9 @@ MonoBehaviour:
   projectileLifeRemain: 2
   bulletSpeed: 7
   isExplosive: 0
-  explosionPrefab: {fileID: 0}
   isBoomerang: 0
+  explosionPrefab: {fileID: 0}
+  enemiesPenetrated: 0
   angle: 0
   rb: {fileID: 6721735098913636635}
   boxCollider: {fileID: 5719081759093962486}
