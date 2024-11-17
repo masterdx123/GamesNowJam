@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7874537694397813590}
   - component: {fileID: 7523174110663735734}
   - component: {fileID: -2314321718623664798}
+  - component: {fileID: -8535659710838324572}
   m_Layer: 8
   m_Name: testEnemy 2
   m_TagString: Enemy
@@ -118,7 +119,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &4070875629530914657
 Animator:
   serializedVersion: 7
@@ -160,6 +161,8 @@ MonoBehaviour:
   - MoveToTarget
   attackList:
   - SingleShot
+  hasContactDamage: 0
+  _contactDamage: 0
   targetList:
   - Player
   onDeathList: []
@@ -315,3 +318,40 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!70 &-8535659710838324572
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122771650095066289}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.35}
+  m_Size: {x: 1.65, y: 0.75}
+  m_Direction: 1
