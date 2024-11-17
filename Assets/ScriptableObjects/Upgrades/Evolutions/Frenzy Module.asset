@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   upgradeName: Frenzy Module
-  description: Firerate scales with Oxygen
+  description: Firerate increases the smaller the Oxygen Bubble is.
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   statsToUpgrade: []
   isExplosive: 0

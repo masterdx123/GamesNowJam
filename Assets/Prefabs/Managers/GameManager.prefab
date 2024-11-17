@@ -1350,7 +1350,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3327362093323292133}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c5ca582bd39f154daa26211838afb8c, type: 3}
   m_Name: 
@@ -1361,14 +1361,14 @@ MonoBehaviour:
   - {fileID: 1256213752867205824, guid: a86d5c32155091d4eb86ed22d9ecf017, type: 3}
   - {fileID: 122771650095066289, guid: f6f0e1c1c7a91404d88bf3a313e9ca13, type: 3}
   firstWaveSpawnTime: 5
-  timeBetweenWaves: 20
+  timeBetweenWaves: 50
   showWarningTime: 8
   firstWaveWarningText: First wave is about to start!
   nextWaveWarningText: Next wave is about to start!
   startingNumberOfEnemies: 2
   enemyIncrementMultiplier: 1
   startingCredits: 15
-  creditIncrement: 15
+  creditIncrement: 5
   currentCredits: 0
   _timerText: {fileID: 8613624849162957850}
   _waveInfoText: {fileID: 3506314330744125589}
