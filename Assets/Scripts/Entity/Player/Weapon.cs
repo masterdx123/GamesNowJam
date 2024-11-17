@@ -122,11 +122,11 @@ public class Weapon : MonoBehaviour
         WeaponProjectile[] weaponProjectiles = FunctionLibrary.ShootSpread(
             weaponData.projectileAmount + ProjectileAmountModifier, 
             90, 
-            weaponData.attackObject, 
-            WeaponPivot.localRotation.eulerAngles.z,
+            weaponData.attackObject,
+            projectilePivot.rotation.eulerAngles.z + (projectilePivot.rotation.eulerAngles.z - WeaponPivot.localRotation.eulerAngles.z),
             projectilePivot.position,
             playerController.gameObject,
-            WeaponPivot.localRotation.eulerAngles.z,
+            projectilePivot.rotation.eulerAngles.z + (projectilePivot.rotation.eulerAngles.z - WeaponPivot.localRotation.eulerAngles.z),
             this
         );
 
