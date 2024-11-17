@@ -15,7 +15,7 @@ namespace UI.Menu
 
         public void StartGame() 
         {
-            SceneManager.LoadScene("Frazao_TestScene");
+            SceneManager.LoadScene("Level");
         }
 
         public void OpenOptions() {
