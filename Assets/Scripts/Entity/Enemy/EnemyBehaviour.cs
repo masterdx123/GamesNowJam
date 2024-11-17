@@ -20,13 +20,14 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     [Header("Actions")]
     [SerializeField] private List<string> movementList;
     [SerializeField] private List<string> attackList;
+    [SerializeField] private List<string> targetList;
     [SerializeField] private List<string> onDeathList;
 
     [Header("Loot")]
     [SerializeField]
     private DroppedItem[] droppedItems;
 
-    public GameObject target { get => GetTarget(); }
+    public GameObject target { get; private set; }
 
     [SerializeField] EnemyData enemyData;
     [SerializeField] private float speed;
@@ -48,6 +49,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
     private UnityEvent<EnemyBehaviour> Move = new UnityEvent<EnemyBehaviour>();
     private UnityEvent<GameObject, GameObject> Attack = new UnityEvent<GameObject, GameObject>();
+    private UnityEvent<EnemyBehaviour> TargetAcquisition = new UnityEvent<EnemyBehaviour>();
     private UnityEvent<GameObject, GameObject> OnDeath = new UnityEvent<GameObject, GameObject>();
     private float internalCooldown;
     [SerializeField] private float attackInterval;
@@ -74,6 +76,11 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         {
             Attack.AddListener(enemyData.AttacksDictionary[attack]);
         }
+        foreach (var target in targetList)
+        {
+            TargetAcquisition.AddListener(enemyData.TargetAcquisitionDictionary[target]);
+            Debug.Log(enemyData.TargetAcquisitionDictionary[target].Method.Name);
+        }
         foreach (var attack in onDeathList)
         {
             OnDeath.AddListener(enemyData.AttacksDictionary[attack]);
@@ -85,8 +92,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        SpriteFlip();
-
+        ChangeTarget();
         if (_onHit == false)
         {
             if (DistanceFromTarget(target.transform.position) >= attackRange || !stopOnRange) Move?.Invoke(this);
@@ -97,26 +103,33 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
                 OnAttack();
             }
         }
-        else rb.linearVelocity = Vector3.zero;
+        else { if(rb.bodyType != RigidbodyType2D.Static) rb.linearVelocity = Vector3.zero; }
 
         //Reduces cooldown as a timer.
         if (internalCooldown > 0)
         {
             internalCooldown -= Time.deltaTime;
         }
+
+        SpriteFlip();
     }
 
     public void OnAttack()
     {
-        Attack?.Invoke(this.gameObject, GetTarget());
+        Attack?.Invoke(this.gameObject, target);
         internalCooldown = attackInterval;
         audioSource.clip = attackClip;
         audioSource.Play();
     }
 
-    GameObject GetTarget()
+    public void ChangeTarget()
     {
-        return GameObject.FindGameObjectWithTag("Player");
+        TargetAcquisition?.Invoke(this);
+    }
+
+    public void SetTarget(GameObject _target)
+    {
+        if(target != _target) target = _target;
     }
 
     public float GetAngleToTarget(Vector3? targetPosition)
@@ -156,7 +169,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        OnDeath?.Invoke(gameObject, GetTarget());
+        OnDeath?.Invoke(gameObject, target);
         ItemData[] items = enemyData.GetIdemDrops(null);
         items = items.Concat(enemyData.GetIdemDrops(droppedItems)).ToArray();
         audioSource.clip = deathClip;
@@ -185,6 +198,6 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     public void OnHitFinish()
     {
         _onHit = false;
-        ChangeAnimationState("Move");
+        ChangeAnimationState("Default");
     }
 }

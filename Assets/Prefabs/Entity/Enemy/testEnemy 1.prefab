@@ -160,6 +160,8 @@ MonoBehaviour:
   - MoveToTarget
   attackList:
   - SingleShot
+  targetList:
+  - Player
   onDeathList: []
   droppedItems:
   - itemData: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
@@ -213,8 +215,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0000000050121898, y: -0.0420453}
-  m_Size: {x: 1.6875005, y: 0.7499319}
+  m_Offset: {x: 0, y: 0.35}
+  m_Size: {x: 1.65, y: 0.75}
   m_Direction: 1
 --- !u!82 &-1270111233364934600
 AudioSource:
