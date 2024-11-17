@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private float oxygenTankGainSpeed = 1.0f;
     [SerializeField] private float health = 100.0f;
     [SerializeField] private float maxHealth = 100.0f;
+    public bool IsInOnxygenArea => isInOxygenArea;
+    public bool IsInDamageArea => isInDamageArea;
     private float continuousDamage = 0;
     private bool isInOxygenArea;
     private bool isInDamageArea;

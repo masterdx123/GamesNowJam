@@ -22,7 +22,8 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     [SerializeField] private List<string> movementList;
     [SerializeField] private List<string> attackList;
     [SerializeField] private bool hasContactDamage;
-    [SerializeField] private float _contactDamage;
+    public float ContactDamage => _contactDamage;
+    [SerializeField] protected float _contactDamage;
     [SerializeField] private List<string> targetList;
     [SerializeField] private List<string> onDeathList;
 
@@ -50,11 +51,11 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     private bool spawnAtMachine = false;
     public bool SpawnAtMachine { get => spawnAtMachine; }
 
-    private UnityEvent<EnemyBehaviour> Move = new UnityEvent<EnemyBehaviour>();
-    private UnityEvent<GameObject, GameObject> Attack = new UnityEvent<GameObject, GameObject>();
-    private UnityEvent<EnemyBehaviour> TargetAcquisition = new UnityEvent<EnemyBehaviour>();
-    private UnityEvent<GameObject, GameObject> OnDeath = new UnityEvent<GameObject, GameObject>();
-    private float internalCooldown;
+    protected UnityEvent<EnemyBehaviour> Move = new UnityEvent<EnemyBehaviour>();
+    protected UnityEvent<GameObject, GameObject> Attack = new UnityEvent<GameObject, GameObject>();
+    protected UnityEvent<EnemyBehaviour> TargetAcquisition = new UnityEvent<EnemyBehaviour>();
+    protected UnityEvent<GameObject, GameObject> OnDeath = new UnityEvent<GameObject, GameObject>();
+    protected float internalCooldown;
     [SerializeField] private float attackInterval;
     [SerializeField] private float attackRange;
     [SerializeField] private bool doesAttackOnAnimationCondition = false;
@@ -93,7 +94,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (targetList.Count != 0)
         {
@@ -120,7 +121,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         }
     }
 
-    public void OnAttack()
+    public virtual void OnAttack()
     {
         Attack?.Invoke(this.gameObject, target);
         internalCooldown = attackInterval;
@@ -132,14 +133,14 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (!other.isTrigger)
+            if (!other.isTrigger && hasContactDamage)
             {
                 other.GetComponent<PlayerController>().TakeDamage(_contactDamage);
             }
         }
     }
 
-    public void ChangeTarget()
+    public virtual void ChangeTarget()
     {
         TargetAcquisition?.Invoke(this);
     }

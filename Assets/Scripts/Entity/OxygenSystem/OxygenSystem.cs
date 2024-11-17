@@ -1,7 +1,8 @@
+using Interfaces;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer), typeof(CircleCollider2D))]
-public class OxygenSystem : MonoBehaviour
+public class OxygenSystem : MonoBehaviour, IDamageable
 {
     [SerializeField] private OxygenSystemStats oxygenSystemStats;
 
@@ -113,5 +114,10 @@ public class OxygenSystem : MonoBehaviour
     public float GetMaxEnergy() 
     {
         return _initialEnergy;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentEnergy -= oxygenSystemStats.DepletionRate + damage / 2;
     }
 }

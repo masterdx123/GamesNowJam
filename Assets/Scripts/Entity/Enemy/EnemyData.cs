@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Entity.Enemy;
 using JetBrains.Annotations;
 using Library;
 using ScriptableObjects;
@@ -34,8 +35,15 @@ public class EnemyData : ScriptableObject
     [SerializeField]
     private GameObject usableItemPickupObject;
 
+    private GameObject _player;
+    private GameObject _machine;
+    private GameObject _prevTarget;
+
     public void Start()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _machine = GameObject.FindGameObjectWithTag("MainConsole");
+        
         List<StringActionEB> movesDictionary = new List<StringActionEB>(){
             new StringActionEB("MoveToTarget", MoveToTarget)
         };
@@ -43,10 +51,12 @@ public class EnemyData : ScriptableObject
         List<StringActionGOGO> attacksDictionary = new List<StringActionGOGO>()
         {
             new StringActionGOGO("SingleShot", SingleShot),
-            new StringActionGOGO("PoisonCloud", PoisonCloud)
+            new StringActionGOGO("PoisonCloud", PoisonCloud),
+            new StringActionGOGO("AttachToTarget", AttachToTarget)
         };
         List<StringActionEB> targetsDictionary = new List<StringActionEB>(){
-            new StringActionEB("Player", Player)
+            new StringActionEB("Player", Player),
+            new StringActionEB("PlayerThenMachine", PlayerThenMachine)
         };
 
         foreach (var move in movesDictionary)
@@ -107,12 +117,26 @@ public class EnemyData : ScriptableObject
     {
         Instantiate(AttacksProjectiles[1], self.transform.position, Quaternion.identity, self.transform);
     }
+    public void AttachToTarget(GameObject self, GameObject target)
+    {
+        VoltLeechBehaviour voltLeechBehaviour = self.GetComponent<VoltLeechBehaviour>();
+        EnemyBehaviour enemyBehaviour = self.GetComponent<EnemyBehaviour>();
+        if (!enemyBehaviour || !voltLeechBehaviour) return;
+        voltLeechBehaviour.AttachToTarget(enemyBehaviour.ContactDamage, enemyBehaviour.target);
+    }
     #endregion
 
     #region TargetAcquisitons
     public void Player(EnemyBehaviour self)
     {
-        self.SetTarget(GameObject.FindGameObjectWithTag("Player"));
+        self.SetTarget(_player);
+    }
+    
+    public void PlayerThenMachine(EnemyBehaviour self)
+    {
+        PlayerController playerController = _player.GetComponent<PlayerController>();
+        GameObject newTarget = !playerController.IsInOnxygenArea ? _player : _machine;
+        self.SetTarget(newTarget);
     }
     #endregion
 
