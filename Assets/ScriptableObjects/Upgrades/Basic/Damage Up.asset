@@ -15,7 +15,11 @@ MonoBehaviour:
   id: 1
   upgradeName: Damage Up
   description: +Flat Damage
-  icon: {fileID: -834752967, guid: 08a149e69f7a06a45b25d1505a5d38a4, type: 3}
+  icon: {fileID: 5523630204628833594, guid: 1874c36af5890604a954b22b3fc9e462, type: 3}
   statsToUpgrade:
   - stat: 1
     value: 5
+  isExplosive: 0
+  isBoomerang: 0
+  isFrenzied: 0
+  enemiesPenetrated: 0

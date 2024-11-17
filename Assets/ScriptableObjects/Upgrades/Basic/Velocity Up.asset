@@ -15,7 +15,11 @@ MonoBehaviour:
   id: 1
   upgradeName: Velocity Up
   description: +Velocity
-  icon: {fileID: -834752967, guid: 08a149e69f7a06a45b25d1505a5d38a4, type: 3}
+  icon: {fileID: 3858150472410356055, guid: f92df344836b4094382ea05af35f5a99, type: 3}
   statsToUpgrade:
   - stat: 2
     value: 0.5
+  isExplosive: 0
+  isBoomerang: 0
+  isFrenzied: 0
+  enemiesPenetrated: 0
