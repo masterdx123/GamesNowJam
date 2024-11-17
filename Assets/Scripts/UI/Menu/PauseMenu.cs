@@ -35,11 +35,13 @@ namespace UI.Menu
         private void OpenPauseMenu() {
             _pauseMenu.SetActive(true);
             Time.timeScale = 0f;
+            Cursor.visible = true;
         }
 
         public void ClosePauseMenu() {
             _pauseMenu.SetActive(false);
             Time.timeScale = 1f;
+            Cursor.visible = false;
         }
 
         public void OpenOptions() {
