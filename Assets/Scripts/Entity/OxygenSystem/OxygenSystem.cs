@@ -74,6 +74,8 @@ public class OxygenSystem : MonoBehaviour
 
             // Update the visual circle and collider radius
             DrawCircle(radius);
+            if (currentEnergy <= 0 && oxygenBubbleCollider.enabled == true) oxygenBubbleCollider.enabled = false;
+            else oxygenBubbleCollider.enabled = true;
             oxygenBubbleCollider.radius = radius;
         }
     }
