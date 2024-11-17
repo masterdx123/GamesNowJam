@@ -169,7 +169,7 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
   speed: 4
   maxHealth: 40
-  creditValue: 1
+  creditValue: 3
   spawnAfterWave: 0
   spawnAtMachine: 0
   attackInterval: 0.8
