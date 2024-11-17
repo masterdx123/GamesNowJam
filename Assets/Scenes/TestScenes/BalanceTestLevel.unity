@@ -331,6 +331,10 @@ PrefabInstance:
       propertyPath: _gameManagerCanvas
       value: 
       objectReference: {fileID: 305028430}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: energyIncreasePerItem
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

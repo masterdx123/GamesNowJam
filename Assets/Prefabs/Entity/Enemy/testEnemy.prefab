@@ -175,7 +175,7 @@ MonoBehaviour:
   spawnAfterWave: 6
   spawnAtMachine: 0
   attackInterval: 1
-  attackRange: 5
+  attackRange: 10
   doesAttackOnAnimationCondition: 0
   stopOnRange: 1
   damageClip: {fileID: 8300000, guid: 7916c3d049e5204468c73c1f451a41e8, type: 3}
