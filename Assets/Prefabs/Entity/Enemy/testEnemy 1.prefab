@@ -167,7 +167,7 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
     dropChance: 25
   - itemData: {fileID: 11400000, guid: c70642942ce553d459c5c387166f0848, type: 2}
-    dropChance: 10
+    dropChance: 5
   enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
   speed: 3
   maxHealth: 50
