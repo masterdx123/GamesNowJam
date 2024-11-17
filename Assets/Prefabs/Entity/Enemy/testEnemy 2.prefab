@@ -162,15 +162,22 @@ MonoBehaviour:
   - SingleShot
   onDeathList: []
   droppedItems:
-  - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+  - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    dropChance: 50
+  - itemData: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+    dropChance: 25
+  - itemData: {fileID: 11400000, guid: c70642942ce553d459c5c387166f0848, type: 2}
     dropChance: 10
   enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
   speed: 3
   maxHealth: 50
   creditValue: 1
   spawnAfterWave: 0
+  spawnAtMachine: 0
   attackInterval: 1
+  attackRange: 0
   doesAttackOnAnimationCondition: 0
+  stopOnRange: 0
   damageClip: {fileID: 8300000, guid: 7916c3d049e5204468c73c1f451a41e8, type: 3}
   deathClip: {fileID: 8300000, guid: 6fc843251c03c2645983f29132a750c8, type: 3}
   attackClip: {fileID: 8300000, guid: 4c7e7ba93b48266458978d236cf71a55, type: 3}
