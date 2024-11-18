@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Audio;
 using Unity.Properties;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D), typeof(Animator))]
 public class EnemyBehaviour : MonoBehaviour, IDamageable
@@ -131,12 +133,10 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
     protected void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (!other.gameObject.CompareTag("Player")) return;
+        if (other.isTrigger && hasContactDamage)
         {
-            if (!other.isTrigger && hasContactDamage)
-            {
-                other.GetComponent<PlayerController>().TakeDamage(_contactDamage);
-            }
+            other.GetComponent<PlayerController>().TakeDamage(_contactDamage);
         }
     }
 
