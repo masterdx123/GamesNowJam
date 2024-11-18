@@ -223,9 +223,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 551264609121007119, guid: 18382943e44daea47be7f03738aeb728, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1970559136018141811, guid: 18382943e44daea47be7f03738aeb728, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291527197136090694, guid: 18382943e44daea47be7f03738aeb728, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557313951144812880, guid: 18382943e44daea47be7f03738aeb728, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640940027171550350, guid: 18382943e44daea47be7f03738aeb728, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3061740029371593160, guid: 18382943e44daea47be7f03738aeb728, type: 3}
       propertyPath: m_LocalPosition.x
@@ -270,6 +286,10 @@ PrefabInstance:
     - target: {fileID: 3599291580118467567, guid: 18382943e44daea47be7f03738aeb728, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599291580118467567, guid: 18382943e44daea47be7f03738aeb728, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8264373882623115955, guid: 18382943e44daea47be7f03738aeb728, type: 3}
       propertyPath: weaponData
