@@ -51,6 +51,7 @@ namespace Inventory
         private Canvas _instantiatedInventory;
         private List<Item> _items;
         private PlayerController _playerController;
+        private bool _isGamePaused = false;        
     
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -181,6 +182,9 @@ namespace Inventory
         
         public void ToggleInventory()
         {
+            //Stops time when entering inventory ui
+            checkPauseTime();
+
             if (!_instantiatedInventory)
             {
                 _instantiatedInventory = Instantiate(inventoryCanvas);
@@ -214,5 +218,16 @@ namespace Inventory
 
             return true;
         }
+
+        private void checkPauseTime() {
+            if (!_isGamePaused) {
+                Time.timeScale = 0f;
+                _isGamePaused = true;
+            }
+            else {
+                Time.timeScale = 1f;
+                _isGamePaused = false;
+            }
+        }         
     }
 }

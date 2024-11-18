@@ -75,8 +75,9 @@ public class WeaponProjectile : MonoBehaviour
             if (damageable != null)
             {
                 float damage = senderWeapon
-                    ? finalDamage * (1 + senderWeapon.DamageModifier) + senderWeapon.DamageModifier
+                    ? (finalDamage + senderWeapon.DamageFlatModifier) * (1 + senderWeapon.DamageModifier)
                     : finalDamage;
+
                 damageable.TakeDamage(damage);
 
                 //If the player has the Explosive Ammo upgrade, the first hit of each projectile generates an explosion (via a prefab)

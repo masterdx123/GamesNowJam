@@ -162,20 +162,18 @@ MonoBehaviour:
   attackList:
   - SingleShot
   hasContactDamage: 1
-  _contactDamage: 10
+  _contactDamage: 5
   targetList:
   - Player
   onDeathList: []
   droppedItems:
   - itemData: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
-    dropChance: 25
-  - itemData: {fileID: 11400000, guid: c70642942ce553d459c5c387166f0848, type: 2}
-    dropChance: 5
+    dropChance: 40
   enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
   speed: 6
-  maxHealth: 60
-  creditValue: 1
-  spawnAfterWave: 5
+  maxHealth: 30
+  creditValue: 10
+  spawnAfterWave: 6
   spawnAtMachine: 0
   attackInterval: 1
   attackRange: 10
@@ -335,7 +333,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

@@ -397,45 +397,341 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[4].upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: d0b8efa5f8d8a1a4f888143fc5183197, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[5].upgradeData
       value: 
-      objectReference: {fileID: 11400000, guid: feeba06d39f27604a8a4175708482e90, type: 2}
+      objectReference: {fileID: 11400000, guid: 2fd4dd5f318a73d47abc7e48d4f47b1f, type: 2}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[6].upgradeData
       value: 
+      objectReference: {fileID: 11400000, guid: 5034d7d746f51034bbee0f3051f8bb03, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[7].upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: cfdbfb82e54401e4b83ae50362230746, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[8].upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7caa8844bb932004897a318bc79a956b, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[9].upgradeData
+      value: 
       objectReference: {fileID: 11400000, guid: 154486bf7d951034eb57b8f18523bc68, type: 2}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
-      propertyPath: weaponUpgrades.Array.data[5].materialRequirements.Array.size
+      propertyPath: weaponUpgrades.Array.data[10].upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a63b01f23fa433418c24ff8e78df7b1, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[11].upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: feeba06d39f27604a8a4175708482e90, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[4].materialRequirements.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
-      propertyPath: weaponUpgrades.Array.data[6].materialRequirements.Array.size
+      propertyPath: weaponUpgrades.Array.data[5].materialRequirements.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[6].materialRequirements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[7].materialRequirements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[8].materialRequirements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[9].materialRequirements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[10].materialRequirements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[11].materialRequirements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[0].materialRequirements.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[0].materialRequirements.Array.data[0].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[0].materialRequirements.Array.data[1].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[1].materialRequirements.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[1].materialRequirements.Array.data[1].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[1].materialRequirements.Array.data[1].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[2].materialRequirements.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[2].materialRequirements.Array.data[0].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[3].materialRequirements.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[3].materialRequirements.Array.data[0].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[4].materialRequirements.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[4].materialRequirements.Array.data[0].quantity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[4].materialRequirements.Array.data[1].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[4].materialRequirements.Array.data[1].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[4].materialRequirements.Array.data[2].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[4].materialRequirements.Array.data[2].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[4].materialRequirements.Array.data[3].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[4].materialRequirements.Array.data[3].quantity
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[5].materialRequirements.Array.data[0].itemData
       value: 
-      objectReference: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
+      objectReference: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[5].materialRequirements.Array.data[0].quantity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[5].materialRequirements.Array.data[1].itemData
       value: 
-      objectReference: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+      objectReference: {fileID: 11400000, guid: 2634ea607fceb294ea6cdfb95826e3bb, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[5].materialRequirements.Array.data[1].quantity
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[5].materialRequirements.Array.data[2].itemData
       value: 
-      objectReference: {fileID: 11400000, guid: 2634ea607fceb294ea6cdfb95826e3bb, type: 2}
+      objectReference: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[5].materialRequirements.Array.data[2].quantity
-      value: 7
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[5].materialRequirements.Array.data[3].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[5].materialRequirements.Array.data[3].quantity
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[6].materialRequirements.Array.data[0].itemData
       value: 
-      objectReference: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[6].materialRequirements.Array.data[0].quantity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
       propertyPath: weaponUpgrades.Array.data[6].materialRequirements.Array.data[1].itemData
       value: 
+      objectReference: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[6].materialRequirements.Array.data[1].quantity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[6].materialRequirements.Array.data[2].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[6].materialRequirements.Array.data[2].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[7].materialRequirements.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[7].materialRequirements.Array.data[0].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[7].materialRequirements.Array.data[1].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[7].materialRequirements.Array.data[1].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[7].materialRequirements.Array.data[2].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2634ea607fceb294ea6cdfb95826e3bb, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[7].materialRequirements.Array.data[2].quantity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[7].materialRequirements.Array.data[3].itemData
+      value: 
       objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[7].materialRequirements.Array.data[3].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[8].materialRequirements.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[8].materialRequirements.Array.data[0].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[8].materialRequirements.Array.data[1].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[8].materialRequirements.Array.data[1].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[8].materialRequirements.Array.data[2].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[8].materialRequirements.Array.data[2].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[8].materialRequirements.Array.data[3].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[8].materialRequirements.Array.data[3].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[9].materialRequirements.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[9].materialRequirements.Array.data[0].quantity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[9].materialRequirements.Array.data[1].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[9].materialRequirements.Array.data[1].quantity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[9].materialRequirements.Array.data[2].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[9].materialRequirements.Array.data[2].quantity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[9].materialRequirements.Array.data[3].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[9].materialRequirements.Array.data[3].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[10].materialRequirements.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[10].materialRequirements.Array.data[0].quantity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[10].materialRequirements.Array.data[1].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[10].materialRequirements.Array.data[1].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[10].materialRequirements.Array.data[2].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2634ea607fceb294ea6cdfb95826e3bb, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[10].materialRequirements.Array.data[2].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[11].materialRequirements.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[11].materialRequirements.Array.data[0].quantity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[11].materialRequirements.Array.data[1].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[11].materialRequirements.Array.data[1].quantity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[11].materialRequirements.Array.data[2].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
+    - target: {fileID: 6831301158572392963, guid: 3600b40fe4da45c448e50348a45b4fbb, type: 3}
+      propertyPath: weaponUpgrades.Array.data[11].materialRequirements.Array.data[2].quantity
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6473,6 +6769,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de508b7ef0957944bba822adcf7384f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1338608602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1523772517978206000, guid: 566924169598acb4081968702ad34294, type: 3}
+  m_PrefabInstance: {fileID: 1124384324}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1342835558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6555,25 +6856,29 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: timeBetweenWaves
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: enemiesToSpawn.Array.size
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: 'enemiesToSpawn.Array.data[0]'
       value: 
-      objectReference: {fileID: 122771650095066289, guid: 7435376f148e0774690aadacfc48d93a, type: 3}
+      objectReference: {fileID: 122771650095066289, guid: 00760ba8370198241b41b6ada383df61, type: 3}
     - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: 'enemiesToSpawn.Array.data[1]'
       value: 
-      objectReference: {fileID: 122771650095066289, guid: 00760ba8370198241b41b6ada383df61, type: 3}
+      objectReference: {fileID: 122771650095066289, guid: 7435376f148e0774690aadacfc48d93a, type: 3}
     - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: 'enemiesToSpawn.Array.data[2]'
       value: 
-      objectReference: {fileID: 122771650095066289, guid: 8428f837b6699d14594ead57aa99f6ac, type: 3}
+      objectReference: {fileID: 1256213752867205824, guid: 9f5699e3478cfe04ebe0625626f4c7eb, type: 3}
     - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: 'enemiesToSpawn.Array.data[3]'
       value: 
-      objectReference: {fileID: 1256213752867205824, guid: 9f5699e3478cfe04ebe0625626f4c7eb, type: 3}
+      objectReference: {fileID: 122771650095066289, guid: 8428f837b6699d14594ead57aa99f6ac, type: 3}
     - target: {fileID: 286285766510686836, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: 'enemiesToSpawn.Array.data[4]'
       value: 
@@ -6645,6 +6950,26 @@ PrefabInstance:
     - target: {fileID: 8261156093768109784, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162535746434199417, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: _crosshairCanvas
+      value: 
+      objectReference: {fileID: 1338608602}
+    - target: {fileID: 9162535746434199417, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: _openPauseMenuAction.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162535746434199417, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: _openPauseMenuAction.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 04af30c9-2aa7-422f-ac23-f88930ef5189
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162535746434199417, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: _openPauseMenuAction.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Keyboard>/escape
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162535746434199417, guid: 86c0975d627b0c343a7bda6925d0b5e6, type: 3}
+      propertyPath: _openPauseMenuAction.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Open Pause Menu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6856,6 +7181,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3848985833534451509, guid: 164b268ef3542ee4ca4a8cacc21553da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569977375792213164, guid: 164b268ef3542ee4ca4a8cacc21553da, type: 3}
+      propertyPath: tooltipDelay
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

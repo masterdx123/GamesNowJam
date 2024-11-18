@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IgniumCore
   m_EditorClassIdentifier: 
   itemName: Ignium Core
-  description: Extremely heated core.
+  description: Extremely hot core.
   icon: {fileID: 2058262698869970417, guid: 605aee51b26cafa488bd1590212fa680, type: 3}
   canStack: 1
   maxStackSize: 999

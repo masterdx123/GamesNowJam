@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IgnitionPowder
   m_EditorClassIdentifier: 
   itemName: Ignition Powder
-  description: Pile of powder, can be ignited.
+  description: A pile of powder. Can be ignited.
   icon: {fileID: -851156976067251002, guid: 7bc8fa4aac171b24691b9c132d313f4e, type: 3}
   canStack: 1
   maxStackSize: 999

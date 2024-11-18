@@ -13,7 +13,6 @@ public class SkipWaveButton : MonoBehaviour
     }
 
     public void SkipToNextWave() {
-        Debug.Log("click!");
         gameManager.GetComponent<WaveManager>().SkipWave();
     }
 

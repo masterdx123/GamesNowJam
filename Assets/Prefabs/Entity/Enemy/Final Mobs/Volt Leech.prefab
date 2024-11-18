@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1623142983042444212}
   - component: {fileID: 3889654655812459123}
   - component: {fileID: 4070875629530914657}
+  - component: {fileID: 1143238478426571441}
   - component: {fileID: 7523174110663735734}
   - component: {fileID: -2314321718623664798}
-  - component: {fileID: 1143238478426571441}
+  - component: {fileID: 6412958211469287406}
   - component: {fileID: 4921724892177195429}
   m_Layer: 8
   m_Name: Volt Leech
@@ -119,7 +120,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &4070875629530914657
 Animator:
   serializedVersion: 7
@@ -142,6 +143,47 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1143238478426571441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122771650095066289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c364e1d77d535f48a012fc12923e809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 3889654655812459123, guid: 0ed8a68dd3bb7a6469edcfd8956c27b0, type: 3}
+  spriteRenderer: {fileID: 1623142983042444212, guid: 0ed8a68dd3bb7a6469edcfd8956c27b0, type: 3}
+  animator: {fileID: 4070875629530914657, guid: 0ed8a68dd3bb7a6469edcfd8956c27b0, type: 3}
+  movementList:
+  - MoveToTarget
+  attackList:
+  - AttachToTarget
+  hasContactDamage: 0
+  _contactDamage: 0
+  targetList:
+  - PlayerThenMachine
+  onDeathList: []
+  droppedItems:
+  - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+    dropChance: 40
+  enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
+  speed: 3
+  maxHealth: 15
+  creditValue: 2
+  spawnAfterWave: 0
+  spawnAtMachine: 0
+  attackInterval: 0.7
+  attackRange: 1
+  doesAttackOnAnimationCondition: 0
+  doesNotHaveHitAnimation: 0
+  stopOnRange: 0
+  damageClip: {fileID: 8300000, guid: 7916c3d049e5204468c73c1f451a41e8, type: 3}
+  deathClip: {fileID: 8300000, guid: 6fc843251c03c2645983f29132a750c8, type: 3}
+  attackClip: {fileID: 8300000, guid: 4c7e7ba93b48266458978d236cf71a55, type: 3}
 --- !u!70 &7523174110663735734
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -276,49 +318,43 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1143238478426571441
-MonoBehaviour:
+--- !u!70 &6412958211469287406
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122771650095066289}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c364e1d77d535f48a012fc12923e809, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 3889654655812459123, guid: 0ed8a68dd3bb7a6469edcfd8956c27b0, type: 3}
-  spriteRenderer: {fileID: 1623142983042444212, guid: 0ed8a68dd3bb7a6469edcfd8956c27b0, type: 3}
-  animator: {fileID: 4070875629530914657, guid: 0ed8a68dd3bb7a6469edcfd8956c27b0, type: 3}
-  movementList:
-  - MoveToTarget
-  attackList:
-  - AttachToTarget
-  hasContactDamage: 0
-  _contactDamage: 1
-  targetList:
-  - PlayerThenMachine
-  onDeathList: []
-  droppedItems:
-  - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
-    dropChance: 25
-  - itemData: {fileID: 11400000, guid: c70642942ce553d459c5c387166f0848, type: 2}
-    dropChance: 5
-  enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
-  speed: 3
-  maxHealth: 20
-  creditValue: 2
-  spawnAfterWave: 0
-  spawnAtMachine: 0
-  attackInterval: 0.7
-  attackRange: 1
-  doesAttackOnAnimationCondition: 0
-  doesNotHaveHitAnimation: 0
-  stopOnRange: 0
-  damageClip: {fileID: 8300000, guid: 7916c3d049e5204468c73c1f451a41e8, type: 3}
-  deathClip: {fileID: 8300000, guid: 6fc843251c03c2645983f29132a750c8, type: 3}
-  attackClip: {fileID: 8300000, guid: 4c7e7ba93b48266458978d236cf71a55, type: 3}
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.35}
+  m_Size: {x: 1.65, y: 0.75}
+  m_Direction: 1
 --- !u!114 &4921724892177195429
 MonoBehaviour:
   m_ObjectHideFlags: 0

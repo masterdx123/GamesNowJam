@@ -48,7 +48,7 @@ namespace UI.Upgrades
                 weaponIcon.sprite = emptySprite;
                 return;
             }
-            Debug.Log(weapon.weaponData.sprite.ToString());
+            //Debug.Log(weapon.weaponData.sprite.ToString());
 
             _weaponData = weapon.weaponData;
             weaponIcon.sprite = _weaponData.sprite;
