@@ -51,24 +51,20 @@ public class WeaponProjectile : MonoBehaviour
     {
         // Temp for test
         var projectileVelocity = senderWeapon ? senderWeapon.weaponData.projectileVelocity * (1 + senderWeapon.BulletVelocityModifier) : bulletSpeed;
-        Vector2 velocity;
-
+        
+        //If the player has the Boomerang Bullets upgrade, projectiles return to their origin point after they reach their maximum distance.
         if (projectileLifeRemain <= 0 && isBoomerang) {
             projectileLifeRemain = initialProjectileLifetime;
             isBoomerang = false;
             directionModifier = -1;
-
-            return;   
         }
 
-        velocity = gameObject.transform.right * projectileVelocity * directionModifier;
+        Vector2 velocity = gameObject.transform.right * projectileVelocity * directionModifier;
         rb.linearVelocity = velocity;
 
         if (projectileLifeRemain > 0) projectileLifeRemain -= Time.deltaTime;
 
-        if (projectileLifeRemain <= 0 && !isBoomerang) {
-            Destroy(this.gameObject);
-        } 
+        if (projectileLifeRemain <= 0 && !isBoomerang) Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -79,18 +75,22 @@ public class WeaponProjectile : MonoBehaviour
             if (damageable != null)
             {
                 float damage = senderWeapon
-                    ? finalDamage * (1 + senderWeapon.DamageModifier) + senderWeapon.DamageModifier
+                    ? (finalDamage + senderWeapon.DamageFlatModifier) * (1 + senderWeapon.DamageModifier)
                     : finalDamage;
+
                 damageable.TakeDamage(damage);
 
-                if(isExplosive && enemiesPenetrated == 0) {
+                //If the player has the Explosive Ammo upgrade, the first hit of each projectile generates an explosion (via a prefab)
+                if(isExplosive) {
                     GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
                     Debug.Log("explosion name:" + explosion.name);
                     explosion.GetComponent<Explosion>()._Owner = _owner;
                     explosion.GetComponent<Explosion>().Damage = damage/2;
+                    isExplosive = false;
                 }
             }
 
+            //If the player has the Penetrating Bullets upgrade, projectiles may penetrate up to an "enemiesPenetrated" amount of damageable hitboxes
             if(enemiesPenetrated == 0) {
                 Destroy(gameObject);    
             }

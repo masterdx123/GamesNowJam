@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oxygenSystemStats: {fileID: 11400000, guid: e8149907c9a29d840885852edcb11094, type: 2}
+  currentEnergy: 0
   circleVisual: {fileID: 1749618963339775167}
   borderColor: {r: 0.7686274, g: 3.560784, b: 3.9215684, a: 0.78431374}
 --- !u!1 &1003512583006467778
@@ -398,24 +399,106 @@ MonoBehaviour:
     m_Flags: 0
   upgradeManagementCanvas: {fileID: 5588560862504849677, guid: a33abafed54bde740ba8a835829ada11, type: 3}
   weaponUpgradesUIControllerPrefab: {fileID: 5588560862504849677, guid: 139485bd45ab7944580ff6c18dfd4e85, type: 3}
-  energyData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
-  energyIncreasePerItem: 0.7
+  energyData: {fileID: 11400000, guid: e6c8293bd1c8d884899d9ec9f7dfae63, type: 2}
+  energyIncreasePerItem: 2
   oxygenSystemStats: {fileID: 11400000, guid: e8149907c9a29d840885852edcb11094, type: 2}
+  _gameManagerCanvas: {fileID: 0}
+  _machineOxygenBar: {fileID: 0}
+  _machineArrowPrefab: {fileID: 744172287356460095, guid: 7d4021e1ff09352408cace1a37c565bb, type: 3}
+  _machineArrowOffset: 1
   weaponUpgrades:
-  - upgradeData: {fileID: 11400000, guid: a52c686c1ed16aa48af174cbf98511e1, type: 2}
+  - upgradeData: {fileID: 11400000, guid: ab2d0df2cc2e18044971ee25a42f1bbc, type: 2}
     isUnlocked: 0
     materialRequirements:
     - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
-      quantity: 2
-    - itemData: {fileID: 11400000, guid: 64ffe60598805eb4e90f0df887dcba23, type: 2}
-      quantity: 5
-  - upgradeData: {fileID: 11400000, guid: feeba06d39f27604a8a4175708482e90, type: 2}
+      quantity: 6
+    - itemData: {fileID: 11400000, guid: 2634ea607fceb294ea6cdfb95826e3bb, type: 2}
+      quantity: 3
+  - upgradeData: {fileID: 11400000, guid: a0b037373cde43e4f8270000c4c5daf2, type: 2}
     isUnlocked: 0
     materialRequirements:
     - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
       quantity: 5
     - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
-      quantity: 2
+      quantity: 10
+  - upgradeData: {fileID: 11400000, guid: 6af4c51b560bd4341a042c85890466f9, type: 2}
+    isUnlocked: 0
+    materialRequirements:
+    - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+      quantity: 10
+  - upgradeData: {fileID: 11400000, guid: 6547468e79a0b69489cd44fae8416983, type: 2}
+    isUnlocked: 0
+    materialRequirements:
+    - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+      quantity: 15
+  - upgradeData: {fileID: 11400000, guid: 5a63b01f23fa433418c24ff8e78df7b1, type: 2}
+    isUnlocked: 0
+    materialRequirements:
+    - itemData: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+      quantity: 3
+    - itemData: {fileID: 11400000, guid: 2634ea607fceb294ea6cdfb95826e3bb, type: 2}
+      quantity: 10
+  - upgradeData: {fileID: 11400000, guid: 154486bf7d951034eb57b8f18523bc68, type: 2}
+    isUnlocked: 0
+    materialRequirements:
+    - itemData: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+      quantity: 5
+    - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+      quantity: 15
+  - upgradeData: {fileID: 11400000, guid: feeba06d39f27604a8a4175708482e90, type: 2}
+    isUnlocked: 0
+    materialRequirements:
+    - itemData: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
+      quantity: 5
+    - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+      quantity: 15
+    - itemData: {fileID: 11400000, guid: 2634ea607fceb294ea6cdfb95826e3bb, type: 2}
+      quantity: 7
+  - upgradeData: {fileID: 11400000, guid: cfdbfb82e54401e4b83ae50362230746, type: 2}
+    isUnlocked: 0
+    materialRequirements:
+    - itemData: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+      quantity: 10
+    - itemData: {fileID: 11400000, guid: 2634ea607fceb294ea6cdfb95826e3bb, type: 2}
+      quantity: 15
+    - itemData: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
+      quantity: 10
+  - upgradeData: {fileID: 11400000, guid: 2fd4dd5f318a73d47abc7e48d4f47b1f, type: 2}
+    isUnlocked: 0
+    materialRequirements:
+    - itemData: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+      quantity: 20
+    - itemData: {fileID: 11400000, guid: 2634ea607fceb294ea6cdfb95826e3bb, type: 2}
+      quantity: 5
+  - upgradeData: {fileID: 11400000, guid: 7caa8844bb932004897a318bc79a956b, type: 2}
+    isUnlocked: 0
+    materialRequirements:
+    - itemData: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
+      quantity: 12
+    - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+      quantity: 10
+    - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+      quantity: 10
+  - upgradeData: {fileID: 11400000, guid: 5034d7d746f51034bbee0f3051f8bb03, type: 2}
+    isUnlocked: 0
+    materialRequirements:
+    - itemData: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+      quantity: 6
+    - itemData: {fileID: 11400000, guid: 2634ea607fceb294ea6cdfb95826e3bb, type: 2}
+      quantity: 10
+    - itemData: {fileID: 11400000, guid: 49797144aba6ce44186c881ce8f496bf, type: 2}
+      quantity: 10
+    - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+      quantity: 5
+  - upgradeData: {fileID: 11400000, guid: d0b8efa5f8d8a1a4f888143fc5183197, type: 2}
+    isUnlocked: 0
+    materialRequirements:
+    - itemData: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
+      quantity: 15
+    - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
+      quantity: 15
+    - itemData: {fileID: 11400000, guid: 21bbaa0390ec2d241b3cdbe36e3debc5, type: 2}
+      quantity: 15
   characterUpgrades: []
   _oxygenSystem: {fileID: 0}
   depositClip: {fileID: 8300000, guid: 0f171ceef59194c44be6f97ac9dcf0a4, type: 3}
@@ -432,7 +515,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

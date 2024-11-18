@@ -7,6 +7,8 @@ namespace Managers
 {
     public class WaveManager : MonoBehaviour
     {
+        private const double SECONDS_TO_NEXT_WAVE = 5f;
+
         [Header("Wave Settings")]
         [SerializeField]
         private GameObject[] enemiesToSpawn;
@@ -40,7 +42,14 @@ namespace Managers
         private TextMeshProUGUI _waveCounterText;
         
         private int _currentWaveCounter = 1;
+        
         private double _currentTimeBetweenWaves = 10.0f;
+        public double CurrentTimeBetweenWaves { get => _currentTimeBetweenWaves;}
+        
+        private GameObject _mainConsole;
+
+        private 
+
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -49,6 +58,7 @@ namespace Managers
             _currentWaveCounter = 0;
             _currentTimeBetweenWaves = firstWaveSpawnTime;
             currentCredits = startingCredits;
+            _mainConsole = GameObject.FindGameObjectWithTag("MainConsole");
 
             UpdateTimerText();
             UpdateWaveText();
@@ -92,8 +102,6 @@ namespace Managers
             int usableCredits = startingCredits + ((creditIncrement-1) * _currentWaveCounter);
             _currentWaveCounter += 1;
             UpdateWaveText();
-            
-            Debug.Log("Spawning enemies");
 
             while (currentCredits > 0)
             {
@@ -103,9 +111,10 @@ namespace Managers
                 if (enemyBehaviour.CreditValue <= currentCredits && _currentWaveCounter >= enemyBehaviour.SpawnAfterWave) {
                     currentCredits -= enemyBehaviour.CreditValue;
                     GameObject spawnedEnemy = Instantiate(possbileEnemy);
-                    spawnedEnemy.transform.position = GetRandomPosOffScreen();
+                    spawnedEnemy.transform.position = enemyBehaviour.SpawnAtMachine ? GetRandomPosNearMachine() : GetRandomPosOffScreen();
                 }
             }
+            currentCredits += startingCredits + (creditIncrement - 1) * _currentWaveCounter;
         }
 
         private int CalculateNumberOfEnemiesToSpawn()
@@ -113,10 +122,11 @@ namespace Managers
             return startingNumberOfEnemies + (_currentWaveCounter - 1) * enemyIncrementMultiplier;
         }
         
-        private Vector3 GetRandomPosOffScreen() {
+        private Vector3 GetRandomPosOffScreen() 
+        {
 
-            float x = Random.Range(-0.1f, 0.1f);
-            float y = Random.Range(-0.1f, 0.1f);
+            float x = Random.Range(-0.3f, 0.3f);
+            float y = Random.Range(-0.3f, 0.3f);
             x += Mathf.Sign(x);
             y += Mathf.Sign(y);
             Vector3 randomPoint = new(x, y);
@@ -128,6 +138,21 @@ namespace Managers
             Vector3 worldPoint = mainCamera.ViewportToWorldPoint(randomPoint);
 
             return worldPoint;
+        }
+        
+        private Vector3 GetRandomPosNearMachine() 
+        {
+            OxygenSystem oxygenSystem = _mainConsole.GetComponentInChildren<OxygenSystem>();
+            Vector2 randomUnitInsideCircle = Random.insideUnitCircle * oxygenSystem.CurrentRadius;
+
+            return _mainConsole.transform.position + new Vector3(randomUnitInsideCircle.x, randomUnitInsideCircle.y, 0f);
+        }
+
+        //SECONDS_TO_NEXT_WAVE = 5f
+        public void SkipWave() {
+            if (_currentTimeBetweenWaves > SECONDS_TO_NEXT_WAVE) {
+                _currentTimeBetweenWaves = SECONDS_TO_NEXT_WAVE;
+            }
         }
     }
 }

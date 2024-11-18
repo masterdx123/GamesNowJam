@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a522784e3c0d4458d879caf162c809, type: 3}
+  m_Name: Frenzy Module
+  m_EditorClassIdentifier: 
+  id: 1
+  upgradeName: Frenzy Module
+  description: Firerate increases the smaller the Oxygen Bubble is.
+  icon: {fileID: 966978225204227712, guid: bc712062e19f9c6429a40c23768d377f, type: 3}
+  statsToUpgrade: []
+  isExplosive: 0
+  isBoomerang: 0
+  isFrenzied: 1
+  enemiesPenetrated: 0

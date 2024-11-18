@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 50e108107c1dfc647891d0f4a7efd890
   - enabled: 1
-    path: Assets/Scenes/TestScenes/Frazao_TestScene.unity
-    guid: 6dc728c2a8537d042a6d19b18e6f77ee
+    path: Assets/Scenes/Level.unity
+    guid: 21320de9722e38446aeac16573d44515
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

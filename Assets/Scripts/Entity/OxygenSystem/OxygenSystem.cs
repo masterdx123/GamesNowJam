@@ -1,19 +1,24 @@
+using Interfaces;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer), typeof(CircleCollider2D))]
-public class OxygenSystem : MonoBehaviour
+public class OxygenSystem : MonoBehaviour, IDamageable
 {
     [SerializeField] private OxygenSystemStats oxygenSystemStats;
 
     private LineRenderer lineRenderer;
     private CircleCollider2D oxygenBubbleCollider;
     private int segments = 50; // Defines the smoothness of the circle
-    private float currentEnergy;
+    [SerializeField] private float currentEnergy;
+    private float _initialEnergy;
+    public float CurrentEnergy { get => currentEnergy; set => currentEnergy = value; }
     [SerializeField] GameObject circleVisual;
 
     // This is a light blue color.
     [SerializeField, ColorUsage(true, true)]
     private Color borderColor = new Color(49/255f,227/255f,250/255f,1f);
+
+    public float CurrentRadius { get => oxygenBubbleCollider.radius; }
 
     private void Awake()
     {
@@ -36,6 +41,7 @@ public class OxygenSystem : MonoBehaviour
 
         // Initialize energy to maximum
         currentEnergy = oxygenSystemStats.Energy;
+        _initialEnergy = oxygenSystemStats.Energy;
     }
 
     private void Start()
@@ -69,6 +75,8 @@ public class OxygenSystem : MonoBehaviour
 
             // Update the visual circle and collider radius
             DrawCircle(radius);
+            if (currentEnergy <= 0 && oxygenBubbleCollider.enabled == true) oxygenBubbleCollider.enabled = false;
+            else oxygenBubbleCollider.enabled = true;
             oxygenBubbleCollider.radius = radius;
         }
     }
@@ -101,5 +109,15 @@ public class OxygenSystem : MonoBehaviour
     public float GetCurrentEnergy() 
     {
         return currentEnergy;
+    }
+
+    public float GetMaxEnergy() 
+    {
+        return _initialEnergy;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentEnergy -= oxygenSystemStats.DepletionRate + damage / 2;
     }
 }

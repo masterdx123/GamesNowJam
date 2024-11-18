@@ -12,6 +12,8 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
 public class Weapon : MonoBehaviour
 {
+
+    private const float MINIMUM_ATTACK_INTERVAL = 0.1f;
     public Transform weaponPivot { get; private set; }
     private PlayerController playerController { get => GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>(); }
     [SerializeField] private Transform WeaponPivot;
@@ -24,6 +26,8 @@ public class Weapon : MonoBehaviour
 
     private int attackCounter;
     private float internalCooldown;
+    private OxygenSystem _oxygenSystem;
+    private float currentOxygenCount;
 
     [Space(15), Header("Upgrades")]
     [SerializeField] private List<UpgradeData> upgrades;
@@ -36,6 +40,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float rangeModifier;
     [SerializeField] private float attackIntervalModifier;
     [SerializeField] private int projectileAmountModifier;
+    [SerializeField] private bool isFrenzied = false;
 
     public int DamageFlatModifier { get => damageFlatModifier; set => damageFlatModifier = value; }
     public float DamageModifier { get => damageModifier; set => damageModifier = value; }
@@ -43,6 +48,7 @@ public class Weapon : MonoBehaviour
     public float RangeModifier { get => rangeModifier; set => rangeModifier = value; }
     public float AttackIntervalModifier { get => attackIntervalModifier; set => attackIntervalModifier = value; }
     public int ProjectileAmountModifier { get => projectileAmountModifier; set => projectileAmountModifier = value; }
+    public bool IsFrenzied { get => isFrenzied; set => isFrenzied = value; }
 
     [SerializeField] private AudioClip[] shoot;
     private AudioSource audioSource;
@@ -54,6 +60,7 @@ public class Weapon : MonoBehaviour
         weaponPivot = WeaponPivot;
         attackAction.Enable();
         UpdateWeapon();
+        _oxygenSystem = GameObject.FindGameObjectWithTag("MainConsole").GetComponentInChildren<OxygenSystem>();
     }
 
     void Update()
@@ -88,6 +95,15 @@ public class Weapon : MonoBehaviour
     {
         //Resets cooldown of the weapon based on the weapon attack speed.
         internalCooldown = weaponData.fireRateInterval * (1 + AttackIntervalModifier);
+    
+        //When the player has the Frenzy Module upgrade, their firerate interval may be reduced by an additional 0.5 secs (scaling inversely with bubble size)
+        if(isFrenzied){
+            currentOxygenCount = _oxygenSystem.CurrentEnergy;
+            internalCooldown = internalCooldown - (0.5f - currentOxygenCount/200);
+        } 
+        
+        //Weapons CANNOT shoot faster than MINIMUM_ATTACK_INTERVAL (aka 0.1 seconds).
+        if(internalCooldown < MINIMUM_ATTACK_INTERVAL) internalCooldown = MINIMUM_ATTACK_INTERVAL;
 
         int index = Random.Range(0, shoot.Length);
         shootClip = shoot[index];
@@ -102,14 +118,15 @@ public class Weapon : MonoBehaviour
     }
     private void Attack()
     {
+        //When the player has the Spread Shot upgrade they shoot more than 3 bullets which fire at an angle of each other 
         WeaponProjectile[] weaponProjectiles = FunctionLibrary.ShootSpread(
             weaponData.projectileAmount + ProjectileAmountModifier, 
             90, 
-            weaponData.attackObject, 
-            WeaponPivot.localRotation.eulerAngles.z,
+            weaponData.attackObject,
+            projectilePivot.rotation.eulerAngles.z + (projectilePivot.rotation.eulerAngles.z - WeaponPivot.localRotation.eulerAngles.z),
             projectilePivot.position,
             playerController.gameObject,
-            WeaponPivot.localRotation.eulerAngles.z,
+            projectilePivot.rotation.eulerAngles.z + (projectilePivot.rotation.eulerAngles.z - WeaponPivot.localRotation.eulerAngles.z),
             this
         );
 

@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 1389278949117450457}
   - component: {fileID: 8864941546656631859}
   - component: {fileID: -503717608958730718}
-  m_Layer: 0
+  - component: {fileID: -8322911580191172745}
+  m_Layer: 8
   m_Name: Sporehound
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 6485730617634244332}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.33, y: 2.62, z: 0.015903065}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -140,7 +141,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1389278949117450457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,19 +161,26 @@ MonoBehaviour:
   - MoveToTarget
   attackList:
   - SingleShot
+  hasContactDamage: 1
+  _contactDamage: 10
+  targetList:
+  - Player
   onDeathList: []
   droppedItems:
-  - itemData: {fileID: 11400000, guid: 61db56788a9e5d94699afe2217942c9d, type: 2}
-    dropChance: 50
   - itemData: {fileID: 11400000, guid: 2634ea607fceb294ea6cdfb95826e3bb, type: 2}
     dropChance: 25
+  - itemData: {fileID: 11400000, guid: c70642942ce553d459c5c387166f0848, type: 2}
+    dropChance: 5
   enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
   speed: 4
   maxHealth: 40
-  creditValue: 1
+  creditValue: 3
   spawnAfterWave: 0
+  spawnAtMachine: 0
   attackInterval: 0.8
+  attackRange: 5
   doesAttackOnAnimationCondition: 0
+  stopOnRange: 0
   damageClip: {fileID: 8300000, guid: 7916c3d049e5204468c73c1f451a41e8, type: 3}
   deathClip: {fileID: 8300000, guid: 939dc2109840bbf4ab0230b5640e1654, type: 3}
   attackClip: {fileID: 8300000, guid: 26e19197cd788614b8774c9f0f7fe4be, type: 3}
@@ -210,8 +218,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2.36, y: 1.37}
+  m_Offset: {x: -0.15, y: 0.75}
+  m_Size: {x: 2.4, y: 1.5}
   m_Direction: 1
 --- !u!82 &-503717608958730718
 AudioSource:
@@ -234,7 +242,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.9923817
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -310,3 +318,40 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!70 &-8322911580191172745
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6485730617634244332}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.15, y: 0.75}
+  m_Size: {x: 2.4, y: 1.5}
+  m_Direction: 1

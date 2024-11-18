@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Entity.Enemy;
 using JetBrains.Annotations;
 using Library;
 using ScriptableObjects;
@@ -22,22 +23,40 @@ public class EnemyData : ScriptableObject
 {
     public Dictionary<string, UnityAction<EnemyBehaviour>> MovesDictionary = new Dictionary<string, UnityAction<EnemyBehaviour>>();
     public Dictionary<string, UnityAction<GameObject, GameObject>> AttacksDictionary = new Dictionary<string, UnityAction<GameObject, GameObject>>();
+    public Dictionary<string, UnityAction<EnemyBehaviour>> TargetAcquisitionDictionary = new Dictionary<string, UnityAction<EnemyBehaviour>>();
 
     public GameObject[] AttacksProjectiles;
     
     [SerializeField]
     private DroppedItem[] droppedItems;
 
+    [SerializeField]
+    private GameObject itemPickupObject;
+    [SerializeField]
+    private GameObject usableItemPickupObject;
+
+    private GameObject _player;
+    private GameObject _machine;
+    private GameObject _prevTarget;
+
     public void Start()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _machine = GameObject.FindGameObjectWithTag("MainConsole");
+        
         List<StringActionEB> movesDictionary = new List<StringActionEB>(){
             new StringActionEB("MoveToTarget", MoveToTarget)
         };
 
-        List<StringActionGO> attacksDictionary = new List<StringActionGO>()
+        List<StringActionGOGO> attacksDictionary = new List<StringActionGOGO>()
         {
-            new StringActionGO("SingleShot", SingleShot),
-            new StringActionGO("PoisonCloud", PoisonCloud)
+            new StringActionGOGO("SingleShot", SingleShot),
+            new StringActionGOGO("PoisonCloud", PoisonCloud),
+            new StringActionGOGO("AttachToTarget", AttachToTarget)
+        };
+        List<StringActionEB> targetsDictionary = new List<StringActionEB>(){
+            new StringActionEB("Player", Player),
+            new StringActionEB("PlayerThenMachine", PlayerThenMachine)
         };
 
         foreach (var move in movesDictionary)
@@ -45,7 +64,7 @@ public class EnemyData : ScriptableObject
             // TODO: Check if this is a valid fix. This "fixes" an error that happens if multiple enemies are spawned.
             if (MovesDictionary.ContainsKey(move.name)) continue;
             MovesDictionary.Add(move.name, move.func);
-            Debug.Log($"{move.name} loaded into dictionary!");
+            //Debug.Log($"{move.name} loaded into dictionary!");
         }
 
         foreach (var attack in attacksDictionary)
@@ -53,19 +72,27 @@ public class EnemyData : ScriptableObject
             // TODO: Check if this is a valid fix. This "fixes" an error that happens if multiple enemies are spawned.
             if (AttacksDictionary.ContainsKey(attack.name)) continue;
             AttacksDictionary.Add(attack.name, attack.func);
-            Debug.Log($"{attack.name} loaded into dictionary!");
+            //Debug.Log($"{attack.name} loaded into dictionary!");
+        }
+
+        foreach (var target in targetsDictionary)
+        {
+            // TODO: Check if this is a valid fix. This "fixes" an error that happens if multiple enemies are spawned.
+            if (TargetAcquisitionDictionary.ContainsKey(target.name)) continue;
+            TargetAcquisitionDictionary.Add(target.name, target.func);
+            //Debug.Log($"{target.name} loaded into dictionary!");
         }
     }
 
 
 
     #region Movements
-    public void MoveToTarget(EnemyBehaviour enemy)
+    public void MoveToTarget(EnemyBehaviour self)
     {
-        Rigidbody2D rigidbody = enemy.GetComponent<Rigidbody2D>();
+        Rigidbody2D rigidbody = self.GetComponent<Rigidbody2D>();
 
-        float angle = enemy.GetAngleToTarget(null);
-        Vector2 velocity = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)) * enemy.Speed;
+        float angle = self.GetAngleToTarget(null);
+        Vector2 velocity = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)) * self.Speed;
 
         rigidbody.linearVelocity = velocity;
     }
@@ -90,6 +117,27 @@ public class EnemyData : ScriptableObject
     {
         Instantiate(AttacksProjectiles[1], self.transform.position, Quaternion.identity, self.transform);
     }
+    public void AttachToTarget(GameObject self, GameObject target)
+    {
+        VoltLeechBehaviour voltLeechBehaviour = self.GetComponent<VoltLeechBehaviour>();
+        EnemyBehaviour enemyBehaviour = self.GetComponent<EnemyBehaviour>();
+        if (!enemyBehaviour || !voltLeechBehaviour) return;
+        voltLeechBehaviour.AttachToTarget(enemyBehaviour.ContactDamage, enemyBehaviour.target);
+    }
+    #endregion
+
+    #region TargetAcquisitons
+    public void Player(EnemyBehaviour self)
+    {
+        self.SetTarget(_player);
+    }
+    
+    public void PlayerThenMachine(EnemyBehaviour self)
+    {
+        PlayerController playerController = _player.GetComponent<PlayerController>();
+        GameObject newTarget = !playerController.IsInOnxygenArea ? _player : _machine;
+        self.SetTarget(newTarget);
+    }
     #endregion
 
     #region Drops
@@ -108,6 +156,11 @@ public class EnemyData : ScriptableObject
         return drops.ToArray();
     }
     #endregion
+
+    public GameObject GetPickupObject(ItemData itemData)
+    {
+        return itemData is UsableItemData ? usableItemPickupObject : itemPickupObject;
+    }
 }
 [Serializable]
 struct StringActionEB
@@ -122,12 +175,12 @@ struct StringActionEB
     }
 }
 [Serializable]
-struct StringActionGO
+struct StringActionGOGO
 {
     public string name;
     [SerializeField] public UnityAction<GameObject, GameObject> func;
 
-    public StringActionGO(string name, UnityAction<GameObject, GameObject> func)
+    public StringActionGOGO(string name, UnityAction<GameObject, GameObject> func)
     {
         this.name = name;
         this.func = func;

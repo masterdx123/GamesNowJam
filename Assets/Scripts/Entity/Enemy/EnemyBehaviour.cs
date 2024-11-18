@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,8 @@ using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Audio;
+using Unity.Properties;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D), typeof(Animator))]
 public class EnemyBehaviour : MonoBehaviour, IDamageable
@@ -15,17 +18,22 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator animator;
+    private string currentState;
 
     [Header("Actions")]
     [SerializeField] private List<string> movementList;
     [SerializeField] private List<string> attackList;
+    [SerializeField] private bool hasContactDamage;
+    public float ContactDamage => _contactDamage;
+    [SerializeField] protected float _contactDamage;
+    [SerializeField] private List<string> targetList;
     [SerializeField] private List<string> onDeathList;
 
     [Header("Loot")]
     [SerializeField]
     private DroppedItem[] droppedItems;
 
-    public GameObject target { get => GetTarget(); }
+    public GameObject target { get; private set; }
 
     [SerializeField] EnemyData enemyData;
     [SerializeField] private float speed;
@@ -41,17 +49,26 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     private int spawnAfterWave = 0;
     public int SpawnAfterWave { get => spawnAfterWave; }
 
-    private UnityEvent<EnemyBehaviour> Move = new UnityEvent<EnemyBehaviour>();
-    private UnityEvent<GameObject, GameObject> Attack = new UnityEvent<GameObject, GameObject>();
-    private UnityEvent<GameObject, GameObject> OnDeath = new UnityEvent<GameObject, GameObject>();
-    private float internalCooldown;
+    [SerializeField]
+    private bool spawnAtMachine = false;
+    public bool SpawnAtMachine { get => spawnAtMachine; }
+
+    protected UnityEvent<EnemyBehaviour> Move = new UnityEvent<EnemyBehaviour>();
+    protected UnityEvent<GameObject, GameObject> Attack = new UnityEvent<GameObject, GameObject>();
+    protected UnityEvent<EnemyBehaviour> TargetAcquisition = new UnityEvent<EnemyBehaviour>();
+    protected UnityEvent<GameObject, GameObject> OnDeath = new UnityEvent<GameObject, GameObject>();
+    protected float internalCooldown;
     [SerializeField] private float attackInterval;
+    [SerializeField] private float attackRange;
     [SerializeField] private bool doesAttackOnAnimationCondition = false;
+    [SerializeField] private bool doesNotHaveHitAnimation = false;
+    [SerializeField] private bool stopOnRange = false;
 
     [SerializeField] private AudioClip damageClip;
     [SerializeField] private AudioClip deathClip;
     [SerializeField] private AudioClip attackClip;
     private AudioSource audioSource;
+    private bool _onHit = false;
 
     void Start()
     {
@@ -66,6 +83,10 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         {
             Attack.AddListener(enemyData.AttacksDictionary[attack]);
         }
+        foreach (var target in targetList)
+        {
+            TargetAcquisition.AddListener(enemyData.TargetAcquisitionDictionary[target]);
+        }
         foreach (var attack in onDeathList)
         {
             OnDeath.AddListener(enemyData.AttacksDictionary[attack]);
@@ -75,35 +96,58 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        SpriteFlip();
-
-        Move?.Invoke(this);
-
-        if (internalCooldown <= 0 && doesAttackOnAnimationCondition == false)
+        if (targetList.Count != 0)
         {
-            OnAttack();
-        }
+            ChangeTarget();
+            if (_onHit == false)
+            {
+                if (DistanceFromTarget(target.transform.position) >= attackRange || !stopOnRange) Move?.Invoke(this);
+                else rb.linearVelocity = Vector3.zero;
 
-        //Reduces cooldown as a timer.
-        if (internalCooldown > 0)
-        {
-            internalCooldown -= Time.deltaTime;
+                if (DistanceFromTarget(target.transform.position) < attackRange && internalCooldown <= 0 && doesAttackOnAnimationCondition == false)
+                {
+                    OnAttack();
+                }
+            }
+            else { if (rb.bodyType != RigidbodyType2D.Static) rb.linearVelocity = Vector3.zero; }
+
+            //Reduces cooldown as a timer.
+            if (internalCooldown > 0)
+            {
+                internalCooldown -= Time.deltaTime;
+            }
+
+            SpriteFlip();
         }
     }
 
-    public void OnAttack()
+    public virtual void OnAttack()
     {
-        Attack?.Invoke(this.gameObject, GetTarget());
+        Attack?.Invoke(this.gameObject, target);
         internalCooldown = attackInterval;
         audioSource.clip = attackClip;
         audioSource.Play();
     }
 
-    GameObject GetTarget()
+    protected void OnTriggerEnter2D(Collider2D other)
     {
-        return GameObject.FindGameObjectWithTag("Player");
+        if (!other.gameObject.CompareTag("Player")) return;
+        if (other.isTrigger && hasContactDamage)
+        {
+            other.GetComponent<PlayerController>().TakeDamage(_contactDamage);
+        }
+    }
+
+    public virtual void ChangeTarget()
+    {
+        TargetAcquisition?.Invoke(this);
+    }
+
+    public void SetTarget(GameObject _target)
+    {
+        if(target != _target) target = _target;
     }
 
     public float GetAngleToTarget(Vector3? targetPosition)
@@ -111,14 +155,19 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         var differenceFromEnemyToTarget = targetPosition == null ?  target.transform.position - this.gameObject.transform.position : targetPosition.Value - this.gameObject.transform.position;
         return Mathf.Atan2(differenceFromEnemyToTarget.y, differenceFromEnemyToTarget.x) * Mathf.Rad2Deg;
     }
+    public float DistanceFromTarget(Vector3? targetPosition)
+    {
+        var differenceFromEnemyToTarget = targetPosition == null ? target.transform.position - this.gameObject.transform.position : targetPosition.Value - this.gameObject.transform.position;
+        return differenceFromEnemyToTarget.magnitude;
+    }
 
     void SpriteFlip()
     {
-        var normalizedDifferenceX = 0f;
+        float normalizedDifferenceX = 0f;
 
-        if (rb.linearVelocity.normalized.x != 0) normalizedDifferenceX = Mathf.Abs(rb.linearVelocity.normalized.x) / rb.linearVelocity.normalized.x;
+        if ((target.transform.position - this.transform.position).normalized.x != 0) normalizedDifferenceX = (target.transform.position - this.transform.position).normalized.x;
 
-        spriteRenderer.flipX = -normalizedDifferenceX != 1;
+        spriteRenderer.flipX = normalizedDifferenceX >= 0 ? true : false;
     }
 
     public void TakeDamage(float damage)
@@ -126,6 +175,9 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
         audioSource.clip = damageClip;
         audioSource.Play();
         _health = Mathf.Clamp(_health - damage, 0, maxHealth);
+        
+        if(doesNotHaveHitAnimation == false) ChangeAnimationState("OnHit");
+        _onHit = true;
 
         if (_health <= 0)
         {
@@ -135,7 +187,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        OnDeath?.Invoke(gameObject, GetTarget());
+        OnDeath?.Invoke(gameObject, target);
         ItemData[] items = enemyData.GetIdemDrops(null);
         items = items.Concat(enemyData.GetIdemDrops(droppedItems)).ToArray();
         audioSource.clip = deathClip;
@@ -143,14 +195,27 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable
 
         foreach (var item in items)
         {
-            GameObject pickup = new GameObject();
-            pickup.AddComponent<ItemPickup>();
-            pickup.layer = LayerMask.NameToLayer("ItemPickup");
+            GameObject pickup = enemyData.GetPickupObject(item);
             ItemPickup itemPickup = pickup.GetComponent<ItemPickup>();
             itemPickup.ItemData = item;
             Vector3 offset = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
             Instantiate(pickup, transform.position + offset, Quaternion.Euler(0,0, transform.localRotation.eulerAngles.z));
         }
         Destroy(gameObject);
+    }
+
+    private void ChangeAnimationState(string newState)
+    {
+        if (currentState != newState)
+        {
+            animator.Play(newState, 0, 0f);
+            currentState = newState;
+        }
+    }
+
+    public void OnHitFinish()
+    {
+        _onHit = false;
+        ChangeAnimationState("Default");
     }
 }

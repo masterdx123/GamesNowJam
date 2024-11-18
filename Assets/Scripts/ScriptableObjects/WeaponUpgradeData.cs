@@ -19,6 +19,7 @@ namespace ScriptableObjects
         public StatValue[] statsToUpgrade;
         public bool isExplosive;
         public bool isBoomerang;
+        public bool isFrenzied;
         public int enemiesPenetrated = 0;
 
         public override void ExecuteUpgrade(WeaponProjectile target)
@@ -49,6 +50,10 @@ namespace ScriptableObjects
             foreach (StatValue statComp in statsToUpgrade)
             {
                 ModifyStat(statComp, target, 1);
+            }
+            
+            if(!target.IsFrenzied) {
+                target.IsFrenzied = isFrenzied;
             }
         }
 

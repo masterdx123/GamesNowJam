@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd60c039461c15d48a3205906ef88dd6, type: 3}
   m_Name: ExoticBlood
   m_EditorClassIdentifier: 
-  itemName: ExoticBlood
-  description: Replenish your oxygen cenas
-  icon: {fileID: -2884847333407950948, guid: bf876770dff5cc04fb8a484fade4c1af, type: 3}
+  itemName: Exotic Blood
+  description: Weird blood...
+  icon: {fileID: 21300000, guid: bf876770dff5cc04fb8a484fade4c1af, type: 3}
   canStack: 1
   maxStackSize: 99

@@ -42,7 +42,7 @@ namespace UI.Upgrades
         {
             GameObject obj = eventData.pointerDrag;
             UpgradeSlotConsoleController upgradeSlotConsoleSlot = obj.GetComponent<UpgradeSlotConsoleController>();
-            if (!upgradeSlotConsoleSlot || !upgradeSlotConsoleSlot.UpgradeData || _equippedSlot == upgradeSlotConsoleSlot)
+            if (!upgradeSlotConsoleSlot || !upgradeSlotConsoleSlot.UpgradeData || _equippedSlot == upgradeSlotConsoleSlot || !upgradeSlotConsoleSlot.IsUnlocked)
             {
                 return;
             }
@@ -71,6 +71,7 @@ namespace UI.Upgrades
             // Equip upgrade
             // TODO: need to have feedback that upgrade is equipped
             _weapon.AddUpgrade(upgradeSlotConsoleSlot.UpgradeData);
+            _equippedSlot = upgradeSlotConsoleSlot;
             iconRenderer.sprite = upgradeSlotConsoleSlot.UpgradeData.Icon;
             iconRenderer.enabled = true;
             Debug.Log(obj.name);

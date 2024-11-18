@@ -122,12 +122,12 @@ TextureImporter:
       name: Sporehound_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 37
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -144,12 +144,12 @@ TextureImporter:
       name: Sporehound_1
       rect:
         serializedVersion: 2
-        x: 51
+        x: 48
         y: 0
-        width: 42
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -166,12 +166,12 @@ TextureImporter:
       name: Sporehound_2
       rect:
         serializedVersion: 2
-        x: 99
+        x: 96
         y: 0
-        width: 43
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -184,11 +184,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Sporehound_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 110e4b208e618354c994a1d995d250bb
+      internalID: -555822192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fc536e469b8aa814b897611a0e9a712a
     internalID: 0
     vertices: []
     indices: 
@@ -201,6 +223,7 @@ TextureImporter:
       Sporehound_0: 7278791742645257144
       Sporehound_1: -7176983836179857833
       Sporehound_2: 8697206173001970355
+      Sporehound_3: -555822192
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

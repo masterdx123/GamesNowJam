@@ -128,12 +128,12 @@ TextureImporter:
       name: boomBug_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 27
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -150,12 +150,12 @@ TextureImporter:
       name: boomBug_1
       rect:
         serializedVersion: 2
-        x: 35
+        x: 32
         y: 0
-        width: 27
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -172,12 +172,12 @@ TextureImporter:
       name: boomBug_2
       rect:
         serializedVersion: 2
-        x: 66
+        x: 64
         y: 0
-        width: 28
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -194,12 +194,12 @@ TextureImporter:
       name: boomBug_3
       rect:
         serializedVersion: 2
-        x: 98
+        x: 96
         y: 0
-        width: 28
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -216,12 +216,12 @@ TextureImporter:
       name: boomBug_4
       rect:
         serializedVersion: 2
-        x: 130
+        x: 128
         y: 0
-        width: 27
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -234,11 +234,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: boomBug_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a57a668ca965941a928a9d69f4b2f3
+      internalID: -699977133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 457b4ef15ac45d54b917276dbc13c624
     internalID: 0
     vertices: []
     indices: 
@@ -253,6 +275,7 @@ TextureImporter:
       boomBug_2: 4033111595970723457
       boomBug_3: -1316264095591796732
       boomBug_4: -6800823574943740361
+      boomBug_5: -699977133
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

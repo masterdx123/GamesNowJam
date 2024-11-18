@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Entity.UpgradeConsole;
 
 namespace UI.Inventory
 {
@@ -75,6 +76,10 @@ namespace UI.Inventory
         public string GetDescription()
         {
             return _item ? _item.Description : "";
+        }
+
+        public MaterialRequirement[] GetMaterialRequirements() {
+            return null;
         }
 
         public bool CanShow()
