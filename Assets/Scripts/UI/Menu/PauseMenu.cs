@@ -54,7 +54,8 @@ namespace UI.Menu
         }
 
         public void ReturnToMainMenu() {
-            SceneManager.LoadScene(0);
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("MainMenu");            
         }
     }
 }
