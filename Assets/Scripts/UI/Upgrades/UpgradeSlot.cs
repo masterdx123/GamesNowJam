@@ -42,7 +42,7 @@ namespace UI.Upgrades
         {
             GameObject obj = eventData.pointerDrag;
             UpgradeSlotConsoleController upgradeSlotConsoleSlot = obj.GetComponent<UpgradeSlotConsoleController>();
-            if (!upgradeSlotConsoleSlot || !upgradeSlotConsoleSlot.UpgradeData || _equippedSlot == upgradeSlotConsoleSlot)
+            if (!upgradeSlotConsoleSlot || !upgradeSlotConsoleSlot.UpgradeData || _equippedSlot == upgradeSlotConsoleSlot || !upgradeSlotConsoleSlot.IsUnlocked)
             {
                 return;
             }

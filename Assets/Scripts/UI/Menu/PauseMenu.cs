@@ -1,3 +1,4 @@
+using Entity.UpgradeConsole;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -16,11 +17,15 @@ namespace UI.Menu
         [SerializeField]
         private GameObject _crosshairCanvas;
 
+        private global::Inventory.Inventory _inventory;
+        private UpgradeConsole _upgradeConsole;
         private bool _isGamePaused;
 
         void Start()
         {
             _openPauseMenuAction.Enable();
+            _inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<global::Inventory.Inventory>();
+            _upgradeConsole = GameObject.FindGameObjectWithTag("MainConsole").GetComponent<UpgradeConsole>();
         }
 
         void Update()
@@ -35,6 +40,17 @@ namespace UI.Menu
             }
 
         private void OpenPauseMenu() {
+            if (_inventory.IsInventoryOpen())
+            {
+                _inventory.ToggleInventory();
+            }
+
+            if (_upgradeConsole.IsConsoleUpgradeOpen())
+            {
+                _upgradeConsole.ToggleUpgradeUI();
+            }
+
+            _isGamePaused = true;
             _pauseMenu.SetActive(true);
             _crosshairCanvas.SetActive(false);            
             Time.timeScale = 0f;
@@ -43,7 +59,8 @@ namespace UI.Menu
 
         public void ClosePauseMenu() {
             _pauseMenu.SetActive(false);
-            _crosshairCanvas.SetActive(true);            
+            _crosshairCanvas.SetActive(true);        
+            _isGamePaused = false;    
             Time.timeScale = 1f;
             Cursor.visible = false;
         }

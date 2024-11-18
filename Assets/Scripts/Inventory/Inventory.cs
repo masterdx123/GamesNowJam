@@ -201,6 +201,16 @@ namespace Inventory
             
             _instantiatedInventory.gameObject.SetActive(newActiveState);
         }
+        
+        public bool IsInventoryOpen()
+        {
+            if (!_instantiatedInventory) return false;
+            
+            InventoryUIController uiController = _instantiatedInventory.GetComponent<InventoryUIController>();
+            if (!uiController) return false;
+
+            return _instantiatedInventory.gameObject.activeInHierarchy;
+        }
 
         private bool UpdatePlayerStatus(bool visible)
         {

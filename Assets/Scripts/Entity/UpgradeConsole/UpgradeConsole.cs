@@ -215,6 +215,13 @@ namespace Entity.UpgradeConsole
             SetUpgradeUIVisible(!_instantiatedUpgradeUI.gameObject.activeInHierarchy);
         }
 
+        public bool IsConsoleUpgradeOpen()
+        {
+            if (!_instantiatedUpgradeUI || !_uiController) return false;
+
+            return _uiController.gameObject.activeInHierarchy;
+        }
+
         private void checkPauseTime() {
             if (!_isGamePaused) {
                 Time.timeScale = 0f;
