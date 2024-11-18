@@ -13,6 +13,8 @@ namespace UI.Menu
         private GameObject _pauseMenu;
         [SerializeField]
         private GameObject _optionsMenu;
+        [SerializeField]
+        private GameObject _crosshairCanvas;
 
         private bool _isGamePaused;
 
@@ -34,12 +36,14 @@ namespace UI.Menu
 
         private void OpenPauseMenu() {
             _pauseMenu.SetActive(true);
+            _crosshairCanvas.SetActive(false);            
             Time.timeScale = 0f;
             Cursor.visible = true;
         }
 
         public void ClosePauseMenu() {
             _pauseMenu.SetActive(false);
+            _crosshairCanvas.SetActive(true);            
             Time.timeScale = 1f;
             Cursor.visible = false;
         }

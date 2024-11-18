@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: -7792627177763298145, guid: 55ac1af3b19726c4584d0e8ed86f38a2, type: 3}
   statsToUpgrade:
   - stat: 3
-    value: -0.1
+    value: -0.3
   isExplosive: 0
   isBoomerang: 0
   isFrenzied: 0

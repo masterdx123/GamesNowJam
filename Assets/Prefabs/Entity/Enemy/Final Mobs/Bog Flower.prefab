@@ -159,18 +159,16 @@ MonoBehaviour:
   movementList: []
   attackList:
   - PoisonCloud
-  hasContactDamage: 1
-  _contactDamage: 10
+  hasContactDamage: 0
+  _contactDamage: 0
   targetList: []
   onDeathList: []
   droppedItems:
   - itemData: {fileID: 11400000, guid: 20dd38f5da43348478cbfa8c7b2a9a97, type: 2}
-    dropChance: 25
-  - itemData: {fileID: 11400000, guid: c70642942ce553d459c5c387166f0848, type: 2}
-    dropChance: 5
+    dropChance: 33
   enemyData: {fileID: 11400000, guid: 09842370d91be814c968c4752cde4a91, type: 2}
   speed: 0
-  maxHealth: 70
+  maxHealth: 30
   creditValue: 5
   spawnAfterWave: 3
   spawnAtMachine: 1

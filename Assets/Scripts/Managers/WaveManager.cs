@@ -150,10 +150,8 @@ namespace Managers
 
         //SECONDS_TO_NEXT_WAVE = 5f
         public void SkipWave() {
-            Debug.Log("skipwave entered");
             if (_currentTimeBetweenWaves > SECONDS_TO_NEXT_WAVE) {
                 _currentTimeBetweenWaves = SECONDS_TO_NEXT_WAVE;
-                Debug.Log("skipping wave");
             }
         }
     }

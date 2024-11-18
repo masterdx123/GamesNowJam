@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   upgradeName: Fast Bullets
-  description: +Damage & +Range
+  description: +Damage & +Velocity
   icon: {fileID: 3049188077802377562, guid: 15e59adec4e504547b77f6cdfad746ea, type: 3}
   statsToUpgrade:
   - stat: 0

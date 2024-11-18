@@ -102,6 +102,7 @@ namespace Entity.UpgradeConsole
 
         [SerializeField] private AudioClip depositClip;
         private AudioSource audioSource;
+        private bool _isGamePaused = false;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -185,11 +186,21 @@ namespace Entity.UpgradeConsole
         {
             if (!other.CompareTag("Player")) return;
             _player = null;
-            if (_instantiatedUpgradeUI) SetUpgradeUIVisible(false);
+            if (_instantiatedUpgradeUI) {
+
+                //resets timeScale to normal if player exits the collider (somehow)
+                _isGamePaused = false;
+                Time.timeScale = 1f;
+                SetUpgradeUIVisible(false);
+            }
         }
 
         public void ToggleUpgradeUI()
         {
+
+            //Stops time when entering upgrade ui
+            checkPauseTime();
+
             if (!_instantiatedUpgradeUI)
             {
                 _instantiatedUpgradeUI = Instantiate(upgradeManagementCanvas);
@@ -202,6 +213,17 @@ namespace Entity.UpgradeConsole
             }
             
             SetUpgradeUIVisible(!_instantiatedUpgradeUI.gameObject.activeInHierarchy);
+        }
+
+        private void checkPauseTime() {
+            if (!_isGamePaused) {
+                Time.timeScale = 0f;
+                _isGamePaused = true;
+            }
+            else {
+                Time.timeScale = 1f;
+                _isGamePaused = false;
+            }
         }
 
         private void SetUpgradeUIVisible(bool visible)
