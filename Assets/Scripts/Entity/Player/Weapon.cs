@@ -105,7 +105,7 @@ public class Weapon : MonoBehaviour
         //Weapons CANNOT shoot faster than MINIMUM_ATTACK_INTERVAL (aka 0.1 seconds).
         if(internalCooldown < MINIMUM_ATTACK_INTERVAL) internalCooldown = MINIMUM_ATTACK_INTERVAL;
 
-        int index = Random.Range(0, shoot.Length);
+        int index = Random.Range(0, shoot.Length - 1);
         shootClip = shoot[index];
 
         audioSource.clip = shootClip;
